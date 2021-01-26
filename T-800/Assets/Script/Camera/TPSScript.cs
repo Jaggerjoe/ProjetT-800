@@ -100,12 +100,15 @@ public class TPSScript : MonoBehaviour
 
     void Collision()
     {
-        Vector3 desireCameraPos = transform.TransformPoint(m_OffsetCamera * maxDist);
+        Vector3 desireCameraPos = transform.TransformPoint(dollyDIr * maxDist);
 
-        RaycastHit hit;
+        RaycastHit hit = new RaycastHit();
         if (Physics.Linecast(transform.position, m_Target.position, out hit, layer))
         {
             m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, hit.point, Time.deltaTime * smooth);
+            //Vector3 HitPoint = new Vector3(hit.point.x + hit.normal.x * 2, hit.point.y + hit.normal.y * 2, hit.point.z + hit.normal.z * 2);
+            //m_Cam.transform.position = new Vector3(HitPoint.x, m_Cam.transform.position.y,HitPoint.z);
+            Debug.Log("je touche mon onjet");
         }
         else
         {
