@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
-    private InputActionAsset m_InputManage;
+    private InputActionAsset m_InputManage = null;
+
     Vector2 m_PosCamera = Vector2.zero;
 
     private void Awake()
