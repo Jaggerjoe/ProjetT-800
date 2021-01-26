@@ -103,7 +103,7 @@ public class TPSScript : MonoBehaviour
         Vector3 desireCameraPos = transform.TransformPoint(dollyDIr * maxDist);
 
         RaycastHit hit = new RaycastHit();
-        if (Physics.Linecast(transform.position, m_Target.position, out hit, layer))
+        if (Physics.Linecast(m_Target.position, transform.position, out hit, layer))
         {
             m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, hit.point, Time.deltaTime * smooth);
             //Vector3 HitPoint = new Vector3(hit.point.x + hit.normal.x * 2, hit.point.y + hit.normal.y * 2, hit.point.z + hit.normal.z * 2);
