@@ -42,7 +42,7 @@ public class Movements : MonoBehaviour
             transform.forward = l_DesireDirection;
         }
         //transform.position += l_DesireDirection * m_speed * p_deltaTime;
-        transform.position += new Vector3(l_DesireDirection.x * m_Speed, 0, l_DesireDirection.z * m_Speed);
+        transform.position += new Vector3(l_DesireDirection.x * m_Speed * Time.deltaTime, 0, l_DesireDirection.z * m_Speed*Time.deltaTime);
 
         //_Direction.Normalize();
         //Vector3 movement = new Vector3(_Direction.x, 0f, _Direction.y);
