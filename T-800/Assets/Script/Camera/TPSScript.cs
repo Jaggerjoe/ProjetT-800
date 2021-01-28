@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 public class TPSScript : MonoBehaviour
 {
     [SerializeField]
-    private InputActionAsset m_PlyerControl = null;
-    Vector2 m_PosCamera = Vector2.zero;
+    private InputManager m_InputManage;
 
     private const float m_XAngleMin = -80.0f;
     private const float m_XAngleMax = -5.0f;
@@ -49,14 +48,10 @@ public class TPSScript : MonoBehaviour
 
     private void Awake()
     {
-        InputActionMap playerMap = m_PlyerControl.FindActionMap("Player");
-        InputAction rotationCamera = m_PlyerControl.FindAction("Look");
-        rotationCamera.performed += (ctx) => { m_PosCamera = ctx.ReadValue<Vector2>(); };
-        rotationCamera.canceled += (ctx) => { m_PosCamera = Vector2.zero; };
+       
 
         dollyDIr = transform.localPosition.normalized;
 
-        playerMap.Enable();
     }
     private void Start()
     {
@@ -90,8 +85,8 @@ public class TPSScript : MonoBehaviour
     private void RotationCamera()
     {
         //rotation par rapport a ma view, c'est ici qu'on peut gerer la sensibilité
-        m_RotationX += m_PosCamera.y * m_SensivityY;
-        m_RotationY += m_PosCamera.x * m_SensivityX;
+        m_RotationX += m_InputManage.CameraPos.y * m_SensivityY;
+        m_RotationY += m_InputManage.CameraPos.x * m_SensivityX;
 
         //m_RotationY = Mathf.Clamp(m_RotationY, m_Y_Angle_Min, m_Y_Angle_Max);
         m_RotationX = Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);
