@@ -5,51 +5,51 @@ using UnityEngine.InputSystem;
 
 public class TPSScript : MonoBehaviour
 {
+    #region SerializableVariable
     [SerializeField]
     private InputManager m_InputManage = null;
-
-    private float m_XAngleMin = -80.0f;
-    private float m_XAngleMax = -5.0f;
-
-    [SerializeField] // la ou regarde la camera
-    private Transform m_Target = null;
-
-    private Camera m_Cam = null;
 
     //distance de la camera par rapport au player
     [SerializeField]
     private float m_currentDistance = 0;
 
+    [SerializeField]
+    private float smooth = 5;
+
+    [SerializeField]
+    private LayerMask layer;
+
+    [SerializeField] // la ou regarde la camera
+    private Transform m_Target = null;
+
+    #endregion
+
+    private float m_XAngleMin = -80.0f;
+
+    private float m_XAngleMax = -5.0f;
+
+    private Camera m_Cam = null;
+
     //sensibiliter
     private float m_SensivityX = 0.1f;
+
     private float m_SensivityY = 0.1f;
 
-
     private float m_RotationX = 0f;
+
     private float m_RotationY = 0f;
 
     private Vector3 m_OffsetCamera = Vector3.zero;
- 
-    private float m_InitialDistance = 0;
+
     private float m_TargetDistance=0;
+
     private float m_deltaTime=0;
-    private Vector3 m_TeleportOffset = new Vector3(1.5f, 1.5f, 0.0f);
-    private Vector3 m_TargetOffset = Vector3.zero;
-    private Vector3 m_OriginalOffset = Vector3.zero;
-
-
-    public float minDist = 1;
-    public float maxDist = 4;
-    Vector3 dollyDIr = Vector3.zero;
-    [SerializeField]
-    float smooth = 5;
-    public LayerMask layer;
-
 
     private void Awake()
     {
-        dollyDIr = transform.localPosition.normalized;
+        
     }
+
     private void Start()
     {
         m_Cam = Camera.main;
@@ -66,8 +66,8 @@ public class TPSScript : MonoBehaviour
         m_deltaTime += Time.deltaTime * 5.0f;
         if (m_currentDistance != m_TargetDistance)
         {
-            m_Cam.transform.localPosition = Vector3.Lerp(m_OriginalOffset, m_TargetOffset, m_deltaTime);
-            m_currentDistance = Mathf.Lerp(m_InitialDistance, m_TargetDistance, m_deltaTime);
+            m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
+            m_currentDistance = Mathf.Lerp(m_TargetDistance, m_TargetDistance, m_deltaTime);
         }
         Collision();
     }
@@ -100,8 +100,6 @@ public class TPSScript : MonoBehaviour
 
     void Collision()
     {
-        Vector3 desireCameraPos = transform.TransformPoint(dollyDIr * maxDist);
-
         RaycastHit hit = new RaycastHit();
         if (Physics.Linecast(m_Target.position, transform.position, out hit, layer))
         {
