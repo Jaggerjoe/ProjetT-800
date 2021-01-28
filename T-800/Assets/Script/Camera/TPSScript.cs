@@ -6,10 +6,10 @@ using UnityEngine.InputSystem;
 public class TPSScript : MonoBehaviour
 {
     [SerializeField]
-    private InputManager m_InputManage;
+    private InputManager m_InputManage = null;
 
-    private const float m_XAngleMin = -80.0f;
-    private const float m_XAngleMax = -5.0f;
+    private float m_XAngleMin = -80.0f;
+    private float m_XAngleMax = -5.0f;
 
     [SerializeField] // la ou regarde la camera
     private Transform m_Target = null;
@@ -18,7 +18,7 @@ public class TPSScript : MonoBehaviour
 
     //distance de la camera par rapport au player
     [SerializeField]
-    private float m_currentDistance;
+    private float m_currentDistance = 0;
 
     //sensibiliter
     private float m_SensivityX = 0.1f;
@@ -28,30 +28,27 @@ public class TPSScript : MonoBehaviour
     private float m_RotationX = 0f;
     private float m_RotationY = 0f;
 
-    private Vector3 m_OffsetCamera;
+    private Vector3 m_OffsetCamera = Vector3.zero;
  
-
-    private bool m_HoldTeleport = false;
-    private float m_InitialDistance;
-    private float m_TargetDistance;
-    private float m_deltaTime;
+    private float m_InitialDistance = 0;
+    private float m_TargetDistance=0;
+    private float m_deltaTime=0;
     private Vector3 m_TeleportOffset = new Vector3(1.5f, 1.5f, 0.0f);
-    private Vector3 m_TargetOffset;
-    private Vector3 m_OriginalOffset;
+    private Vector3 m_TargetOffset = Vector3.zero;
+    private Vector3 m_OriginalOffset = Vector3.zero;
 
 
     public float minDist = 1;
     public float maxDist = 4;
-    Vector3 dollyDIr;
+    Vector3 dollyDIr = Vector3.zero;
+    [SerializeField]
     float smooth = 5;
     public LayerMask layer;
 
+
     private void Awake()
     {
-       
-
         dollyDIr = transform.localPosition.normalized;
-
     }
     private void Start()
     {
@@ -60,20 +57,19 @@ public class TPSScript : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        //m_TargetDistance = m_currentDistance;
+        m_TargetDistance = m_currentDistance;
         m_OffsetCamera = m_Cam.transform.localPosition;
     }
     
     private void Update()
     {
-        //m_deltaTime += Time.deltaTime * 5.0f;
-        //if (m_currentDistance != m_TargetDistance)
-        //{
-        //    m_Cam.transform.localPosition = Vector3.Lerp(m_OriginalOffset, m_TargetOffset, m_deltaTime);
-        //    m_currentDistance = Mathf.Lerp(m_InitialDistance, m_TargetDistance, m_deltaTime);
-        //}
+        m_deltaTime += Time.deltaTime * 5.0f;
+        if (m_currentDistance != m_TargetDistance)
+        {
+            m_Cam.transform.localPosition = Vector3.Lerp(m_OriginalOffset, m_TargetOffset, m_deltaTime);
+            m_currentDistance = Mathf.Lerp(m_InitialDistance, m_TargetDistance, m_deltaTime);
+        }
         Collision();
-
     }
 
     //pour ne pas gener les move 
@@ -104,24 +100,26 @@ public class TPSScript : MonoBehaviour
 
     void Collision()
     {
-        Vector3 desireCameraPos = transform.TransformPoint(m_OffsetCamera * maxDist);
+        Vector3 desireCameraPos = transform.TransformPoint(dollyDIr * maxDist);
 
-        RaycastHit hit;
-        if (Physics.Linecast(transform.position, m_Target.position, out hit, layer))
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Linecast(m_Target.position, transform.position, out hit, layer))
         {
-            m_currentDistance = Mathf.Clamp(hit.distance, minDist, maxDist);
-            Debug.Log("je touche quelque chose");
+            m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, hit.point, Time.deltaTime * smooth);
+            //Vector3 HitPoint = new Vector3(hit.point.x + hit.normal.x * 2, hit.point.y + hit.normal.y * 2, hit.point.z + hit.normal.z * 2);
+            //m_Cam.transform.position = new Vector3(HitPoint.x, m_Cam.transform.position.y,HitPoint.z);
+            Debug.Log("je touche mon onjet");
         }
         else
         {
-            m_currentDistance = maxDist;
+            m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, this.transform.position, Time.deltaTime * smooth);
         }
-        m_Cam.transform.position = Vector3.Lerp(transform.localPosition, m_OffsetCamera * m_currentDistance, Time.deltaTime * smooth);
+        //m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, m_OffsetCamera * m_currentDistance, Time.deltaTime * smooth);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.TransformPoint(m_OffsetCamera * maxDist));
+        Gizmos.DrawLine(transform.position, m_Target.position);
     }
 }
