@@ -23,13 +23,15 @@ public class InputManager : MonoBehaviour
         rotationCamera.canceled += (ctx) => { m_PosCamera = Vector2.zero; };
 
         InputAction moveAction = playerMap.FindAction("Movements");
-        moveAction.performed += (ctx) => { m_Movements.movementInput = ctx.ReadValue<Vector2>(); };
+        moveAction.performed += (ctx) => { m_Movements.movementInput = ctx.ReadValue<Vector2>();  };
         moveAction.canceled += (ctx) => { m_Movements.movementInput = Vector2.zero; };
     }
 
     private void Update()
     {
         m_Movements.Move(m_Movements.movementInput, Time.deltaTime);
+
+        
     }
     private void OnEnable()
     {
@@ -46,3 +48,7 @@ public class InputManager : MonoBehaviour
         get { return m_PosCamera; }
     }
 }
+//m_ForwardSpeed += m_Acceleration * Time.deltaTime;
+//m_ForwardSpeed = Mathf.Clamp(m_ForwardSpeed, 0f, m_MaxSpeed);
+
+
