@@ -25,13 +25,21 @@ public class InputManager : MonoBehaviour
         InputAction moveAction = playerMap.FindAction("Movements");
         moveAction.performed += (ctx) => { m_Movements.movementInput = ctx.ReadValue<Vector2>();  };
         moveAction.canceled += (ctx) => { m_Movements.movementInput = Vector2.zero; };
+
+        InputAction jumpAction = playerMap.FindAction("Jump");
+        jumpAction.performed += (ctx) => { m_Movements.isJumping = true; } ;
+        jumpAction.canceled += (ctx) => { m_Movements.isJumping = false; };
     }
 
     private void Update()
     {
         m_Movements.Move(m_Movements.movementInput, Time.deltaTime);
 
-        
+        if (m_Movements.isJumping)
+        {
+            m_Movements.Jump();
+        }
+       
     }
     private void OnEnable()
     {
