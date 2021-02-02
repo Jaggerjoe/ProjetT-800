@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
 
     private Movements m_Movements = null;
 
+    private Interaction m_Interaction = null;
+
 
 
     Vector2 m_PosCamera = Vector2.zero;
@@ -17,6 +19,8 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         m_Movements = FindObjectOfType<Movements>();
+        m_Interaction = FindObjectOfType<Interaction>();
+
         InputActionMap playerMap = m_InputManage.FindActionMap("Player");
         InputAction rotationCamera = m_InputManage.FindAction("Look");
         rotationCamera.performed += (ctx) => { m_PosCamera = ctx.ReadValue<Vector2>(); };
@@ -26,20 +30,14 @@ public class InputManager : MonoBehaviour
         moveAction.performed += (ctx) => { m_Movements.movementInput = ctx.ReadValue<Vector2>();  };
         moveAction.canceled += (ctx) => { m_Movements.movementInput = Vector2.zero; };
 
-        InputAction jumpAction = playerMap.FindAction("Jump");
-        jumpAction.performed += (ctx) => { m_Movements.isJumping = true; } ;
-        jumpAction.canceled += (ctx) => { m_Movements.isJumping = false; };
+        InputAction interactinAction = playerMap.FindAction("Interaction");
+        interactinAction.started += (ctx) => m_Interaction.ActionLevier();
     }
 
     private void Update()
     {
         m_Movements.Move(m_Movements.movementInput, Time.deltaTime);
 
-        if (m_Movements.isJumping)
-        {
-            m_Movements.Jump();
-        }
-       
     }
     private void OnEnable()
     {
@@ -56,7 +54,5 @@ public class InputManager : MonoBehaviour
         get { return m_PosCamera; }
     }
 }
-//m_ForwardSpeed += m_Acceleration * Time.deltaTime;
-//m_ForwardSpeed = Mathf.Clamp(m_ForwardSpeed, 0f, m_MaxSpeed);
 
 

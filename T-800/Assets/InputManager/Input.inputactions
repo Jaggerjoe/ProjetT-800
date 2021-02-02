@@ -22,9 +22,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "Interaction",
                     "type": "Button",
-                    "id": "4eb4fa8a-dfe2-4083-bed2-c941e9599d82",
+                    "id": "3a0459d3-72a5-4b92-b212-bdb204dcd77f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -99,12 +99,12 @@
                 },
                 {
                     "name": "",
-                    "id": "c2514143-8db7-46fd-874f-373488dcdd5a",
-                    "path": "<Keyboard>/space",
+                    "id": "719a29ce-cc55-4e56-a26b-f251b94d95b9",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
