@@ -63,7 +63,6 @@ public class Movements : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-       
     }
     
     // Update is called once per frame
@@ -153,7 +152,7 @@ public class Movements : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(m_FeetPos.position, new Vector3(0, -4, 0));
+        //Gizmos.DrawRay(m_FeetPos.position, new Vector3(0, -4, 0));
     }
 
 }
