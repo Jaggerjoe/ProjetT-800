@@ -20,8 +20,8 @@ public class Movements : MonoBehaviour
     private AnimationCurve m_AccelCurve;
 
     //grounded datas
-    [SerializeField]
-    private Transform m_FeetPos;
+    
+ 
 
     [SerializeField]
     private float m_CheckRadius;
@@ -31,18 +31,6 @@ public class Movements : MonoBehaviour
 
     private bool m_IsGrounded = true;
 
-    //Jump Datas
-    private bool m_IsJumping = false;
-
-    private int m_JumpNumber = 1;
-
-    [SerializeField]
-    private float m_JumpTime = 3f;
-
-    private float m_JumpTimer, m_JumpRatio;
-
-    [SerializeField]
-    private AnimationCurve m_JumpHeightCurve;
 
     [SerializeField]
     private float m_JumpForce;
@@ -54,12 +42,17 @@ public class Movements : MonoBehaviour
     //Inputs
     public Vector2 movementInput = Vector2.zero;
 
-    
-    public bool isJumping { get { return m_IsJumping; } set { m_IsJumping = value; } }
-    
+    [SerializeField]
+    private float m_FallMultiplier = 2.5f;
+
+    [SerializeField]
+    private float m_LowJumpMultiplier = 2f;
+
+
+
     // Start is called before the first frame update
 
-    
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
@@ -69,10 +62,7 @@ public class Movements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        m_IsGrounded = Physics.Raycast(m_FeetPos.position, new Vector3(0, -1, 0), out hit,m_CheckRadius,m_IsItGround);
-
-        Debug.Log("m_IsGrounded" + m_IsGrounded);
+        //AddJump();
     }
     public void Move(Vector2 _Direction, float _DeltaTime)
     {
@@ -113,47 +103,23 @@ public class Movements : MonoBehaviour
         transform.position += new Vector3(l_DesireDirection.x * m_AccelCurve.Evaluate(m_AccelRatio) * m_Speed * Time.deltaTime, 0, l_DesireDirection.z * m_AccelCurve.Evaluate(m_AccelRatio) * m_Speed  * Time.deltaTime);
     }
 
-    public void Jump()
+
+
+    public void Jumping()
     {
-        
-        if (m_IsJumping)
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, m_CheckRadius, m_IsItGround))
         {
-            m_JumpTimer += Time.deltaTime;
-            m_JumpRatio = m_JumpTimer / m_JumpTime;
-
-
-            if (m_JumpTimer > m_JumpTime)
-            {
-                m_IsJumping = false;
-                m_JumpTimer = 0;
-                //m_JumpTimer = m_JumpTime;
-            }
-            //m_JumpNumber -= 1;
+         m_rb.velocity = Vector3.up * m_JumpForce;
         }
-        else
-        {
-            m_JumpTimer = 0;
-        }
-       
-        if(m_IsGrounded)
-        {
-            //    m_JumpNumber = 1;
-            m_JumpTimer = 0;
-        }
-
-        //if (m_JumpNumber == 1)
-        //{
-            m_rb.velocity = Vector3.up *( m_JumpHeightCurve.Evaluate(m_AccelRatio) * m_JumpForce + 4);
-          
-        //}
-
 
        
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(m_FeetPos.position, new Vector3(0, -4, 0));
+        Gizmos.DrawRay(transform.position, new Vector3(0, -4, 0));
     }
 
 }
