@@ -648,13 +648,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_CheckRadius: 1.1
+  m_CheckRadius: 0.5
   m_IsItGround:
     serializedVersion: 2
     m_Bits: 512
   m_JumpForce: 6
   m_rb: {fileID: 0}
   movementInput: {x: 0, y: 0}
+  m_FallMultiplier: 2.5
+  m_LowJumpMultiplier: 2
 --- !u!54 &928403450
 Rigidbody:
   m_ObjectHideFlags: 0
