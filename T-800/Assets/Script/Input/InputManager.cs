@@ -32,6 +32,7 @@ public class InputManager : MonoBehaviour
 
         InputAction interactinAction = playerMap.FindAction("Interaction");
         interactinAction.started += (ctx) => m_Interaction.ActionLevier();
+        
         InputAction jumpAction = playerMap.FindAction("Jump");
         jumpAction.performed += (ctx) => { m_Movements.Jumping(); } ;
         jumpAction.canceled += (ctx) => {  };
