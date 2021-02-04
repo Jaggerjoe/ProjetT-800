@@ -67,7 +67,6 @@ public class TPSScript : MonoBehaviour
         if (m_currentDistance != m_TargetDistance)
         {
             m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
-            m_currentDistance = Mathf.Lerp(m_TargetDistance, m_TargetDistance, m_deltaTime);
         }
         Collision();
     }
@@ -104,15 +103,11 @@ public class TPSScript : MonoBehaviour
         if (Physics.Linecast(m_Target.position, transform.position, out hit, layer))
         {
             m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, hit.point, Time.deltaTime * smooth);
-            //Vector3 HitPoint = new Vector3(hit.point.x + hit.normal.x * 2, hit.point.y + hit.normal.y * 2, hit.point.z + hit.normal.z * 2);
-            //m_Cam.transform.position = new Vector3(HitPoint.x, m_Cam.transform.position.y,HitPoint.z);
-            Debug.Log("je touche mon onjet");
         }
         else
         {
             m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, this.transform.position, Time.deltaTime * smooth);
         }
-        //m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, m_OffsetCamera * m_currentDistance, Time.deltaTime * smooth);
     }
 
     private void OnDrawGizmos()
