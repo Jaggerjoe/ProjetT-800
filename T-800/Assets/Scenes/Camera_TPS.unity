@@ -172,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: acc4d4e90d0b3084499a8b5b1f4ef012, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -209,8 +209,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107784964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.64, z: 0}
-  m_LocalScale: {x: 7.2609, y: 7.2609, z: 7.2609}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 14.116081, y: 14.116081, z: 14.116081}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 928403445}
   - component: {fileID: 928403449}
   - component: {fileID: 928403451}
+  - component: {fileID: 928403452}
   - component: {fileID: 928403450}
   m_Layer: 0
   m_Name: Sphere
@@ -716,8 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780e76856c38f1a448ca52d16cbbc4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 6
-  m_AccelTime: 5
+  m_Speed: 20
+  m_AccelTime: 10
   m_AccelCurve:
     serializedVersion: 2
     m_Curve:
@@ -742,8 +743,62 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_Deseleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.001701355
+      value: 1.0141296
+      inSlope: 0.0038563581
+      outSlope: 0.0038563581
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.12401516
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.84399986
+      outSlope: -0.84399986
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07774965
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_JumpHeight:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_CheckRadius: 0
+  m_IsItGround:
+    serializedVersion: 2
+    m_Bits: 0
+  m_JumpForce: 200
   m_rb: {fileID: 0}
-  movementInput: {x: 0, y: 0}
+  m_FallMultiplier: 2.5
+  m_LowJumpMultiplier: 2
 --- !u!54 &928403450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -758,7 +813,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &928403451
 MonoBehaviour:
@@ -776,6 +831,21 @@ MonoBehaviour:
   m_Layer:
     serializedVersion: 2
     m_Bits: 16
+  m_Radius: 2
+  m_Angle: 120
+  m_RefInteraction: {fileID: 928403452}
+--- !u!114 &928403452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928403444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c689cc9dbdd68048ba74a63e27d39e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1354903198
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed73c7fcfea8f247a8cb2087007aa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InputManage: {fileID: 1898213189}
   m_currentDistance: 10
   smooth: 50
   layer:
@@ -858,6 +927,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InputManage: {fileID: -944628639613478452, guid: 11268bdf23b099d4db1d28ee4020ff05,
     type: 3}
+  m_Movements: {fileID: 928403449}
+  m_Interaction: {fileID: 928403451}
+  m_RefCamera: {fileID: 1354903199}
 --- !u!4 &1898213190
 Transform:
   m_ObjectHideFlags: 0
