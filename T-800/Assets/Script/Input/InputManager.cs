@@ -37,14 +37,15 @@ public class InputManager : MonoBehaviour
         interactinAction.started += (ctx) => m_Interaction.Action();
 
         InputAction jumpAction = playerMap.FindAction("Jump");
-        jumpAction.performed += (ctx) => { m_Movements.Jump(); };
-        //jumpAction.canceled += (ctx) => {  };
+        jumpAction.performed += (ctx) => { m_Movements.Jumpbool = true; };
+        jumpAction.canceled += (ctx) => { m_Movements.Jumpbool = false; };
     }
 
     private void Update()
     {
         m_Movements.Move(m_Movement, Time.deltaTime);
         m_RefCamera.RotationCamera(m_PosCamera);
+        
     }
     private void OnEnable()
     {

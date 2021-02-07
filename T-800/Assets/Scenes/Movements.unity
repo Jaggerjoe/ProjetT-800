@@ -648,13 +648,60 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_Deseleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_JumpHeight:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_CheckRadius: 0.5
   m_IsItGround:
     serializedVersion: 2
     m_Bits: 512
   m_JumpForce: 6
   m_rb: {fileID: 0}
-  movementInput: {x: 0, y: 0}
   m_FallMultiplier: 2.5
   m_LowJumpMultiplier: 2
 --- !u!54 &928403450
@@ -702,7 +749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed73c7fcfea8f247a8cb2087007aa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InputManage: {fileID: 1898213189}
   m_currentDistance: 10
   smooth: 50
   layer:
@@ -848,6 +894,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InputManage: {fileID: -944628639613478452, guid: 11268bdf23b099d4db1d28ee4020ff05,
     type: 3}
+  m_Movements: {fileID: 928403449}
+  m_Interaction: {fileID: 0}
+  m_RefCamera: {fileID: 1354903199}
 --- !u!4 &1898213190
 Transform:
   m_ObjectHideFlags: 0
