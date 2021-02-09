@@ -42,16 +42,14 @@ public class TPSScript : MonoBehaviour
 
     private float m_deltaTime=0;
 
-    private void Awake()
-    {
-        
-    }
-
     private void Start()
     {
+        //Récupération de la main camera
+        //Mise en place de l'offset de la camera
         m_Cam = Camera.main;
         m_OffsetCamera = new Vector3(0.0f, -1.0f, 0.0f);
-
+        //Cacher le curseur de la souris
+        //Bloquer la souris
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         m_TargetDistance = m_currentDistance;
@@ -60,6 +58,7 @@ public class TPSScript : MonoBehaviour
     
     private void Update()
     {
+        //
         m_deltaTime += Time.deltaTime * 5.0f;
         if (m_currentDistance != m_TargetDistance)
         {
