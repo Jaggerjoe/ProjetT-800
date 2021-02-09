@@ -148,7 +148,7 @@ public class Movements : MonoBehaviour
             Vector3 l_TargetPos = transform.position;
             Vector3 l_Player = transform.position;
             l_TargetPos.y = transform.position.y;
-            l_Player.y += l_TargetPos.y + m_JumpHeight.Evaluate(m_JumpTimer);
+            //l_Player.y += l_TargetPos.y + m_JumpHeight.Evaluate(m_JumpTimer);
             transform.position = l_Player;
             //l_TragetPos += new Vector3(0, l_TragetPos.y + m_JumpHeight.Evaluate(Time.time) * m_JumpForce * Time.deltaTime, 0);
 
@@ -158,9 +158,5 @@ public class Movements : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, new Vector3(0, -4, 0));
-    }
+   
 }
