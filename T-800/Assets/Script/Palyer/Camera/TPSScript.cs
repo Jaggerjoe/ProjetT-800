@@ -6,9 +6,6 @@ using UnityEngine.InputSystem;
 public class TPSScript : MonoBehaviour
 {
     #region SerializableVariable
-    [SerializeField]
-    private InputManager m_InputManage = null;
-
     //distance de la camera par rapport au player
     [SerializeField]
     private float m_currentDistance = 0;
@@ -71,17 +68,11 @@ public class TPSScript : MonoBehaviour
         Collision();
     }
 
-    //pour ne pas gener les move 
-    private void LateUpdate()
-    {
-        RotationCamera();
-    }
-
-    private void RotationCamera()
+    public void RotationCamera(Vector3 p_PosCam)
     {
         //rotation par rapport a ma view, c'est ici qu'on peut gerer la sensibilité
-        m_RotationX += m_InputManage.CameraPos.y * m_SensivityY;
-        m_RotationY += m_InputManage.CameraPos.x * m_SensivityX;
+        m_RotationX += p_PosCam.y * m_SensivityY;
+        m_RotationY += p_PosCam.x * m_SensivityX;
 
         //m_RotationY = Mathf.Clamp(m_RotationY, m_Y_Angle_Min, m_Y_Angle_Max);
         m_RotationX = Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);

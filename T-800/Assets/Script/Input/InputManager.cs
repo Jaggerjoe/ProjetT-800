@@ -8,38 +8,43 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private InputActionAsset m_InputManage = null;
 
-    private Movements m_Movements = null;
+    [SerializeField]
+    private Test_Movement m_Movements = null;
 
+    [SerializeField]
+    private Interaction m_Interaction = null;
 
+    [SerializeField]
+    private TPSScript m_RefCamera = null;
 
     Vector2 m_PosCamera = Vector2.zero;
 
+    Vector2 m_Movement = Vector2.zero;
+
     private void Awake()
     {
-        m_Movements = FindObjectOfType<Movements>();
         InputActionMap playerMap = m_InputManage.FindActionMap("Player");
+
         InputAction rotationCamera = m_InputManage.FindAction("Look");
         rotationCamera.performed += (ctx) => { m_PosCamera = ctx.ReadValue<Vector2>(); };
         rotationCamera.canceled += (ctx) => { m_PosCamera = Vector2.zero; };
 
         InputAction moveAction = playerMap.FindAction("Movements");
-        moveAction.performed += (ctx) => { m_Movements.movementInput = ctx.ReadValue<Vector2>();  };
-        moveAction.canceled += (ctx) => { m_Movements.movementInput = Vector2.zero; };
+        moveAction.performed += (ctx) => { m_Movement = ctx.ReadValue<Vector2>(); };
+        moveAction.canceled += (ctx) => { m_Movement = ctx.ReadValue<Vector2>(); };
 
-        InputAction jumpAction = playerMap.FindAction("Jump");
-        jumpAction.performed += (ctx) => { m_Movements.isJumping = true; } ;
-        jumpAction.canceled += (ctx) => { m_Movements.isJumping = false; };
+        InputAction interactinAction = playerMap.FindAction("Interaction");
+        interactinAction.started += (ctx) => m_Interaction.Action();
+
+        //InputAction jumpAction = playerMap.FindAction("Jump");
+        //jumpAction.performed += (ctx) => { m_Movements.Jump(); };
+        ////jumpAction.canceled += (ctx) => {  };
     }
 
     private void Update()
     {
-        m_Movements.Move(m_Movements.movementInput, Time.deltaTime);
-
-        if (m_Movements.isJumping)
-        {
-            m_Movements.Jump();
-        }
-       
+        m_Movements.Move(m_Movement, Time.deltaTime);
+        m_RefCamera.RotationCamera(m_PosCamera);
     }
     private void OnEnable()
     {
@@ -56,7 +61,5 @@ public class InputManager : MonoBehaviour
         get { return m_PosCamera; }
     }
 }
-//m_ForwardSpeed += m_Acceleration * Time.deltaTime;
-//m_ForwardSpeed = Mathf.Clamp(m_ForwardSpeed, 0f, m_MaxSpeed);
 
 
