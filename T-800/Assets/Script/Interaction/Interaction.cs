@@ -26,7 +26,7 @@ public class Interaction : MonoBehaviour
 
     private void Update()
     {
-        //Detection();
+
     }
 
     public void Action()
@@ -36,7 +36,6 @@ public class Interaction : MonoBehaviour
         {
             Vector3 toOther = hit.gameObject.transform.position - transform.position;
             Debug.DrawRay(transform.position, transform.forward * 20, Color.red);
-            float angle = Mathf.Atan2(toOther.y, toOther.x) * Mathf.Rad2Deg;
             if (Vector3.Dot(transform.forward, toOther) > 0)
             {
                 if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
