@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Test_Movement : MonoBehaviour
 {
+
     [SerializeField]
     float m_MaxSpeed = 12;
 
@@ -22,6 +23,28 @@ public class Test_Movement : MonoBehaviour
     float m_DecRatePerSec;
     //Vector3 m_DesireVelocity;
 
+    //JUMP
+    private bool m_IsInputJump = false;
+    private bool m_IsJumping = false;
+    
+
+    [SerializeField]
+    private float m_JumpTimer = 0;
+
+    [SerializeField]
+    private AnimationCurve m_JumpHeight;
+
+
+    [SerializeField]
+    private float m_CheckRadius;
+
+    [SerializeField]
+    private LayerMask m_IsItGround;
+
+  
+
+    public bool JumpInputbool { get { return m_IsInputJump; } set { m_IsInputJump = value; } }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +55,7 @@ public class Test_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        Jump();
     }
 
     public void Move(Vector3 _Direction, float p_DeltaTime)
@@ -70,4 +93,56 @@ public class Test_Movement : MonoBehaviour
             transform.position += m_Velocity;
         }
     }
+
+    public void Jump()
+    {
+
+         
+        
+
+        if (Physics.Raycast(transform.position, Vector3.down, m_CheckRadius, m_IsItGround) && m_IsInputJump)
+        {
+            m_IsJumping = true;
+        }
+        else if (m_IsInputJump == false)
+        {
+            m_IsJumping = false;
+            m_JumpTimer = 0;
+        }
+
+        Debug.Log(Physics.Raycast(transform.position, Vector3.down, m_CheckRadius, m_IsItGround));
+
+        if (m_IsJumping )
+        {
+
+            if (m_JumpTimer <= 1.5f)
+            {
+                m_JumpTimer += Time.deltaTime;
+            }
+            else
+            {
+                m_JumpTimer = 0;
+                m_IsJumping = false;
+              
+            }
+            Debug.Log(m_JumpTimer);
+
+            Vector3 l_PlayerPos = new Vector3(transform.position.x, 0, transform.position.z);
+            Vector3 l_TargetPos = l_PlayerPos + new Vector3(0, m_JumpHeight.Evaluate(m_JumpTimer), 0);
+            transform.position = l_TargetPos;
+
+            //l_PlayerPos.y = transform.position.y; 
+
+
+            //l_TragetPos += new Vector3(0, l_TragetPos.y + m_JumpHeight.Evaluate(Time.time) * m_JumpForce * Time.deltaTime, 0);
+
+
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, new Vector3 (0,-1,0));
+    }
 }
+

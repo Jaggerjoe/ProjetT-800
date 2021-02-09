@@ -36,9 +36,9 @@ public class InputManager : MonoBehaviour
         InputAction interactinAction = playerMap.FindAction("Interaction");
         interactinAction.started += (ctx) => m_Interaction.Action();
 
-        //InputAction jumpAction = playerMap.FindAction("Jump");
-        //jumpAction.performed += (ctx) => { m_Movements.Jump(); };
-        ////jumpAction.canceled += (ctx) => {  };
+        InputAction jumpAction = playerMap.FindAction("Jump");
+        jumpAction.performed += (ctx) => { m_Movements.JumpInputbool = true; };
+        jumpAction.canceled += (ctx) => { m_Movements.JumpInputbool = false; };
     }
 
     private void Update()
