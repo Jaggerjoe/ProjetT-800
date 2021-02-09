@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-
 public class Movements : MonoBehaviour
 {
 
@@ -15,8 +13,10 @@ public class Movements : MonoBehaviour
 
     [SerializeField]
     private float m_AccelTime = 5f;
+    private float m_Timer = 0;
+    private float m_AccelRatio = 0;
 
-    private float m_Timer, m_AccelRatio;
+    private float m_JumpTimer = 0;
 
     [SerializeField]
     private AnimationCurve m_AccelCurve;
@@ -35,6 +35,7 @@ public class Movements : MonoBehaviour
     [SerializeField]
     private LayerMask m_IsItGround;
 
+    private bool m_IsJumping = false;
     private bool m_IsGrounded = true;
 
 
@@ -54,6 +55,8 @@ public class Movements : MonoBehaviour
     // Start is called before the first frame update
 
 
+
+    public bool Jumpbool { get { return m_IsJumping; } set { m_IsJumping = value; } }
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
@@ -62,6 +65,7 @@ public class Movements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Jump();
         //AddJump();
     }
     public void Move(Vector2 _Direction, float _DeltaTime)
@@ -93,9 +97,8 @@ public class Movements : MonoBehaviour
         {
             transform.forward = l_DesireDirection;
         }
-        
-        transform.position += new Vector3(l_DesireDirection.x * m_SpeedAccel * Time.deltaTime, 0, l_DesireDirection.z * m_SpeedAccel * Time.deltaTime);
-
+        Vector3 l_Deplacement = new Vector3(l_DesireDirection.x * m_SpeedAccel * Time.deltaTime, 0, l_DesireDirection.z * m_SpeedAccel * Time.deltaTime);
+        transform.position += l_Deplacement;
         //Vector3 l_NewVec = l_DesireDirection;
 
         //if (_Direction == Vector2.zero)
@@ -130,25 +133,30 @@ public class Movements : MonoBehaviour
 
     public void Jump()
     {
-        //float l_Timer = 0;
-        //if(l_Timer <= 3)
-        //{
-        //    l_Timer += Time.deltaTime;
-        //}
-        //else
-        //{
-        //    l_Timer = 3;
-        //}
+        if (m_IsJumping)
+        {
 
-        Vector3 l_TragetPos = transform.position;
-        l_TragetPos.y = transform.position.y;
-        l_TragetPos += new Vector3(0, l_TragetPos.y + m_JumpHeight.Evaluate(Time.time) * m_JumpForce * Time.deltaTime, 0);
-        transform.position = l_TragetPos;
+            if (m_JumpTimer <= 3)
+            {
+                m_JumpTimer += Time.deltaTime;
+            }
+            else
+            {
+                m_JumpTimer = 0;
+            }
+            Debug.Log(m_JumpTimer);
+            Vector3 l_TargetPos = transform.position;
+            Vector3 l_Player = transform.position;
+            l_TargetPos.y = transform.position.y;
+            //l_Player.y += l_TargetPos.y + m_JumpHeight.Evaluate(m_JumpTimer);
+            transform.position = l_Player;
+            //l_TragetPos += new Vector3(0, l_TragetPos.y + m_JumpHeight.Evaluate(Time.time) * m_JumpForce * Time.deltaTime, 0);
+
+
+        }
+
+
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, new Vector3(0, -4, 0));
-    }
+   
 }

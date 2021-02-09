@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     private InputActionAsset m_InputManage = null;
 
     [SerializeField]
-    private Movements m_Movements = null;
+    private Test_Movement m_Movements = null;
 
     [SerializeField]
     private Interaction m_Interaction = null;
@@ -31,14 +31,14 @@ public class InputManager : MonoBehaviour
 
         InputAction moveAction = playerMap.FindAction("Movements");
         moveAction.performed += (ctx) => { m_Movement = ctx.ReadValue<Vector2>(); };
-        moveAction.canceled += (ctx) => { m_Movement = Vector2.zero; };
+        moveAction.canceled += (ctx) => { m_Movement = ctx.ReadValue<Vector2>(); };
 
         InputAction interactinAction = playerMap.FindAction("Interaction");
         interactinAction.started += (ctx) => m_Interaction.Action();
 
         InputAction jumpAction = playerMap.FindAction("Jump");
-        jumpAction.performed += (ctx) => { m_Movements.Jump(); };
-        //jumpAction.canceled += (ctx) => {  };
+        jumpAction.performed += (ctx) => { m_Movements.JumpInputbool = true; };
+        jumpAction.canceled += (ctx) => { m_Movements.JumpInputbool = false; };
     }
 
     private void Update()
