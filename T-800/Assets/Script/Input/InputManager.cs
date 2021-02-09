@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     private InputActionAsset m_InputManage = null;
 
     [SerializeField]
-    private Test_Movement m_Movements = null;
+    private MovementPlayer m_Movements = null;
 
     [SerializeField]
     private Interaction m_Interaction = null;
