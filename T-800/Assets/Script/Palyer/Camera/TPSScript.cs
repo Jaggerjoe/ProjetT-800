@@ -19,7 +19,10 @@ public class TPSScript : MonoBehaviour
     [SerializeField] // la ou regarde la camera
     private Transform m_Target = null;
 
+    [SerializeField]
+    private SO_PlayerController m_PlayerController;
     #endregion
+
 
     private float m_XAngleMin = -80.0f;
 
@@ -58,12 +61,12 @@ public class TPSScript : MonoBehaviour
     
     private void Update()
     {
-        //
-        m_deltaTime += Time.deltaTime * 5.0f;
-        if (m_currentDistance != m_TargetDistance)
-        {
-            m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
-        }
+        RotationCamera(m_PlayerController.RotationVector);
+        //m_deltaTime += Time.deltaTime * 5.0f;
+        //if (m_currentDistance != m_TargetDistance)
+        //{
+        //    m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
+        //}
         Collision();
     }
 
