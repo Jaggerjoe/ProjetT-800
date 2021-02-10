@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
+    [SerializeField]
+    private SO_PlayerController m_PlayerController;
     #region Deplacement acceleration et Deceleration
     [SerializeField]
     float m_MaxSpeed = 12;
@@ -25,10 +27,6 @@ public class MovementPlayer : MonoBehaviour
     float m_DecRatePerSec;
     #endregion
     #region Jump
-    //JUMP
-    private bool m_IsInputJump = false;
-    private bool m_IsJumping = false;
-    
     [SerializeField]
     private float m_JumpTimer = 0;
 
@@ -48,7 +46,16 @@ public class MovementPlayer : MonoBehaviour
     private LayerMask m_IsItGround;
     #endregion
 
-   
+    //private void OnEnable()
+    //{
+    //    m_PlayerController.onJump.AddListener(Jump);
+    //}
+
+    //private void OnDisable()
+    //{
+    //    m_PlayerController.onJump.RemoveListener(Jump);
+
+    //}
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +69,7 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
         Jump();
+        Move(m_PlayerController.MoveVector, Time.deltaTime);
     }
 
     public void Move(Vector3 _Direction, float p_DeltaTime)
@@ -119,32 +127,19 @@ public class MovementPlayer : MonoBehaviour
 
     public void Jump()
     {
-        //Je check si mon raycast touche le sol et si on appuie sur l'input
-        //Si oui, Is jumping passe a vrai.
-        //Si non, is jumping = faux, et mon timer est remis a 0
-        if (Physics.Raycast(transform.position, Vector3.down, m_CheckDist, m_IsItGround) && m_IsInputJump)
+        //Si isJumping, est égale a vrai j'incremente mint imer en fct du tps.
+        //Sinon, je remet mon timer a 0, et mon booleen isJumping a faux.
+        if (Physics.Raycast(transform.position, Vector3.down, m_CheckDist, m_IsItGround))
         {
-            m_IsJumping = true;
             m_PosPlayerY.y = transform.position.y;
-        }
-        else if (m_IsInputJump == false)
-        {
-            m_IsJumping = false;
             m_JumpTimer = 0;
         }
 
-        //Si isJumping, est égale a vrai j'incremente mint imer en fct du tps.
-        //Sinon, je remet mon timer a 0, et mon booleen isJumping a faux.
-        if (m_IsJumping )
+        if (m_PlayerController.Jumping)
         {
             if (m_JumpTimer <= m_TimeMaxJumping)
             {
                 m_JumpTimer += Time.deltaTime;
-            }
-            else
-            {
-                m_JumpTimer = 0;
-                m_IsJumping = false;
             }
             //Je recupère la position du player en X et en Z, mais le Y est tjr égale a 0;
             //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
@@ -154,12 +149,11 @@ public class MovementPlayer : MonoBehaviour
             transform.position = l_TargetPos;
         }
     }
-    public bool JumpInputbool { get { return m_IsInputJump; } set { m_IsInputJump = value; } }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0,m_CheckDist,0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, m_CheckDist, 0));
     }
 }
 
