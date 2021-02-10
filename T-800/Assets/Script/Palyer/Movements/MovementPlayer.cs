@@ -95,6 +95,7 @@ public class MovementPlayer : MonoBehaviour
             m_Velocity = new Vector3(l_DesireDirection.x * m_SpeedAccel * p_DeltaTime, 0, l_DesireDirection.z * m_SpeedAccel * p_DeltaTime);
             m_SpeedAccel = Mathf.Min(m_SpeedAccel, m_MaxSpeed);
             transform.position += m_Velocity;
+           
         }
         //Sinon j'enregistre mon vecteur que je desire en soustrayant ma velocity a mon vecteur de direction qui est egale a VECTEUR3.Zero
         //Je decremente ma vitesse
@@ -115,6 +116,7 @@ public class MovementPlayer : MonoBehaviour
 
             transform.position += m_Velocity;
         }
+        Debug.Log("velocity : " + m_Velocity);
     }
 
     public void Jump()
