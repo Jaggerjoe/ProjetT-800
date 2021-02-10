@@ -6,9 +6,6 @@ using UnityEngine.InputSystem;
 public class Interaction : MonoBehaviour
 {
     [SerializeField]
-    private GameObject m_Target;
-
-    [SerializeField]
     private LayerMask m_Layer;
 
     [SerializeField]
@@ -20,28 +17,30 @@ public class Interaction : MonoBehaviour
     [SerializeField]
     private IntercationBodyPlayer m_RefInteraction;
 
-    private void Start()
-    {
-    }
-
+    private IT_Levier m_LevierInteract;
+    [SerializeField]
+    private SO_PlayerController m_PLayerController;
     private void Update()
     {
-
+        Action();
     }
-
     public void Action()
     {
-        Collider[] hitCollier = Physics.OverlapSphere(transform.position, m_Radius, m_Layer);
-        foreach (var hit in hitCollier)
+        if(m_PLayerController.Interact)
         {
-            Vector3 toOther = hit.gameObject.transform.position - transform.position;
-            Debug.DrawRay(transform.position, transform.forward * 20, Color.red);
-            if (Vector3.Dot(transform.forward, toOther) > 0)
+            Collider[] hitCollier = Physics.OverlapSphere(transform.position, m_Radius, m_Layer);
+            foreach (var hit in hitCollier)
             {
-                if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
+                Debug.Log("target : " + hit.gameObject.name);
+                Vector3 toOther = hit.gameObject.transform.position - transform.position;
+                Debug.DrawRay(transform.position, transform.forward * 20, Color.red);
+                if (Vector3.Dot(transform.forward, toOther) > 0)
                 {
-                    transform.LookAt(hit.gameObject.transform.position, Vector3.down);
-                    ActionLevier();
+                    if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
+                    {
+                        transform.LookAt(hit.gameObject.transform.position, Vector3.down);
+                        ActionLevier();
+                    }
                 }
             }
         }
@@ -55,7 +54,15 @@ public class Interaction : MonoBehaviour
         {
             if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
             {
-                Debug.Log("je suis touché");
+                if(TryGetComponent<IT_Levier>(out m_LevierInteract))
+                {
+                    return;
+                }
+                else
+                {
+                    m_LevierInteract = hit.collider.gameObject.GetComponent<IT_Levier>();
+                    m_LevierInteract.Levier();
+                }
             }
         }
     }
