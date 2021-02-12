@@ -122,14 +122,18 @@ public class MovementPlayer : MonoBehaviour
 
     public void Jump()
     {
-        //Rajout Coldown pour le saut.
+        //Detect si je suis sur le sol
+        //si je suis sur le sol, je sauvegarde la position du player en Y.
+        //Mon Booleen IsGrounded passe a true
+        //et mon Jump Timer est égale à 0.
         if (Physics.Raycast(transform.position, Vector3.down, m_CheckDist, m_IsItGround))
         {
             m_PosPlayerY.y = transform.position.y;
             m_IsGrounded = true;
             m_JumpTimer = 0;
         }
-
+        //Si mon booleen IsGrounded est a vrai et que j'appuie sur ma touche je lance mon timer
+        //Sinon mon timer est remis a 0
         if (m_PlayerController.Jumping && m_IsGrounded)
         {
             if (m_JumpTimer <= m_TimeMaxJumping)
@@ -140,7 +144,6 @@ public class MovementPlayer : MonoBehaviour
             {
                 m_JumpTimer = 0;
             }
-            
             //Je recupère la position du player en X et en Z, mais le Y est tjr égale a 0;
             //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
             //J'ajoute cettes valeur a mon transform.position.
