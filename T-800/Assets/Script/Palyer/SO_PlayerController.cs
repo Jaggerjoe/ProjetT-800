@@ -16,6 +16,7 @@ public class SO_PlayerController : ScriptableObject
     private bool m_IsJumping = false;
     private bool m_IsInteract = false;
     private VoidEvent m_OnJump = new VoidEvent();
+    private VoidEvent m_OnInteract = new VoidEvent();
 
     private void OnEnable()
     {
@@ -47,6 +48,7 @@ public class SO_PlayerController : ScriptableObject
             m_InputAsset.FindAction("Player/Interaction").started += Interaction;
             m_InputAsset.FindAction("Player/Interaction").canceled += StopInteraction;
 
+            
             m_InputAsset.Enable();
         }
         else
@@ -65,10 +67,12 @@ public class SO_PlayerController : ScriptableObject
 
             m_InputAsset.Disable();
         }
+        Debug.Log("l'etat de mon input est : "+p_AreEnabled);
     }
 
     private void Interaction(InputAction.CallbackContext p_Context)
     {
+        m_OnInteract.Invoke();
         if(!m_IsInteract)
         {
             m_IsInteract = true;
@@ -109,6 +113,7 @@ public class SO_PlayerController : ScriptableObject
     public bool Interact => m_IsInteract;
     public Vector2 MoveVector => m_MoveVector;
     public Vector2 RotationVector => m_PosCamera;
+    public VoidEvent InteractionObj => m_OnInteract;
 }
 
    
