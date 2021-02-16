@@ -6,6 +6,10 @@ public class MovementPlayer : MonoBehaviour
 {
     [SerializeField]
     private SO_PlayerController m_PlayerController;
+
+    [SerializeField]
+    private Collider m_colldier;
+
     #region Deplacement acceleration et Deceleration
     [SerializeField]
     float m_MaxSpeed = 12;
@@ -31,26 +35,25 @@ public class MovementPlayer : MonoBehaviour
     private float m_JumpTimer = 0;
 
     [SerializeField]
-    private AnimationCurve m_JumpHeight;
+    private AnimationCurve m_JumpCurve;
 
     [SerializeField]
-    private float m_CheckDist;
+    private float m_TimeMaxJumping = .2f;
+
+    private float m_YVelocity = 0f;
 
     [SerializeField]
-    private float m_TimeMaxJumping = 1.5f;
+    private LayerMask m_LayerCollision;
 
-    private float m_TimeBeforeNextJump = 0;
+    private bool m_IsOnTheFloor = false;
 
-    [SerializeField]
-    private float m_TimeBeforeNextJumpMax = .3f;
-    private bool m_IsGrounded = false;
-    Vector3 l_PlayerPos;
-    Vector3 m_PosPlayerY;
+    private float m_GravityScale = 1f;
 
-    [SerializeField]
-    private LayerMask m_IsItGround;
+
     #endregion
 
+    private float m_DistEditor;
+    private Vector3 dir;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,8 +66,12 @@ public class MovementPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Jump();
+        Jump(Time.deltaTime);
         Move(m_PlayerController.MoveVector, Time.deltaTime);
+    }
+    private void FixedUpdate()
+    {
+        m_YVelocity += Physics.gravity.y * Time.fixedDeltaTime;
     }
 
     public void Move(Vector3 _Direction, float p_DeltaTime)
@@ -85,7 +92,8 @@ public class MovementPlayer : MonoBehaviour
         //Normalize notre vecteur DesireDirection pour eviter l'acceleration en diagonale
         Vector3 l_DesireDirection = _Direction.y * l_CameraForward + _Direction.x * l_CameraRight;
         l_DesireDirection.Normalize();
-
+        
+        Vector3 l_TargetPosition = transform.position;
         //si je le deplace, j'augmente mon acceleration.
         //j'enregistre mon sens de deplacement ainsi que ma vitesse dans un vecteur Velocity.
         //Je clamp ma valuer a la vitesse maximale.
@@ -97,7 +105,18 @@ public class MovementPlayer : MonoBehaviour
 
             m_Velocity = new Vector3(l_DesireDirection.x * m_SpeedAccel * p_DeltaTime, 0, l_DesireDirection.z * m_SpeedAccel * p_DeltaTime);
             m_SpeedAccel = Mathf.Min(m_SpeedAccel, m_MaxSpeed);
-            transform.position += m_Velocity;
+
+            float l_CastDistXZ = m_MaxSpeed * Mathf.Abs(l_DesireDirection.z + l_DesireDirection.x) * p_DeltaTime;
+            m_DistEditor = l_CastDistXZ;
+            if (!Physics.BoxCast(transform.position, Extents, transform.forward, Quaternion.identity, l_CastDistXZ, m_LayerCollision))
+            {
+                l_TargetPosition = transform.position + m_Velocity;
+            }
+            else
+            {
+                m_SpeedAccel = 0;
+            }
+            transform.position = l_TargetPosition;
         }
         //Sinon j'enregistre mon vecteur que je desire en soustrayant ma velocity a mon vecteur de direction qui est egale a VECTEUR3.Zero
         //Je decremente ma vitesse
@@ -107,61 +126,97 @@ public class MovementPlayer : MonoBehaviour
         //J'ajoute mon vecteur velocité a mon transform.position.
         else
         {
-            Vector3 m_DesireVelocity = m_Velocity - _Direction;
-            m_DesireVelocity.Normalize();
+            Vector3 l_DesireVelocity = m_Velocity - _Direction;
+            l_DesireVelocity.Normalize();
 
             m_SpeedAccel -= m_DecRatePerSec * Time.deltaTime;
             m_SpeedAccel = Mathf.Max(m_SpeedAccel, 0);
 
-            Vector3 steering = m_DesireVelocity - m_Velocity;
+            Vector3 steering = l_DesireVelocity - m_Velocity;
             m_Velocity = new Vector3(steering.x * m_SpeedAccel * p_DeltaTime, 0, steering.z * m_SpeedAccel * p_DeltaTime);
 
             transform.position += m_Velocity;
         }
     }
 
-    public void Jump()
+    private Vector3 Extents
     {
-        //Detect si je suis sur le sol
-        //si je suis sur le sol, je sauvegarde la position du player en Y.
-        //Mon Booleen IsGrounded passe a true
-        //et mon Jump Timer est égale à 0.
-        if (Physics.Raycast(transform.position, Vector3.down, m_CheckDist, m_IsItGround))
+        get
         {
-            m_PosPlayerY.y = transform.position.y;
-            m_IsGrounded = true;
-            m_JumpTimer = 0;
+            if (m_colldier != null)
+            {
+                return m_colldier.bounds.extents;
+            }
+            return Vector3.one / 2;
         }
+    }
+    public void Jump(float p_DeltaTime)
+    {
         //Si mon booleen IsGrounded est a vrai et que j'appuie sur ma touche je lance mon timer
         //Sinon mon timer est remis a 0
-        if (m_PlayerController.Jumping && m_IsGrounded)
+        if (m_PlayerController.Jumping && m_IsOnTheFloor)
         {
             if (m_JumpTimer <= m_TimeMaxJumping)
             {
-                m_JumpTimer += Time.deltaTime;
+                m_JumpTimer += p_DeltaTime;
             }
             else
             {
                 m_JumpTimer = 0;
+                StopJump();
             }
             //Je recupère la position du player en X et en Z, mais le Y est tjr égale a 0;
             //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
             //J'ajoute cettes valeur a mon transform.position.
-            l_PlayerPos = new Vector3(transform.position.x, 0, transform.position.z);
-            Vector3 l_TargetPos = m_PosPlayerY + new Vector3(l_PlayerPos.x, m_JumpHeight.Evaluate(m_JumpTimer), l_PlayerPos.z);
-            transform.position = l_TargetPos;
+            Vector3 l_TaregtPosition = transform.position;
+            l_TaregtPosition.y = transform.position.y + m_JumpCurve.Evaluate(m_JumpTimer);
+            //l_PlayerPos = new Vector3(transform.position.x, 0, transform.position.z);
+            //Vector3 l_TargetPos = m_PosPlayerY + new Vector3(l_PlayerPos.x, m_JumpHeight.Evaluate(m_JumpTimer), l_PlayerPos.z);
+            transform.position = l_TaregtPosition;
         }
         else
         {
-            m_JumpTimer = 0;
-            m_IsGrounded = false;
+            float castDist = Mathf.Abs(m_YVelocity) * p_DeltaTime + 1;
+            if (Physics.BoxCast(transform.position + Vector3.up * 1, m_colldier.bounds.extents, Vector3.down, out RaycastHit m_Hit, Quaternion.identity, castDist, m_LayerCollision))
+            {
+                if (!m_IsOnTheFloor)
+                {
+                    Vector3 targetPosition = transform.position;
+                    targetPosition.y = m_Hit.point.y + m_colldier.bounds.extents.y;
+                    transform.position = targetPosition;
+
+                    m_YVelocity = 0f;
+                    m_IsOnTheFloor = true;
+                    m_JumpTimer = 0;
+                }
+            }
+            else
+            {
+                Vector3 targetPosition = transform.position;
+                targetPosition.y += m_YVelocity * p_DeltaTime;
+                transform.position = targetPosition;
+
+                if (m_IsOnTheFloor)
+                {
+                    m_IsOnTheFloor = false;
+                }
+                m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
+
+            }
         }
     }
 
+    private void StopJump()
+    {
+        if(m_PlayerController.Jumping)
+        {
+            m_PlayerController.Jumping = false;
+            m_YVelocity = 0;
+        }
+    }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, m_CheckDist, 0));
+        Gizmos.DrawWireCube(transform.position + (transform.forward * m_DistEditor), m_colldier.bounds.size);
     }
 }
 

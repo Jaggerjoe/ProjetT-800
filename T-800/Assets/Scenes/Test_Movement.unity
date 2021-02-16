@@ -407,8 +407,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210558912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8.5}
-  m_LocalScale: {x: 20.301, y: 8.1399, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -12.35}
+  m_LocalScale: {x: 20.301, y: 1, z: 5.8395}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -978,9 +978,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 228860542, guid: aef44171c2335c84184f90366047a1b8, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 228860542, guid: aef44171c2335c84184f90366047a1b8, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 228860542, guid: aef44171c2335c84184f90366047a1b8, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1801978422926669275, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
-      propertyPath: m_Layer
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004046, guid: aef44171c2335c84184f90366047a1b8,
@@ -1041,52 +1053,97 @@ PrefabInstance:
     - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
       propertyPath: m_JumpHeight.m_Curve.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
-      propertyPath: m_CheckDist
-      value: 0.6
+      propertyPath: m_JumpCurve.m_Curve.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[2].value
+      propertyPath: m_JumpHeight.m_Curve.Array.data[1].time
+      value: 1.001709
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpHeight.m_Curve.Array.data[1].value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpHeight.m_Curve.Array.data[1].inSlope
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[2].time
+      propertyPath: m_JumpHeight.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpHeight.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpHeight.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpHeight.m_Curve.Array.data[0].inSlope
+      value: 0.8024471
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpHeight.m_Curve.Array.data[0].outSlope
+      value: 0.8024471
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpHeight.m_Curve.Array.data[0].outWeight
+      value: 0.08488894
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_TimeMaxJumping
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_LayerCollision.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpCurve.m_Curve.Array.data[0].inSlope
+      value: 1.0194427
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpCurve.m_Curve.Array.data[0].outSlope
+      value: 1.0194427
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_JumpCurve.m_Curve.Array.data[1].time
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[2].inSlope
-      value: 0
+      propertyPath: m_JumpCurve.m_Curve.Array.data[1].value
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[2].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[2].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[2].outWeight
-      value: 0
+      propertyPath: m_JumpCurve.m_Curve.Array.data[0].outWeight
+      value: 0.06462585
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004051, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004051, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aef44171c2335c84184f90366047a1b8, type: 3}
