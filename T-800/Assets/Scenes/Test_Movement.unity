@@ -320,6 +320,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &170048457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1801978424670004051, guid: aef44171c2335c84184f90366047a1b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1801978424064815261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &170048464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170048457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351dfdb11da4bbb4faaaa00a56894079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayerInput: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  m_LayerCollision:
+    serializedVersion: 2
+    m_Bits: 256
+  m_MaxSpeed: 12
+  m_TimeZeroToMax: 0.4
+  m_TimeMaxToZero: 0.6
+  m_Velocity: 0
+  m_HeighPadding: 0.015
+  m_Height: 0.5
+  m_JumpTimer: 0
+  m_JumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.6917647
+      outSlope: 0.6917647
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08488964
+    - serializedVersion: 3
+      time: 1.0017006
+      value: 0.50823534
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_TimeMaxJumping: 0.2
+  m_LayerDetectionGround:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &210558912
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +389,7 @@ GameObject:
   - component: {fileID: 210558915}
   - component: {fileID: 210558914}
   - component: {fileID: 210558913}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,13 +463,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210558912}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.08092227, w: 0.99672043}
   m_LocalPosition: {x: 0, y: 0.5, z: -12.35}
   m_LocalScale: {x: 20.301, y: 1, z: 5.8395}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9.283}
 --- !u!1 &446338310
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +1050,7 @@ PrefabInstance:
     - target: {fileID: 1801978422926669275, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004046, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
@@ -1049,96 +1106,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpCurve.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[1].time
-      value: 1.001709
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[1].value
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[1].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[1].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[1].outWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[0].inSlope
-      value: 0.8024471
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[0].outSlope
-      value: 0.8024471
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpHeight.m_Curve.Array.data[0].outWeight
-      value: 0.08488894
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_TimeMaxJumping
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_LayerCollision.m_Bits
-      value: 768
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpCurve.m_Curve.Array.data[0].inSlope
-      value: 1.0194427
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpCurve.m_Curve.Array.data[0].outSlope
-      value: 1.0194427
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpCurve.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpCurve.m_Curve.Array.data[1].value
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801978424670004050, guid: aef44171c2335c84184f90366047a1b8,
-        type: 3}
-      propertyPath: m_JumpCurve.m_Curve.Array.data[0].outWeight
-      value: 0.06462585
       objectReference: {fileID: 0}
     - target: {fileID: 1801978424670004051, guid: aef44171c2335c84184f90366047a1b8,
         type: 3}
