@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     private MovementPlayer m_Movements = null;
 
     [SerializeField]
-    private Interaction m_Interaction = null;
+    private Global_Interaction m_Interaction = null;
 
     [SerializeField]
     private ThrowingTrajectory m_Throwing = null;
@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
         moveAction.canceled += (ctx) => { m_Movement = ctx.ReadValue<Vector2>(); };
 
         InputAction interactinAction = playerMap.FindAction("Interaction");
-        interactinAction.started += (ctx) => m_Interaction.Action();
+        interactinAction.started += (ctx) => m_Interaction.DetectionInteraction();
 
         InputAction ThrowingAction = playerMap.FindAction("aiming");
         //interactinAction.performed += (ctx) => m_Throwing.isShowing = true;

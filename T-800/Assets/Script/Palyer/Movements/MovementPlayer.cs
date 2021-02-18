@@ -39,6 +39,11 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField]
     private float m_TimeMaxJumping = 1.5f;
 
+    private float m_TimeBeforeNextJump = 0;
+
+    [SerializeField]
+    private float m_TimeBeforeNextJumpMax = .3f;
+    private bool m_IsGrounded = false;
     Vector3 l_PlayerPos;
     Vector3 m_PosPlayerY;
 
@@ -46,16 +51,6 @@ public class MovementPlayer : MonoBehaviour
     private LayerMask m_IsItGround;
     #endregion
 
-    //private void OnEnable()
-    //{
-    //    m_PlayerController.onJump.AddListener(Jump);
-    //}
-
-    //private void OnDisable()
-    //{
-    //    m_PlayerController.onJump.RemoveListener(Jump);
-
-    //}
     // Start is called before the first frame update
     void Start()
     {
@@ -129,26 +124,36 @@ public class MovementPlayer : MonoBehaviour
 
     public void Jump()
     {
-        //Si isJumping, est égale a vrai j'incremente mint imer en fct du tps.
-        //Sinon, je remet mon timer a 0, et mon booleen isJumping a faux.
+        //Rajout Coldown pour le saut.
         if (Physics.Raycast(transform.position, Vector3.down, m_CheckDist, m_IsItGround))
         {
             m_PosPlayerY.y = transform.position.y;
+            m_IsGrounded = true;
             m_JumpTimer = 0;
         }
 
-        if (m_PlayerController.Jumping)
+        if (m_PlayerController.Jumping && m_IsGrounded)
         {
             if (m_JumpTimer <= m_TimeMaxJumping)
             {
                 m_JumpTimer += Time.deltaTime;
             }
+            else
+            {
+                m_JumpTimer = 0;
+            }
+            
             //Je recupère la position du player en X et en Z, mais le Y est tjr égale a 0;
             //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
             //J'ajoute cettes valeur a mon transform.position.
             l_PlayerPos = new Vector3(transform.position.x, 0, transform.position.z);
             Vector3 l_TargetPos = m_PosPlayerY + new Vector3(l_PlayerPos.x, m_JumpHeight.Evaluate(m_JumpTimer), l_PlayerPos.z);
             transform.position = l_TargetPos;
+        }
+        else
+        {
+            m_JumpTimer = 0;
+            m_IsGrounded = false;
         }
     }
 
