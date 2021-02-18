@@ -15,6 +15,9 @@ public class InputManager : MonoBehaviour
     private Interaction m_Interaction = null;
 
     [SerializeField]
+    private ThrowingTrajectory m_Throwing = null;
+
+    [SerializeField]
     private TPSScript m_RefCamera = null;
 
     Vector2 m_PosCamera = Vector2.zero;
@@ -35,6 +38,9 @@ public class InputManager : MonoBehaviour
 
         InputAction interactinAction = playerMap.FindAction("Interaction");
         interactinAction.started += (ctx) => m_Interaction.Action();
+
+        InputAction ThrowingAction = playerMap.FindAction("aiming");
+        //interactinAction.performed += (ctx) => m_Throwing.isShowing = true;
 
         //InputAction jumpAction = playerMap.FindAction("Jump");
         //jumpAction.performed += (ctx) => { m_Movements.JumpInputbool = true; };

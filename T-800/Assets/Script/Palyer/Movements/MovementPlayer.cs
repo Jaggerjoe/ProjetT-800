@@ -124,7 +124,7 @@ public class MovementPlayer : MonoBehaviour
 
             transform.position += m_Velocity;
         }
-        Debug.Log("velocity : " + m_Velocity);
+        Debug.Log("velocity : " + m_SpeedAccel);
     }
 
     public void Jump()
