@@ -117,15 +117,29 @@ public class MovementPlayer : MonoBehaviour
             float l_CastDistXZ = m_MaxSpeed * Mathf.Abs(l_DesireDirection.z + l_DesireDirection.x) * p_DeltaTime;
             m_DistEditor = l_CastDistXZ;
 
-           
-            if (!Physics.BoxCast(transform.position, Extents, transform.forward, out RaycastHit hit, Quaternion.identity ,l_CastDistXZ, m_LayerCollision))
-            {              
-                l_TargetPosition = transform.position + m_Velocity;
-            }
-            else
+            RaycastHit[] l_hit = Physics.BoxCastAll(transform.position, Extents, transform.forward, Quaternion.identity, l_CastDistXZ, m_LayerCollision);
+
+            foreach (RaycastHit item in l_hit)
             {
-                m_SpeedAccel = 0;
+                if(!item.transform)
+                {
+                    l_TargetPosition = transform.position + m_Velocity;
+                }
+                else
+                {
+                    m_SpeedAccel = 0;
+
+                }
             }
+
+            //if (!Physics.BoxCast(transform.position, Extents, transform.forward, out RaycastHit hit, Quaternion.identity ,l_CastDistXZ, m_LayerCollision))
+            //{              
+            //    l_TargetPosition = transform.position + m_Velocity;
+            //}
+            //else
+            //{
+            //    m_SpeedAccel = 0;
+            //}
             transform.position = l_TargetPosition;
         }
         //Sinon j'enregistre mon vecteur que je desire en soustrayant ma velocity a mon vecteur de direction qui est egale a VECTEUR3.Zero

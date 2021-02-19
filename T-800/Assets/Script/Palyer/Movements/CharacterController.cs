@@ -80,8 +80,15 @@ public class CharacterController : MonoBehaviour
         Jump(Time.deltaTime);
         CalculateForward();
         CheckGround();
+        DetectionWall();
     }
-
+    void DetectionWall()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitWall, 1, m_LayerCollision))
+        {
+            m_Velocity = 0;
+        }
+    }
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
         //je recupère le forward de la camera
@@ -115,6 +122,10 @@ public class CharacterController : MonoBehaviour
 
             if (!Physics.BoxCast(transform.position, Extents, transform.forward, out RaycastHit hit, Quaternion.identity, l_CastDistXZ, m_LayerCollision))
             {
+                if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitWall, 1, m_LayerCollision))
+                {
+                    m_Velocity = 0;
+                }
                 transform.position += forward * m_Velocity * p_DeltaTime;
             }
             else
