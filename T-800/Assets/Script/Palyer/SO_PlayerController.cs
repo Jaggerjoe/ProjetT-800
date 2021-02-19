@@ -67,8 +67,7 @@ public class SO_PlayerController : ScriptableObject
 
             m_InputAsset.Disable();
         }
-        Debug.Log("l'etat de mon input est : "+p_AreEnabled);
-    }
+    }   
 
     private void Interaction(InputAction.CallbackContext p_Context)
     {
@@ -109,7 +108,11 @@ public class SO_PlayerController : ScriptableObject
     }
 
     public VoidEvent onJump => m_OnJump;
-    public bool Jumping => m_IsJumping;
+    public bool Jumping
+    {
+        get { return m_IsJumping; }
+        set { m_IsJumping = value; }
+    }
     public bool Interact => m_IsInteract;
     public Vector2 MoveVector => m_MoveVector;
     public Vector2 RotationVector => m_PosCamera;
