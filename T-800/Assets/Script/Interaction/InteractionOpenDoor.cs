@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractionOpenDoor : InteractionMother
 {
     private Animator m_Anim = null;
-
+ 
     private void Start()
     {
         m_Anim = GetComponent<Animator>();

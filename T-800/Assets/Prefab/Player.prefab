@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Angle: 60
   m_RefInteraction: {fileID: 1801978424670004043}
   m_PLayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  test: {fileID: 0}
 --- !u!114 &1801978424670004043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,8 +239,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   m_MaxSpeed: 12
-  m_TimeZeroToMax: 0.4
-  m_TimeMaxToZero: 0.6
+  m_TimeZeroToMax: 0.8
+  m_TimeMaxToZero: 0.2
   m_Velocity: 0
   m_HeighPadding: 0.015
   m_Height: 0.5

@@ -19,6 +19,11 @@ public class Global_Interaction : InteractionMother
     [SerializeField]
     private SO_PlayerController m_PLayerController;
 
+    [SerializeField]
+    private GameObject test;
+
+    private bool m_UseObject = false;
+
     private InteractionMother m_InteractObj;
 
     private void OnEnable()
@@ -44,10 +49,20 @@ public class Global_Interaction : InteractionMother
                 {
                     if(m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
                     {
-                        transform.LookAt(hit.gameObject.transform.position, Vector3.down);
-                        if(hit.gameObject.TryGetComponent(out m_InteractObj))
+                        if (hit.gameObject.TryGetComponent(out m_InteractObj))
                         {
-                            m_InteractObj.Use();
+                            if(!m_UseObject)
+                            {
+                                m_InteractObj.GlobalInteractionRef = this;
+                                m_InteractObj.CharacterController = GetComponent<CharacterController>();
+                                m_InteractObj.PlayerControllerSO = m_PLayerController;
+                                m_UseObject = true;
+                                m_InteractObj.Use();
+                            }
+                            else
+                            {
+                                m_InteractObj.StopUse();
+                            }
                         }
                     }
                 }
@@ -55,26 +70,10 @@ public class Global_Interaction : InteractionMother
         }
     }
 
-    //public void ActionLevier()
-    //{
-    //    Debug.Log("i'm here");
-    //    RaycastHit hit;
-    //    Debug.DrawRay(transform.position, transform.forward, Color.cyan);
-    //    if (Physics.Raycast(transform.position, transform.forward, out hit, 10, m_Layer))
-    //    {
-    //        if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
-    //        {
-    //            if (TryGetComponent(out m_LevierInteract))
-    //            {
-    //                m_LevierInteract.Levier();
-    //            }
-    //            else
-    //            {
-    //                return;
-    //            }
-    //            Debug.Log("target : " + hit.collider.gameObject.name);
-    //        }
-    //    }
-    //}
+    public bool UseObject
+    {
+        get { return m_UseObject; }
+        set { m_UseObject = value; }
+    }
 }
 

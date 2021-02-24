@@ -1004,7 +1004,7 @@ MonoBehaviour:
   smooth: 5
   layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_Target: {fileID: 1650540759}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
 --- !u!4 &610693994
