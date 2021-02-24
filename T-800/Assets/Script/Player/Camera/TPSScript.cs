@@ -26,7 +26,7 @@ public class TPSScript : MonoBehaviour
 
     private float m_XAngleMin = -80.0f;
 
-    private float m_XAngleMax = -5.0f;
+    private float m_XAngleMax = 5.0f;
 
     private Camera m_Cam = null;
 

@@ -28,7 +28,7 @@ public class SO_PlayerController : ScriptableObject
         BindInputs(false);
     }
 
-    private void BindInputs(bool p_AreEnabled)
+    public void BindInputs(bool p_AreEnabled)
     {
         if (m_InputAsset == null)
         {
