@@ -247,4 +247,10 @@ public class CharacterController : MonoBehaviour
             return Vector3.one / 2;
         }
     }
+
+    public float Speed
+    {
+        get { return m_MaxSpeed; }
+        set { m_MaxSpeed = value; }
+    }
 }
