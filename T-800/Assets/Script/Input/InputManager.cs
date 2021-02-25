@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     private MovementPlayer m_Movements = null;
 
     [SerializeField]
-    private Interaction m_Interaction = null;
+    private Global_Interaction m_Interaction = null;
 
     [SerializeField]
     private TPSScript m_RefCamera = null;
@@ -34,11 +34,11 @@ public class InputManager : MonoBehaviour
         moveAction.canceled += (ctx) => { m_Movement = ctx.ReadValue<Vector2>(); };
 
         InputAction interactinAction = playerMap.FindAction("Interaction");
-        interactinAction.started += (ctx) => m_Interaction.Action();
+        interactinAction.started += (ctx) => m_Interaction.DetectionInteraction();
 
-        InputAction jumpAction = playerMap.FindAction("Jump");
-        jumpAction.performed += (ctx) => { m_Movements.JumpInputbool = true; };
-        jumpAction.canceled += (ctx) => { m_Movements.JumpInputbool = false; };
+        //InputAction jumpAction = playerMap.FindAction("Jump");
+        //jumpAction.performed += (ctx) => { m_Movements.JumpInputbool = true; };
+        //jumpAction.canceled += (ctx) => { m_Movements.JumpInputbool = false; };
     }
 
     private void Update()
