@@ -59,12 +59,7 @@ public class CharacterController : MonoBehaviour
 
     private float m_GravityScale = 1f;
 
-    [SerializeField]
-    private LayerMask m_LayerDetectionGround;
-
     #endregion
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -80,23 +75,17 @@ public class CharacterController : MonoBehaviour
         Jump(Time.deltaTime);
         CalculateForward();
         CheckGround();
-        DetectionWall();
     }
-    void DetectionWall()
-    {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitWall, 1, m_LayerCollision))
-        {
-            m_Velocity = 0;
-        }
-    }
+  
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
+        p_Direction = Vector3.ClampMagnitude(p_Direction, 1f);
         //je recupère le forward de la camera
         //je recupère le vecteur droit de la camera.
         Vector3 l_CameraForward = Camera.main.transform.forward;
         Vector3 l_CameraRight = Camera.main.transform.right;
 
-        //Mise a zero la valuer en Y du forward et du right de la camera
+        //Mise a zero la valeur en Y du forward et du right de la camera
         //Et nomrmaliztion des vecteur.
         l_CameraForward.y = 0f;
         l_CameraRight.y = 0f;
@@ -106,7 +95,7 @@ public class CharacterController : MonoBehaviour
         //Deplacement en fct de la camera.
         //Normalize notre vecteur DesireDirection pour eviter l'acceleration en diagonale
         Vector3 l_DesireDirection = p_Direction.y * l_CameraForward + p_Direction.x * l_CameraRight;
-        l_DesireDirection.Normalize();
+        l_DesireDirection = Vector3.ClampMagnitude(l_DesireDirection, 1f);
 
         //si je le deplace, j'augmente mon acceleration.
         //j'enregistre mon sens de deplacement ainsi que ma vitesse dans un vecteur Velocity.
@@ -118,19 +107,27 @@ public class CharacterController : MonoBehaviour
             m_Velocity += m_AccRatePerSec * Time.deltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
 
-            float l_CastDistXZ = m_MaxSpeed * Mathf.Abs(l_DesireDirection.z + l_DesireDirection.x) * p_DeltaTime;
+            float l_CastDistZ = m_MaxSpeed * Mathf.Abs(l_DesireDirection.z) * p_DeltaTime;
+            float l_CastDistx = m_MaxSpeed * Mathf.Abs(l_DesireDirection.x) * p_DeltaTime;
+            float l_CastDistZx = m_MaxSpeed * Mathf.Abs(l_DesireDirection.z + l_DesireDirection.x) * p_DeltaTime;
 
-            if (!Physics.BoxCast(transform.position, Extents, transform.forward, out RaycastHit hit, Quaternion.identity, l_CastDistXZ, m_LayerCollision))
+            if (!Physics.BoxCast(transform.position + new Vector3(0,.2f,0), Extents, transform.forward, out RaycastHit hitZ, Quaternion.identity, l_CastDistZ, m_LayerCollision))
             {
-                if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitWall, 1, m_LayerCollision))
-                {
-                    m_Velocity = 0;
+                if (!Physics.BoxCast(transform.position + new Vector3(0, .2f, 0), Extents, transform.forward, out RaycastHit hitx, Quaternion.identity, l_CastDistx, m_LayerCollision))
+                { 
+                    if (!Physics.BoxCast(transform.position + new Vector3(0, .2f, 0), Extents, transform.forward, out RaycastHit hitZx, Quaternion.identity, l_CastDistZx, m_LayerCollision))
+                    {
+                        //if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitWall, 1, m_LayerCollision))
+                        //{
+                        //    m_Velocity = 0;
+                        //}
+                        transform.position += forward * m_Velocity * p_DeltaTime;
+                    }
                 }
-                transform.position += forward * m_Velocity * p_DeltaTime;
             }
             else
             {
-                m_Velocity = 0;
+                    m_Velocity = 0;
             }
         }
         //Sinon j'enregistre mon vecteur que je desire en soustrayant ma velocity a mon vecteur de direction qui est egale a VECTEUR3.Zero
@@ -161,35 +158,44 @@ public class CharacterController : MonoBehaviour
     {
         //Si mon booleen IsGrounded est a vrai et que j'appuie sur ma touche je lance mon timer
         //Sinon mon timer est remis a 0
-        if (m_PlayerInput.Jumping && m_IsOnTheFloor)
+        if (m_PlayerInput.Jumping)
         {
-            if (m_JumpTimer <= m_TimeMaxJumping)
+            if(m_JumpTimer >= m_TimeMaxJumping)
             {
-                m_JumpTimer += p_DeltaTime;
+                StopJump();
+                return;
+            }
+            m_JumpTimer += p_DeltaTime;
+
+
+            if (Physics.BoxCast(transform.position, Extents, Vector3.up, out RaycastHit hit, Quaternion.identity, 1, m_LayerCollision))
+            {
+                Vector3 l_TargetPositionCollision = transform.position;
+                l_TargetPositionCollision.y = transform.position.y  + hit.distance;
+                transform.position = l_TargetPositionCollision;
+                StopJump();
             }
             else
             {
-                m_JumpTimer = 0;
-                StopJump();
+                //Je recupère la position du player en X et en Z, mais le Y est tjr égale a 0;
+                //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
+                //J'ajoute cettes valeur a mon transform.position.
+                Vector3 l_TargetPosition = transform.position;
+                l_TargetPosition.y = transform.position.y + m_JumpCurve.Evaluate(m_JumpTimer);
+                //l_PlayerPos = new Vector3(transform.position.x, 0, transform.position.z);
+                //Vector3 l_TargetPos = m_PosPlayerY + new Vector3(l_PlayerPos.x, m_JumpHeight.Evaluate(m_JumpTimer), l_PlayerPos.z);
+                transform.position = l_TargetPosition;
             }
-            //Je recupère la position du player en X et en Z, mais le Y est tjr égale a 0;
-            //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
-            //J'ajoute cettes valeur a mon transform.position.
-            Vector3 l_TargetPosition = transform.position;
-            l_TargetPosition.y = transform.position.y + m_JumpCurve.Evaluate(m_JumpTimer);
-            //l_PlayerPos = new Vector3(transform.position.x, 0, transform.position.z);
-            //Vector3 l_TargetPos = m_PosPlayerY + new Vector3(l_PlayerPos.x, m_JumpHeight.Evaluate(m_JumpTimer), l_PlayerPos.z);
-            transform.position = l_TargetPosition;
         }
         else
         {
             float castDist = Mathf.Abs(m_YVelocity) * p_DeltaTime + 1;
-            if (Physics.BoxCast(transform.position + Vector3.up * 1, m_Collider.bounds.extents, Vector3.down, out RaycastHit m_Hit, Quaternion.identity, castDist, m_LayerDetectionGround))
+            if (Physics.BoxCast(transform.position + Vector3.up * 1, Extents, Vector3.down, out RaycastHit m_Hit, Quaternion.identity, castDist, m_LayerCollision))
             {
                 if (!m_IsOnTheFloor)
                 {
                     Vector3 targetPosition = transform.position;
-                    targetPosition.y = m_Hit.point.y + m_Collider.bounds.extents.y;
+                    targetPosition.y = m_Hit.point.y + Extents.y;
                     transform.position = targetPosition;
 
                     m_YVelocity = 0f;
@@ -211,6 +217,13 @@ public class CharacterController : MonoBehaviour
 
             }
         }
+        if (m_PlayerInput.Jumping && m_IsOnTheFloor)
+        {
+            m_IsOnTheFloor = false;
+            m_PlayerInput.Jumping = true;
+            m_JumpTimer = 0f;
+            m_YVelocity = 1f;
+        }
     }
     private void StopJump()
     {
@@ -222,7 +235,7 @@ public class CharacterController : MonoBehaviour
     }
     void CheckGround()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out l_hit, m_Height + m_HeighPadding, m_LayerDetectionGround))
+        if(Physics.Raycast(transform.position, Vector3.down, out l_hit, m_Height + m_HeighPadding, m_LayerCollision))
         {
             if(Vector3.Distance(transform.position, l_hit.point)< .5f)
             {
@@ -244,7 +257,19 @@ public class CharacterController : MonoBehaviour
             {
                 return m_Collider.bounds.extents;
             }
-            return Vector3.one / 2;
+            return Vector3.one;
+        }
+    }
+
+    private Vector3 Size
+    {
+        get
+        {
+            if(m_Collider != null)
+            {
+                return m_Collider.bounds.size;
+            }
+            return Vector3.one;
         }
     }
 
@@ -252,5 +277,13 @@ public class CharacterController : MonoBehaviour
     {
         get { return m_MaxSpeed; }
         set { m_MaxSpeed = value; }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, transform.forward);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(transform.position + new Vector3(0,.2f,0) + transform.forward, Size);
     }
 }
