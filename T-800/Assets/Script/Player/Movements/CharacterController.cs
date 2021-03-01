@@ -61,6 +61,15 @@ public class CharacterController : MonoBehaviour
 
     #endregion
 
+    #region Rotation to aim
+    [SerializeField]
+    private float m_XAngleMin = -80.0f;
+    [SerializeField]
+    private float m_XAngleMax = 0;
+    private float m_RotationX = 0f;
+    [SerializeField]
+    private float m_SensitivityY = 0.1f;
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -234,6 +243,15 @@ public class CharacterController : MonoBehaviour
             m_YVelocity = 0;
         }
     }
+
+    private void RotateAiming(Vector3 p_MouseAim)
+    {
+        m_RotationX += p_MouseAim.y * m_SensitivityY;
+        m_RotationX = Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);
+        Quaternion l_Rotation = Quaternion.Euler(m_RotationX, 1, 0);
+        transform.rotation = l_Rotation;
+    }
+
     void CheckGround()
     {
         if(Physics.Raycast(transform.position, Vector3.down, out l_hit, m_Height + m_HeighPadding, m_LayerCollision))
