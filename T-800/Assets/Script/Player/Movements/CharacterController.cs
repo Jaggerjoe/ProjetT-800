@@ -60,6 +60,7 @@ public class CharacterController : MonoBehaviour
     private float m_GravityScale = 1f;
 
     #endregion
+
     // Start is called before the first frame update
     void Start()
     {
