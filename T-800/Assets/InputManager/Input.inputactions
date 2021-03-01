@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "GrabAndThrow",
+                    "type": "Button",
+                    "id": "d8e6eca7-d5dc-4f2f-ae60-4f2578228485",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -138,11 +146,22 @@
                 {
                     "name": "",
                     "id": "69bbd436-42da-46f8-bc33-a9edd93d4153",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc6cfa9a-7cbb-491b-a0c3-1ea94327daf3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabAndThrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

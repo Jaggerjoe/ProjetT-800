@@ -50,6 +50,15 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField]
     private LayerMask m_IsItGround;
     #endregion
+    #region Rotation to aim
+    [SerializeField]
+    private float m_XAngleMin = -80.0f;
+    [SerializeField]
+    private float m_XAngleMax = 0;
+    private float m_RotationX = 0f;
+    [SerializeField]
+    private float m_SensitivityY = 0.1f;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +72,7 @@ public class MovementPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RotateAiming(m_PlayerController.RotationVector);
         Jump();
         Move(m_PlayerController.MoveVector, Time.deltaTime);
     }
@@ -119,7 +129,7 @@ public class MovementPlayer : MonoBehaviour
 
             transform.position += m_Velocity;
         }
-        Debug.Log("velocity : " + m_SpeedAccel);
+        //Debug.Log("velocity : " + m_SpeedAccel);
     }
 
     public void Jump()
@@ -130,6 +140,7 @@ public class MovementPlayer : MonoBehaviour
             m_PosPlayerY.y = transform.position.y;
             m_IsGrounded = true;
             m_JumpTimer = 0;
+           
         }
 
         if (m_PlayerController.Jumping && m_IsGrounded)
@@ -155,6 +166,14 @@ public class MovementPlayer : MonoBehaviour
             m_JumpTimer = 0;
             m_IsGrounded = false;
         }
+    }
+   
+    private void RotateAiming(Vector3 p_MouseAim)
+    {
+        m_RotationX += p_MouseAim.y * m_SensitivityY;
+        m_RotationX = Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);
+        Quaternion l_Rotation = Quaternion.Euler(m_RotationX, 1, 0);
+        transform.rotation =  l_Rotation;
     }
 
     private void OnDrawGizmos()
