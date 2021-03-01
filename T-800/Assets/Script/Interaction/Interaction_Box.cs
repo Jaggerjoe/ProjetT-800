@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interaction_Box : InteractionMother
 {
     private Animator m_Anim;
+
     public override void Use()
     {
         if (TryGetComponent(out m_Anim))
@@ -14,7 +15,20 @@ public class Interaction_Box : InteractionMother
         else
         {
             Debug.Log("je suis une caisse mais sans mon aniamtion");
+            transform.parent = GlobalInteractionRef.transform;
+            CharacterController.Speed = 5f;
+            Debug.Log(GlobalInteractionRef.UseObject);
             return;
+        }
+    }
+
+    public override void StopUse()
+    {
+        if (GlobalInteractionRef.UseObject)
+        {
+            GlobalInteractionRef.UseObject = false;
+            transform.parent = null;
+            CharacterController.Speed = 12;
         }
     }
 }

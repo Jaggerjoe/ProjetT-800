@@ -6,7 +6,12 @@ public class Interaction_Levier : InteractionMother
 {
     [SerializeField]
     private GameObject m_Levier;
+
+    [SerializeField]
+    private InteractionOpenDoor m_DoorOpen;
+
     private Animator m_Anim;
+
     private void Start()
     {
  
@@ -17,7 +22,8 @@ public class Interaction_Levier : InteractionMother
     {
         if(TryGetComponent(out m_Anim))
         {
-            m_Anim.SetTrigger("Interact");
+            PlayerControllerSO.BindInputs(false);
+            Levier();
         }
         else
         {
@@ -27,6 +33,13 @@ public class Interaction_Levier : InteractionMother
     }
     public void Levier()
     {
-        m_Anim.SetTrigger("Interact");
+        m_Anim.SetBool("Interact",true);
+    }
+
+    public void OpenDoor()
+    {
+        m_DoorOpen.OpenDoor();
+        GlobalInteractionRef.UseObject = false;
+        PlayerControllerSO.BindInputs(true);
     }
 }
