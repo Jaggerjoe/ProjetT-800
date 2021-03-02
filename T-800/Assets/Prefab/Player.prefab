@@ -413,41 +413,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerInput: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
-  m_LayerCollision:
-    serializedVersion: 2
-    m_Bits: 768
   m_MaxSpeed: 12
   m_TimeZeroToMax: 0.6
   m_TimeMaxToZero: 0.2
   m_Velocity: 0
+  m_LayerDeplacement:
+    serializedVersion: 2
+    m_Bits: 0
   m_HeighPadding: 0.015
-  m_Height: 0.015
-  m_JumpTimer: 5
+  m_Height: 0.5
+  m_JumpTimer: 0
   m_JumpCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.0016479492
-      inSlope: 0.9466924
-      outSlope: 0.9466924
+      time: -0.0008506775
+      value: 0.0039978027
+      inSlope: 17.35184
+      outSlope: 17.35184
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.05098684
+      outWeight: 0.07142857
     - serializedVersion: 3
-      time: 1
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
+      time: 0.5
+      value: 6
+      inSlope: 1.0351907
+      outSlope: 1.0351907
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.08163261
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_TimeMaxJumping: 0.2
+  m_CollisionLayerDetection:
+    serializedVersion: 2
+    m_Bits: 512
+  m_GravityScale: 6
 --- !u!114 &1905940262
 MonoBehaviour:
   m_ObjectHideFlags: 0
