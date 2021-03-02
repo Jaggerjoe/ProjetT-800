@@ -1,42 +1,48 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// Ballistic trajectory renderer.
-/// </summary>
+
+
 [RequireComponent(typeof(LineRenderer))]
 public class BallisticTrajectoryRenderer : MonoBehaviour
 {
-   [SerializeField]
+    [SerializeField]
     SO_PlayerController m_Controller;
-    // Reference to the line renderer
+    // Référence au line renderer
     private LineRenderer line;
-    // Initial trajectory position
+    // Position initiale de la trajectoire
     [SerializeField]
     private Vector3 startPosition;
     //[SerializeField]
     //private Transform m_Firepoint;
-    // Initial trajectory velocity
+    // Vitesse initiale de la trajectoire
     [SerializeField]
     private Vector3 startVelocity;
-    // Step distance for the trajectory
+    // Distance de pas pour la trajectoire
     [SerializeField]
     private float trajectoryVertDist = 0.25f;
-    // Max length of the trajectory
+    // Longueur maximale de la trajectoire
     [SerializeField]
     private float maxCurveLength = 5;
     [Header("Debug")]
-    // Flag for always drawing trajectory
+
     [SerializeField]
     private bool _debugAlwaysDrawTrajectory = false;
 
-    
+
+
+    //boolean pour le switch de camera
+
+    private bool m_IsAiming = false;
+
+
     /// <summary>
     /// Method called on initialization.
     /// </summary>
     private void Awake()
     {
+        m_IsAiming = false;
         //startPosition = new Vector3(m_Firepoint.position.x, m_Firepoint.position.y, m_Firepoint.position.z);
-        // Get line renderer reference
+        // ref du line Renderer
         line = GetComponent<LineRenderer>();
     }
     /// <summary>
@@ -44,72 +50,76 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // Draw trajectory while pressing button
+        //Je dessine la trajectoire lorsque j'appuie sur le click gauche
         if (m_Controller.Aiming /*|| _debugAlwaysDrawTrajectory*/)
         {
-            // Draw trajectory
+            
             DrawTrajectory();
         }
-        // Clear trajectory after releasing button
+        //J'éfface la traj quand je relache le click
         else
         {
-            // Clear trajectory
+
             ClearTrajectory();
         }
     }
-    /// <summary>
-    /// Sets ballistic values for trajectory.
-    /// </summary>
-    /// <param name="startPosition">Start position.</param>
-    /// <param name="startVelocity">Start velocity.</param>
+
+    // Définit les valeurs balistiques de la trajectoire.
+
+
     public void SetBallisticValues(Vector3 startPosition, Vector3 startVelocity)
     {
         this.startPosition = startPosition;
         this.startVelocity = startVelocity;
     }
-    /// <summary>
-    /// Draws the trajectory with line renderer.
-    /// </summary>
+
+    // Dessine la trajectoire du line renderer
+
     private void DrawTrajectory()
     {
-        // Create a list of trajectory points
+        m_IsAiming = true;
+        //  Créer une liste de points de trajectoire
         var curvePoints = new List<Vector3>();
         curvePoints.Add(startPosition);
-        // Initial values for trajectory
+        // Valeurs initiales de la trajectoire
         var currentPosition = startPosition;
         var currentVelocity = startVelocity;
-        // Init physics variables
+        //  Variables de physique init
         RaycastHit hit;
         Ray ray = new Ray(currentPosition, currentVelocity.normalized);
-        // Loop until hit something or distance is too great
+        // Bouclez jusqu'à ce que vous touchiez quelque chose ou que la distance soit trop grande
         while (!Physics.Raycast(ray, out hit, trajectoryVertDist) && Vector3.Distance(startPosition, currentPosition) < maxCurveLength)
         {
-            // Time to travel distance of trajectoryVertDist
+            // Temps pour parcourir la distance de la trajectoireVertDist
             var t = trajectoryVertDist / currentVelocity.magnitude;
-            // Update position and velocity
+            // Mise à jour de la position et de la vitesse
             currentVelocity = currentVelocity + t * Physics.gravity;
             currentPosition = currentPosition + t * currentVelocity;
-            // Add point to the trajectory
+            // Ajouter un point à la trajectoire
             curvePoints.Add(currentPosition);
-            // Create new ray
+            // Créer un nouveau rayon
             ray = new Ray(currentPosition, currentVelocity.normalized);
         }
-        // If something was hit, add last point there
+        // Si quelque chose a été touché, ajoutez le dernier point ici
         if (hit.transform)
         {
             curvePoints.Add(hit.point);
         }
-        // Display line with all points
+        // Afficher la ligne avec tous les points
         line.positionCount = curvePoints.Count;
         line.SetPositions(curvePoints.ToArray());
     }
-    /// <summary>
-    /// Clears the trajectory.
-    /// </summary>
+
+    //efface la traj
+
     private void ClearTrajectory()
     {
-        // Hide line
+        m_IsAiming = false;
+        // cache la ligne
         line.positionCount = 0;
     }
+
+
+    public bool Aiming { get { return m_IsAiming; } }
 }
 

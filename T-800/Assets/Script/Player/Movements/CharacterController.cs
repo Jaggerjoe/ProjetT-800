@@ -7,6 +7,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerInput;
 
+    [SerializeField]
+    private LayerMask m_LayerCollision;
+
     private Collider m_Collider = null;
 
     #region Movement
@@ -21,9 +24,6 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField]
     float m_Velocity = 0f;
-
-    [SerializeField]
-    private LayerMask m_LayerDeplacement;
 
     //Variable d'acceleration et de deceleration
     float m_AccRatePerSec = 0;
@@ -53,19 +53,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float m_TimeMaxJumping = .2f;
 
-    [SerializeField]
-    private LayerMask m_CollisionLayerDetection;
-
-    [SerializeField]
-    private float m_GravityScale = 1f;
-
     private float m_YVelocity = 0f;
 
     private bool m_IsOnTheFloor = false;
 
-    private bool m_IsJumping = false;
-
-    private Vector3 m_InitialPosPlayer = Vector3.zero;
+    private float m_GravityScale = 1f;
 
     #endregion
 
@@ -81,10 +73,10 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         Move(m_PlayerInput.MoveVector, Time.deltaTime);
+        
         Jump(Time.deltaTime);
         CalculateForward();
         CheckGround();
-        Debug.Log(m_IsOnTheFloor);
     }
   
     void Move(Vector3 p_Direction, float p_DeltaTime)
@@ -121,11 +113,11 @@ public class CharacterController : MonoBehaviour
             float l_CastDistx = m_MaxSpeed * Mathf.Abs(l_DesireDirection.x) * p_DeltaTime;
             float l_CastDistZx = m_MaxSpeed * Mathf.Abs(l_DesireDirection.z + l_DesireDirection.x) * p_DeltaTime;
 
-            if (!Physics.BoxCast(transform.position + new Vector3(0,.2f,0), Extents, transform.forward, out RaycastHit hitZ, Quaternion.identity, l_CastDistZ, m_LayerDeplacement))
+            if (!Physics.BoxCast(transform.position + new Vector3(0,.2f,0), Extents, transform.forward, out RaycastHit hitZ, Quaternion.identity, l_CastDistZ, m_LayerCollision))
             {
-                if (!Physics.BoxCast(transform.position + new Vector3(0, .2f, 0), Extents, transform.forward, out RaycastHit hitx, Quaternion.identity, l_CastDistx, m_LayerDeplacement))
+                if (!Physics.BoxCast(transform.position + new Vector3(0, .2f, 0), Extents, transform.forward, out RaycastHit hitx, Quaternion.identity, l_CastDistx, m_LayerCollision))
                 { 
-                    if (!Physics.BoxCast(transform.position + new Vector3(0, .2f, 0), Extents, transform.forward, out RaycastHit hitZx, Quaternion.identity, l_CastDistZx, m_LayerDeplacement))
+                    if (!Physics.BoxCast(transform.position + new Vector3(0, .2f, 0), Extents, transform.forward, out RaycastHit hitZx, Quaternion.identity, l_CastDistZx, m_LayerCollision))
                     {
                         //if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitWall, 1, m_LayerCollision))
                         //{
@@ -164,12 +156,11 @@ public class CharacterController : MonoBehaviour
         }
         forward = Vector3.Cross(l_hit.normal, -transform.right);
     }
-
     void Jump(float p_DeltaTime)
     {
         //Si mon booleen IsGrounded est a vrai et que j'appuie sur ma touche je lance mon timer
         //Sinon mon timer est remis a 0
-        if (m_IsJumping)
+        if (m_PlayerInput.Jumping)
         {
             if(m_JumpTimer >= m_TimeMaxJumping)
             {
@@ -179,11 +170,10 @@ public class CharacterController : MonoBehaviour
             m_JumpTimer += p_DeltaTime;
 
 
-
-            if (Physics.BoxCast(transform.position, Extents, Vector3.up, out RaycastHit hit, Quaternion.identity, .5f, m_CollisionLayerDetection))
+            if (Physics.BoxCast(transform.position, Extents, Vector3.up, out RaycastHit hit, Quaternion.identity, 1, m_LayerCollision))
             {
                 Vector3 l_TargetPositionCollision = transform.position;
-                l_TargetPositionCollision.y = m_InitialPosPlayer.y + hit.distance;
+                l_TargetPositionCollision.y = transform.position.y  + hit.distance;
                 transform.position = l_TargetPositionCollision;
                 StopJump();
             }
@@ -193,15 +183,16 @@ public class CharacterController : MonoBehaviour
                 //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
                 //J'ajoute cettes valeur a mon transform.position.
                 Vector3 l_TargetPosition = transform.position;
-                l_TargetPosition.y = m_InitialPosPlayer.y + m_JumpCurve.Evaluate(m_JumpTimer);
+                l_TargetPosition.y = transform.position.y + m_JumpCurve.Evaluate(m_JumpTimer);
+                //l_PlayerPos = new Vector3(transform.position.x, 0, transform.position.z);
+                //Vector3 l_TargetPos = m_PosPlayerY + new Vector3(l_PlayerPos.x, m_JumpHeight.Evaluate(m_JumpTimer), l_PlayerPos.z);
                 transform.position = l_TargetPosition;
             }
         }
-        //Else is character not jumping
         else
         {
             float castDist = Mathf.Abs(m_YVelocity) * p_DeltaTime + 1;
-            if (Physics.BoxCast(transform.position + Vector3.up * 1, Extents, Vector3.down, out RaycastHit m_Hit, Quaternion.identity, castDist, m_CollisionLayerDetection))
+            if (Physics.BoxCast(transform.position + Vector3.up * 1, Extents, Vector3.down, out RaycastHit m_Hit, Quaternion.identity, castDist, m_LayerCollision))
             {
                 if (!m_IsOnTheFloor)
                 {
@@ -225,30 +216,31 @@ public class CharacterController : MonoBehaviour
                     m_IsOnTheFloor = false;
                 }
                 m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
+
             }
         }
         if (m_PlayerInput.Jumping && m_IsOnTheFloor)
         {
             m_IsOnTheFloor = false;
-            m_IsJumping = true;
-            m_InitialPosPlayer = transform.position;
+            m_PlayerInput.Jumping = true;
             m_JumpTimer = 0f;
             m_YVelocity = 1f;
         }
     }
-
     private void StopJump()
     {
-        if (m_IsJumping)
+        if (m_PlayerInput.Jumping)
         {
-            m_IsJumping = false;
+            m_PlayerInput.Jumping = false;
             m_YVelocity = 0;
         }
     }
 
+  
+
     void CheckGround()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out l_hit, m_Height + m_HeighPadding, m_CollisionLayerDetection))
+        if(Physics.Raycast(transform.position, Vector3.down, out l_hit, m_Height + m_HeighPadding, m_LayerCollision))
         {
             if(Vector3.Distance(transform.position, l_hit.point)< .5f)
             {
