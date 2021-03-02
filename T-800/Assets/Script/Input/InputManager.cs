@@ -14,6 +14,8 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Global_Interaction m_Interaction = null;
 
+
+
     [SerializeField]
     private TPSScript m_RefCamera = null;
 
@@ -35,6 +37,9 @@ public class InputManager : MonoBehaviour
 
         InputAction interactinAction = playerMap.FindAction("Interaction");
         interactinAction.started += (ctx) => m_Interaction.DetectionInteraction();
+
+        //InputAction ThrowingAction = playerMap.FindAction("aiming");
+        //interactinAction.started += (ctx) => m_Throw.IsShooting = true;
 
         //InputAction jumpAction = playerMap.FindAction("Jump");
         //jumpAction.performed += (ctx) => { m_Movements.JumpInputbool = true; };
