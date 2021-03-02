@@ -94,7 +94,7 @@ public class SimpleGrabSystem : MonoBehaviour
         // Set Slot as a parent
         item.transform.SetParent(slot);
         // Reset position and rotation
-        item.transform.position = slot.position;
+        item.transform.position = slot.position - new Vector3(0,0.5f,0);
         item.transform.localEulerAngles = Vector3.zero;
     }
     /// <summary>
@@ -110,9 +110,9 @@ public class SimpleGrabSystem : MonoBehaviour
         // Enable rigidbody
         item.Rb.isKinematic = false;
         // Add force to throw item a little bit
-        item.Rb.AddForce(item.transform.forward * 2, ForceMode.VelocityChange);
+        item.Rb.AddForce(item.transform.forward  , ForceMode.VelocityChange);
         // Add velocity to throw the item
-        item.Rb.velocity = slot.rotation * throwVelocity;
+        item.Rb.velocity = slot.rotation * throwVelocity * 0.91f;
     }
 
     private void OnDrawGizmos()
