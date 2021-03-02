@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-/// <summary>
-/// Simple example of Grabbing system.
-/// </summary>
+
 public class SimpleGrabSystem : MonoBehaviour
 {
     [SerializeField]
     private SO_PlayerController Controller;
-    // Reference to the character camera.
+    // Référence à la caméra du personnage
     [SerializeField]
     private Camera characterCamera;
-    // Reference to the slot for holding picked item.
+    // Référence au point sur lequel se rend l'objet 
     [SerializeField]
     private Transform slot;
-    // Reference to the currently held item.
+    // Ref de l'objet
     private PickableItem pickedItem;
 
     [Header("Throw")]
-    // Velocity which which object will be thrown.
+    // 
     [SerializeField]
     private Vector3 throwVelocity = new Vector3(0, 0, 5);
 
