@@ -45,6 +45,25 @@ public class TPSScript : MonoBehaviour
 
     private float m_deltaTime=0;
 
+    
+    #region Rotation to aim
+    [SerializeField]
+    private float m_XAngleMinAim = -80.0f;
+    [SerializeField]
+    private float m_XAngleMaxAim = 0;
+    private float m_RotationXAim = 0f;
+    private float m_RotationYAim = 0f;
+    [SerializeField]
+    private float m_SensitivityYAim = 0.1f;
+
+    [SerializeField]
+    private BallisticTrajectoryRenderer m_Trajectory;
+
+    [SerializeField]
+    private Transform m_Player;
+
+    #endregion
+
     private void Start()
     {
         //Récupération de la main camera
@@ -61,7 +80,19 @@ public class TPSScript : MonoBehaviour
     
     private void Update()
     {
-        RotationCamera(m_PlayerController.RotationVector);
+        if (!m_Trajectory.Aiming)
+        {
+            RotationCamera(m_PlayerController.RotationVector);
+        }
+
+            
+            
+        else 
+        {
+            RotationAiming(m_PlayerController.RotationVector);
+        }
+       
+        
         //m_deltaTime += Time.deltaTime * 5.0f;
         //if (m_currentDistance != m_TargetDistance)
         //{
@@ -88,6 +119,29 @@ public class TPSScript : MonoBehaviour
         //va gere la postion de la camera
         transform.position = l_NextPosition + l_CameraPosition;
         transform.LookAt(m_Target);
+    }
+
+    private void RotationAiming(Vector3 p_MouseAim)
+    {
+        
+
+            m_RotationXAim += p_MouseAim.y * m_SensitivityYAim;
+            m_RotationYAim += p_MouseAim.x * m_SensitivityYAim;
+            
+            Mathf.Clamp(m_RotationXAim, m_XAngleMinAim, m_XAngleMaxAim);
+            Quaternion l_Rotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim, transform.rotation.z);
+
+            m_Player.rotation = l_Rotation;
+            transform.rotation = l_Rotation;
+
+        //on prend le forward du monde qui est le z est on fait y fait = la new position on multipli par la distance et la roation (rotation du quaternion qu'on va appliquer)
+        //tout ça par rapport a l'input.
+        Vector3 l_NextPosition = l_Rotation * Vector3.forward * m_currentDistance;
+        Vector3 l_CameraPosition = m_Target.position + m_OffsetCamera;
+        //va gere la postion de la camera
+        transform.position = l_NextPosition + l_CameraPosition;
+        transform.LookAt(m_Target);
+
     }
 
     void Collision()
