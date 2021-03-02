@@ -834,6 +834,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1414513452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1553068893, guid: aef44171c2335c84184f90366047a1b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1801978424064815261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d1244188456f648abe4c00815da429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695443091
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +975,11 @@ MonoBehaviour:
     m_Bits: 256
   m_Target: {fileID: 605197267}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  m_XAngleMinAim: -80
+  m_XAngleMaxAim: 0
+  m_SensitivityYAim: 0.1
+  m_Trajectory: {fileID: 1414513452}
+  m_Player: {fileID: 0}
 --- !u!4 &2131534524
 Transform:
   m_ObjectHideFlags: 0
@@ -1149,6 +1166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084098513303374743, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_LayerDeplacement.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aef44171c2335c84184f90366047a1b8, type: 3}
