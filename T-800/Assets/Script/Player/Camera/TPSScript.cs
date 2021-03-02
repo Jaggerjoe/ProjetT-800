@@ -136,13 +136,12 @@ public class TPSScript : MonoBehaviour
             m_Target.rotation = l_Rotation;
             transform.rotation = l_Rotation;
 
-        //on prend le forward du monde qui est le z est on fait y fait = la new position on multipli par la distance et la roation (rotation du quaternion qu'on va appliquer)
-        //tout ça par rapport a l'input.
-        Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistance;
-        Vector3 l_CameraPosition = m_Target.position + m_OffsetCameraAim;
-        //va gere la postion de la camera
-        transform.position = l_NextPosition + l_CameraPosition;
-        transform.LookAt(m_Target);
+          
+            Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistance;
+            Vector3 l_CameraPosition = m_Target.position + m_OffsetCameraAim;
+       
+            transform.position = l_NextPosition + l_CameraPosition;
+            transform.LookAt(m_Target);
 
     }
 
