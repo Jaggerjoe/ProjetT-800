@@ -82,6 +82,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         Move(m_PlayerInput.MoveVector, Time.deltaTime);
+        RotateAiming(m_PlayerInput.RotationVector);
         Jump(Time.deltaTime);
         CalculateForward();
         CheckGround();
@@ -246,10 +247,17 @@ public class CharacterController : MonoBehaviour
 
     private void RotateAiming(Vector3 p_MouseAim)
     {
-        m_RotationX += p_MouseAim.y * m_SensitivityY;
-        m_RotationX = Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);
-        Quaternion l_Rotation = Quaternion.Euler(m_RotationX, 1, 0);
-        transform.rotation = l_Rotation;
+        if(m_PlayerInput.Aiming)
+        {
+            m_RotationX += p_MouseAim.y * m_SensitivityY;
+            Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);
+            Quaternion l_Rotation = Quaternion.Euler(m_RotationX, 0, 0);
+            
+            transform.rotation = l_Rotation;
+            
+
+        }
+
     }
 
     void CheckGround()
