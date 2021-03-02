@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1801978424670004040}
   - component: {fileID: 1801978424670004043}
   - component: {fileID: 228860542}
-  - component: {fileID: 170048464}
+  - component: {fileID: 6084098513303374743}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -222,7 +222,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &170048464
+--- !u!114 &6084098513303374743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,29 +237,29 @@ MonoBehaviour:
   m_PlayerInput: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_LayerCollision:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_MaxSpeed: 12
-  m_TimeZeroToMax: 0.8
+  m_TimeZeroToMax: 0.6
   m_TimeMaxToZero: 0.2
   m_Velocity: 0
   m_HeighPadding: 0.015
-  m_Height: 0.5
-  m_JumpTimer: 0
+  m_Height: 0.015
+  m_JumpTimer: 5
   m_JumpCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0.6917647
-      outSlope: 0.6917647
+      value: 0.0016479492
+      inSlope: 0.9466924
+      outSlope: 0.9466924
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.08488964
+      outWeight: 0.05098684
     - serializedVersion: 3
-      time: 1.0017006
-      value: 0.50823534
+      time: 1
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -270,6 +270,3 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_TimeMaxJumping: 0.2
-  m_LayerDetectionGround:
-    serializedVersion: 2
-    m_Bits: 512
