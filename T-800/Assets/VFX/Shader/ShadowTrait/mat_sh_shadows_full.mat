@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat_sh_vertex_displacement
-  m_Shader: {fileID: -6465566751694194690, guid: c108bdab5af25ef409d34b5ad1471897,
+  m_Name: mat_sh_shadows_full
+  m_Shader: {fileID: -6465566751694194690, guid: 91f7130986616f8419ebc2252c3feb47,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,13 +20,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_6B6DB7F8:
-        m_Texture: {fileID: 2800000, guid: 0fd6c97abbb00d148a17ee058edc76f1, type: 3}
+    - _texture_asset:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    m_Floats:
+    - _attenuation_rim: 0.1
+    - _densite_trait: 50
+    - _offset_ombre: 0
+    - _taille_rim: 0.7903898
+    - _taille_trait: 0.1
+    - _zone_ombre: 0.2
     m_Colors:
-    - Vector2_EA3E7E6B: {r: 1, g: 0, b: 0, a: 0}
-    - _displacement_moveme_t: {r: 0, g: 0, b: 0, a: 0}
-    - _displacement_movement: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _displacement_movement_1: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _color_rim: {r: 1.096624, g: 1.096624, b: 1.096624, a: 0}
+    - _color_shadow: {r: 1, g: 0, b: 0, a: 0}
+    - _couleur_asset: {r: 0, g: 1, b: 0.9784012, a: 0}
