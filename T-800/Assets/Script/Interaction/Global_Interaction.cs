@@ -19,12 +19,12 @@ public class Global_Interaction : InteractionMother
     [SerializeField]
     private SO_PlayerController m_PLayerController;
 
-    [SerializeField]
-    private GameObject test;
-
     private bool m_UseObject = false;
 
     private InteractionMother m_InteractObj;
+
+    [SerializeField]
+    private Collider m_Collider = null;
 
     private void OnEnable()
     {
@@ -36,6 +36,10 @@ public class Global_Interaction : InteractionMother
         m_PLayerController.InteractionObj.RemoveListener(DetectionInteraction);
     }
 
+    private void Update()
+    {
+        Interaction();
+    }
     public void DetectionInteraction()
     {
         Collider[] hitCollier = Physics.OverlapSphere(transform.position, m_Radius, m_Layer);
@@ -66,6 +70,17 @@ public class Global_Interaction : InteractionMother
                         }
                     }
                 }
+            }
+        }
+    }
+
+    public void Interaction()
+    {
+        if(Physics.BoxCast(transform.position, m_Collider.bounds.extents, Vector3.down, out RaycastHit m_hit,Quaternion.identity, .5f, m_Layer))
+        {
+            if(m_hit.collider.gameObject.TryGetComponent(out m_InteractObj))
+            {
+                m_InteractObj.Use();
             }
         }
     }

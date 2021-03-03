@@ -262,7 +262,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    private Vector3 Extents
+    public Vector3 Extents
     {
         get
         {
