@@ -25,12 +25,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _attenuation_rim: 0.1
-    - _densite_trait: 15
-    - _offset_ombre: 0.88
-    - _taille_rim: 1
-    - _taille_trait: 0.111
-    - _zone_ombre: 1.1
+    - _attenuation_rim: 0.632
+    - _densite_trait: 15.6
+    - _offset_ombre: 0.24
+    - _taille_rim: 0.668
+    - _taille_trait: 0.224
+    - _zone_ombre: 0.02
     m_Colors:
     - _color_rim: {r: 1.096624, g: 1.096624, b: 1.096624, a: 0}
     - _color_shadow: {r: 0, g: 0, b: 0, a: 0}
