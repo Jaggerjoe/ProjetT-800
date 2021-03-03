@@ -40,6 +40,8 @@ public class TPSScript : MonoBehaviour
     private float m_RotationY = 0f;
 
     private Vector3 m_OffsetCamera = Vector3.zero;
+    [SerializeField]
+    private Vector3 m_OffsetCameraAim =new Vector3 (0,5,0);
 
     private float m_TargetDistance=0;
 
@@ -131,16 +133,15 @@ public class TPSScript : MonoBehaviour
             Mathf.Clamp(m_RotationXAim, m_XAngleMinAim, m_XAngleMaxAim);
             Quaternion l_Rotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim, transform.rotation.z);
 
-            m_Player.rotation = l_Rotation;
+            m_Target.rotation = l_Rotation;
             transform.rotation = l_Rotation;
 
-        //on prend le forward du monde qui est le z est on fait y fait = la new position on multipli par la distance et la roation (rotation du quaternion qu'on va appliquer)
-        //tout ça par rapport a l'input.
-        Vector3 l_NextPosition = l_Rotation * Vector3.forward * m_currentDistance;
-        Vector3 l_CameraPosition = m_Target.position + m_OffsetCamera;
-        //va gere la postion de la camera
-        transform.position = l_NextPosition + l_CameraPosition;
-        transform.LookAt(m_Target);
+          
+            Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistance;
+            Vector3 l_CameraPosition = m_Target.position + m_OffsetCameraAim;
+       
+            transform.position = l_NextPosition + l_CameraPosition;
+            transform.LookAt(m_Target);
 
     }
 

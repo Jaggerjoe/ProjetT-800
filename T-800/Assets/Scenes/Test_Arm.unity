@@ -1054,6 +1054,7 @@ MonoBehaviour:
     m_Bits: 256
   m_Target: {fileID: 1113978579}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  m_OffsetCameraAim: {x: 0, y: 10, z: 0}
   m_XAngleMinAim: -80
   m_XAngleMaxAim: 0
   m_SensitivityYAim: 0.1
