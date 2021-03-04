@@ -32,7 +32,23 @@
                 {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "822c7205-fab5-4a56-a6ad-fe1c9c674908",
+                    "id": "d2699852-6670-4889-9a39-d5863ec522ee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Aiming",
+                    "type": "Button",
+                    "id": "11a68dd0-dabc-4b77-a3a0-9b94db19bfb6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "GrabAndThrow",
+                    "type": "Button",
+                    "id": "d8e6eca7-d5dc-4f2f-ae60-4f2578228485",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -118,12 +134,34 @@
                 },
                 {
                     "name": "",
-                    "id": "3106cf75-5432-4c84-976b-02c42c7fbc92",
+                    "id": "f6b2755c-6170-4d72-8d56-74393e8137a5",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69bbd436-42da-46f8-bc33-a9edd93d4153",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc6cfa9a-7cbb-491b-a0c3-1ea94327daf3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabAndThrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
