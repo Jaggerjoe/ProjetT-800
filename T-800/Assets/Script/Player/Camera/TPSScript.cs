@@ -69,9 +69,6 @@ public class TPSScript : MonoBehaviour
     [SerializeField]
     private BallisticTrajectoryRenderer m_Trajectory;
 
-    [SerializeField]
-    private Transform m_Player;
-
     #endregion
 
     private void Start()
@@ -94,6 +91,7 @@ public class TPSScript : MonoBehaviour
         {
             
             RotationCamera(m_PlayerController.RotationVector);
+            
         }
 
             
@@ -102,6 +100,7 @@ public class TPSScript : MonoBehaviour
         {
            
             RotationAiming(m_PlayerController.RotationVector);
+            
         }
        
         
@@ -131,7 +130,7 @@ public class TPSScript : MonoBehaviour
         //va gere la postion de la camera
         m_CameraPosition = l_NextPosition + l_CameraPosition;
         transform.position = Vector3.Lerp(m_AimCameraPosition, m_CameraPosition, 1);
-       // transform.position = l_NextPosition + l_CameraPosition;
+        // transform.position = l_NextPosition + l_CameraPosition;
         transform.LookAt(m_Target);
     }
 
@@ -150,11 +149,11 @@ public class TPSScript : MonoBehaviour
 
           
             Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistance;
-            Vector3 l_CameraPosition = m_Target.position + m_OffsetCameraAim;
+            //Vector3 l_CameraPosition = m_Target.position + m_OffsetCameraAim;
 
 
 
-            m_AimCameraPosition = l_NextPosition + l_CameraPosition;
+            m_AimCameraPosition = l_NextPosition/* + l_CameraPosition;*/;
             transform.position = Vector3.Lerp(m_CameraPosition, m_AimCameraPosition, 1);
             //transform.position = l_NextPosition + l_CameraPosition;
             transform.LookAt(m_Target );
