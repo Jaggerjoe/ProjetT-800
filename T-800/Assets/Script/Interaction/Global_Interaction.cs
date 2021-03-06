@@ -38,7 +38,7 @@ public class Global_Interaction : InteractionMother
 
     private void Update()
     {
-        Interaction();
+        // Interaction();
     }
     public void DetectionInteraction()
     {

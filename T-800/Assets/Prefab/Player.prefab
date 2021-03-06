@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 597935906}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 1553068892}
   - component: {fileID: 1553068894}
   - component: {fileID: 1553068893}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BalisticTrajectory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,6 +175,36 @@ MonoBehaviour:
   trajectoryVertDist: 0.25
   maxCurveLength: 100
   _debugAlwaysDrawTrajectory: 0
+--- !u!1 &2117647450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2117647451}
+  m_Layer: 11
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2117647451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117647450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.57, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1801978424670004046}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801978422926669275
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +217,7 @@ GameObject:
   - component: {fileID: 1801978422926669271}
   - component: {fileID: 1801978422926669268}
   - component: {fileID: 1801978422926669269}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,10 +311,10 @@ GameObject:
   - component: {fileID: 1801978424670004044}
   - component: {fileID: 1801978424670004040}
   - component: {fileID: 1801978424670004043}
-  - component: {fileID: 228860542}
   - component: {fileID: 6084098513303374743}
   - component: {fileID: 1905940262}
-  m_Layer: 0
+  - component: {fileID: 605197263}
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,6 +335,7 @@ Transform:
   - {fileID: 1801978422926669274}
   - {fileID: 597935906}
   - {fileID: 1553068892}
+  - {fileID: 2117647451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,7 +346,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801978424670004051}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1801978424670004044
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -374,7 +405,7 @@ MonoBehaviour:
   m_Angle: 60
   m_RefInteraction: {fileID: 1801978424670004043}
   m_PLayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
-  test: {fileID: 0}
+  m_Collider: {fileID: 0}
 --- !u!114 &1801978424670004043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,19 +418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c689cc9dbdd68048ba74a63e27d39e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &228860542
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801978424670004051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6084098513303374743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,15 +431,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerInput: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  m_CapsuleCollider: {fileID: 605197263}
   m_MaxSpeed: 12
   m_TimeZeroToMax: 0.6
   m_TimeMaxToZero: 0.2
   m_Velocity: 0
   m_LayerDeplacement:
     serializedVersion: 2
-    m_Bits: 0
-  m_HeighPadding: 0.015
-  m_Height: 0.5
+    m_Bits: 288
+  m_HeighPadding: 0.15
+  m_Height: 1
   m_JumpTimer: 0
   m_JumpCurve:
     serializedVersion: 2
@@ -450,7 +469,7 @@ MonoBehaviour:
   m_TimeMaxJumping: 0.2
   m_CollisionLayerDetection:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 544
   m_GravityScale: 6
 --- !u!114 &1905940262
 MonoBehaviour:
@@ -482,3 +501,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!136 &605197263
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801978424670004051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
