@@ -28,7 +28,7 @@ Material:
     - _attenuation_rim: 0.632
     - _densite_trait: 15.6
     - _offset_ombre: 0.24
-    - _taille_rim: 0.668
+    - _taille_rim: 0.638
     - _taille_trait: 0.224
     - _zone_ombre: 0.02
     m_Colors:
