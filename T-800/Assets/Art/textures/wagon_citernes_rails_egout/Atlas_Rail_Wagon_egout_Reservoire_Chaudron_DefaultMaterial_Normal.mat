@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3829091598918240377
+--- !u!114 &-277672842505444806
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Atlas_tuyaux_rouages_fils_DefaultMaterial_Normal
+  m_Name: Atlas_Rail_Wagon_egout_Reservoire_Chaudron_DefaultMaterial_Normal
   m_Shader: {fileID: -6465566751694194690, guid: 73d33503b2dc2a941b0c16d6adfb12e2,
     type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
@@ -34,11 +34,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 5134dd30fb1c7d947bd9b7693c0867e0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9f0cefd518037454097d0f69c17a2d09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: c74b93f31704ae64e9201843cce9f929, type: 3}
+        m_Texture: {fileID: 2800000, guid: 47c852e5b09d8f646a3cebbc3bc933e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -46,11 +46,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5134dd30fb1c7d947bd9b7693c0867e0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9f0cefd518037454097d0f69c17a2d09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: c7bc0006f44fa894596e340fee71371e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8812e7443dd6852489e087ee763aad9d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texture_asset:
-        m_Texture: {fileID: 2800000, guid: 5134dd30fb1c7d947bd9b7693c0867e0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9f0cefd518037454097d0f69c17a2d09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -100,4 +100,4 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _color_rim: {r: 1.096624, g: 1.096624, b: 1.096624, a: 0}
     - _color_shadow: {r: 0, g: 0, b: 0, a: 0}
-    - _couleur_asset: {r: 1, g: 1, b: 0.9784012, a: 0}
+    - _couleur_asset: {r: 1, g: 1, b: 1, a: 0}
