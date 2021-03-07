@@ -26,10 +26,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _attenuation_rim: 0.632
-    - _densite_trait: 15.6
+    - _densite_trait: 31.2
     - _offset_ombre: 0.24
     - _taille_rim: 0.638
-    - _taille_trait: 0.224
+    - _taille_trait: 0.18
     - _zone_ombre: 0.02
     m_Colors:
     - _color_rim: {r: 1.096624, g: 1.096624, b: 1.096624, a: 0}
