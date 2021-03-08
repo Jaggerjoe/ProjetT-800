@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Atlas_Rail_Wagon_egout_Reservoire_Chaudron_DefaultMaterial_Normal
-  m_Shader: {fileID: -6465566751694194690, guid: 73d33503b2dc2a941b0c16d6adfb12e2,
+  m_Shader: {fileID: -6465566751694194690, guid: af0fbc2af6cacc9408e74e16b7387040,
     type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -33,6 +33,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_ACE87824:
+        m_Texture: {fileID: 2800000, guid: 8812e7443dd6852489e087ee763aad9d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FB8C78A8:
+        m_Texture: {fileID: 2800000, guid: 47c852e5b09d8f646a3cebbc3bc933e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 9f0cefd518037454097d0f69c17a2d09, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -66,6 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_8220681A: 0.173
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
