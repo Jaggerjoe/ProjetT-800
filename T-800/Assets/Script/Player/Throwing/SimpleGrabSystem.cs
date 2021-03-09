@@ -4,20 +4,17 @@ using UnityEngine.Events;
 public class SimpleGrabSystem : MonoBehaviour
 {
     [SerializeField]
-    private SO_PlayerController Controller;
-    // Référence à la caméra du personnage
-    [SerializeField]
-    private Camera characterCamera;
+    private SO_PlayerController m_Controller;
     // Référence au point sur lequel se rend l'objet 
     [SerializeField]
-    private Transform slot;
+    private Transform m_Slot;
     // Ref de l'objet
-    private PickableItem pickedItem;
+    private PickableItem m_PickableItem;
 
     [Header("Throw")]
     // 
     [SerializeField]
-    private Vector3 throwVelocity = new Vector3(0, 0, 5);
+    private Vector3 m_ThrowVelocity = new Vector3(0, 0, 5);
 
 
     /// Event class which will be displayed in the inspector.
@@ -35,7 +32,7 @@ public class SimpleGrabSystem : MonoBehaviour
        
     
         // Execute logic only on button pressed
-        if (Controller.GrabAndThrow)
+        if (m_Controller.GrabAndThrow)
         {
 
             //else
@@ -55,7 +52,7 @@ public class SimpleGrabSystem : MonoBehaviour
                 {
                     // Pick it
                     PickItem(pickable);
-                    Debug.Log("pick:" + Controller.Aiming);
+                    Debug.Log("pick:" + m_Controller.Aiming);
                 }
             }
             //}
@@ -63,16 +60,18 @@ public class SimpleGrabSystem : MonoBehaviour
         else
         {
             //Check if player picked some item already
-            if (pickedItem)
+            if (m_PickableItem
+    )
             {
                 // If yes, drop picked item
-                DropItem(pickedItem);
-                Debug.Log("drop:" + Controller.Aiming);
+                DropItem(m_PickableItem
+        );
+                Debug.Log("drop:" + m_Controller.Aiming);
             }
 
         }
         // Broadcast location change
-        OnLocationChanged?.Invoke(slot.position, slot.rotation * throwVelocity);
+        OnLocationChanged?.Invoke(m_Slot.position, m_Slot.rotation * m_ThrowVelocity);
     }
 
 
@@ -84,15 +83,15 @@ public class SimpleGrabSystem : MonoBehaviour
     private void PickItem(PickableItem item)
     {
         // Assign reference
-        pickedItem = item;
+        m_PickableItem = item;
         // Disable rigidbody and reset velocities
         item.Rb.isKinematic = true;
         item.Rb.velocity = Vector3.zero;
         item.Rb.angularVelocity = Vector3.zero;
         // Set Slot as a parent
-        item.transform.SetParent(slot);
+        item.transform.SetParent(m_Slot);
         // Reset position and rotation
-        item.transform.position = slot.position - new Vector3(0,0.5f,0);
+        item.transform.position = m_Slot.position - new Vector3(0,0.5f,0);
         item.transform.localEulerAngles = Vector3.zero;
     }
     /// <summary>
@@ -102,7 +101,8 @@ public class SimpleGrabSystem : MonoBehaviour
     private void DropItem(PickableItem item)
     {
         // Remove reference
-        pickedItem = null;
+        m_PickableItem
+ = null;
         // Remove parent
         item.transform.SetParent(null);
         // Enable rigidbody
@@ -110,7 +110,7 @@ public class SimpleGrabSystem : MonoBehaviour
         // Add force to throw item a little bit
         item.Rb.AddForce(item.transform.forward  , ForceMode.VelocityChange);
         // Add velocity to throw the item
-        item.Rb.velocity = slot.rotation * throwVelocity * 0.91f;
+        item.Rb.velocity = m_Slot.rotation * m_ThrowVelocity * 0.91f;
     }
 
     private void OnDrawGizmos()
