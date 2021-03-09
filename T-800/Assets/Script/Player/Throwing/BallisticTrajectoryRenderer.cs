@@ -7,26 +7,26 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
 {
     [SerializeField]
     SO_PlayerController m_Controller;
-    // Référence au line renderer
-    private LineRenderer line;
+    // Référence au m_Line renderer
+    private LineRenderer m_Line;
     // Position initiale de la trajectoire
     [SerializeField]
-    private Vector3 startPosition;
+    private Vector3 m_StartPosition;
     //[SerializeField]
     //private Transform m_Firepoint;
     // Vitesse initiale de la trajectoire
     [SerializeField]
-    private Vector3 startVelocity;
+    private Vector3 m_StartVelocity;
     // Distance de pas pour la trajectoire
     [SerializeField]
-    private float trajectoryVertDist = 0.25f;
+    private float m_TrajectoryVertDist = 0.25f;
     // Longueur maximale de la trajectoire
     [SerializeField]
-    private float maxCurveLength = 5;
+    private float m_MaxCurveLength = 5;
     [Header("Debug")]
 
     [SerializeField]
-    private bool _debugAlwaysDrawTrajectory = false;
+    private bool m_DebugAlwaysDrawTrajectory = false;
 
 
 
@@ -41,9 +41,9 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     private void Awake()
     {
         m_IsAiming = false;
-        //startPosition = new Vector3(m_Firepoint.position.x, m_Firepoint.position.y, m_Firepoint.position.z);
-        // ref du line Renderer
-        line = GetComponent<LineRenderer>();
+        //m_StartPosition = new Vector3(m_Firepoint.position.x, m_Firepoint.position.y, m_Firepoint.position.z);
+        // ref du m_Line Renderer
+        m_Line = GetComponent<LineRenderer>();
     }
     /// <summary>
     /// Method called on every frame.
@@ -51,7 +51,7 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     private void Update()
     {
         //Je dessine la trajectoire lorsque j'appuie sur le click gauche
-        if (m_Controller.Aiming /*|| _debugAlwaysDrawTrajectory*/)
+        if (m_Controller.Aiming /*|| m_DebugAlwaysDrawTrajectory*/)
         {
             
             DrawTrajectory();
@@ -67,31 +67,31 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     // Définit les valeurs balistiques de la trajectoire.
 
 
-    public void SetBallisticValues(Vector3 startPosition, Vector3 startVelocity)
+    public void SetBallisticValues(Vector3 m_StartPosition, Vector3 m_StartVelocity)
     {
-        this.startPosition = startPosition;
-        this.startVelocity = startVelocity;
+        this.m_StartPosition = m_StartPosition;
+        this.m_StartVelocity = m_StartVelocity;
     }
 
-    // Dessine la trajectoire du line renderer
+    // Dessine la trajectoire du m_Line renderer
 
     private void DrawTrajectory()
     {
         m_IsAiming = true;
         //  Créer une liste de points de trajectoire
         var curvePoints = new List<Vector3>();
-        curvePoints.Add(startPosition);
+        curvePoints.Add(m_StartPosition);
         // Valeurs initiales de la trajectoire
-        var currentPosition = startPosition;
-        var currentVelocity = startVelocity;
+        var currentPosition = m_StartPosition;
+        var currentVelocity = m_StartVelocity;
         //  Variables de physique init
         RaycastHit hit;
         Ray ray = new Ray(currentPosition, currentVelocity.normalized);
         // Bouclez jusqu'à ce que vous touchiez quelque chose ou que la distance soit trop grande
-        while (!Physics.Raycast(ray, out hit, trajectoryVertDist) && Vector3.Distance(startPosition, currentPosition) < maxCurveLength)
+        while (!Physics.Raycast(ray, out hit, m_TrajectoryVertDist) && Vector3.Distance(m_StartPosition, currentPosition) < m_MaxCurveLength)
         {
             // Temps pour parcourir la distance de la trajectoireVertDist
-            var t = trajectoryVertDist / currentVelocity.magnitude;
+            var t = m_TrajectoryVertDist / currentVelocity.magnitude;
             // Mise à jour de la position et de la vitesse
             currentVelocity = currentVelocity + t * Physics.gravity;
             currentPosition = currentPosition + t * currentVelocity;
@@ -106,8 +106,8 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
             curvePoints.Add(hit.point);
         }
         // Afficher la ligne avec tous les points
-        line.positionCount = curvePoints.Count;
-        line.SetPositions(curvePoints.ToArray());
+        m_Line.positionCount = curvePoints.Count;
+        m_Line.SetPositions(curvePoints.ToArray());
     }
 
     //efface la traj
@@ -116,7 +116,7 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     {
         m_IsAiming = false;
         // cache la ligne
-        line.positionCount = 0;
+        m_Line.positionCount = 0;
     }
 
 

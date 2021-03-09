@@ -44,19 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed73c7fcfea8f247a8cb2087007aa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentDistance: 5
-  smooth: 5
-  layer:
+  m_currentDistance: 10
+  m_Smooth: 5
+  m_Layer:
     serializedVersion: 2
     m_Bits: 256
   m_Target: {fileID: 0}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_OffsetCameraAim: {x: 0, y: 5, z: 0}
   m_XAngleMinAim: -80
-  m_XAngleMaxAim: 0
+  m_XAngleMaxAim: 20
   m_SensitivityYAim: 0.1
   m_Trajectory: {fileID: 0}
-  m_Player: {fileID: 0}
 --- !u!1 &7677850404240243477
 GameObject:
   m_ObjectHideFlags: 0
