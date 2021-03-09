@@ -23,9 +23,6 @@ public class Global_Interaction : InteractionMother
 
     private InteractionMother m_InteractObj;
 
-    [SerializeField]
-    private Collider m_Collider = null;
-
     private void OnEnable()
     {
         m_PLayerController.InteractionObj.AddListener(DetectionInteraction);
@@ -34,11 +31,6 @@ public class Global_Interaction : InteractionMother
     private void OnDisable()
     {
         m_PLayerController.InteractionObj.RemoveListener(DetectionInteraction);
-    }
-
-    private void Update()
-    {
-        // Interaction();
     }
     public void DetectionInteraction()
     {
@@ -74,16 +66,16 @@ public class Global_Interaction : InteractionMother
         }
     }
 
-    public void Interaction()
-    {
-        if(Physics.BoxCast(transform.position, m_Collider.bounds.extents, Vector3.down, out RaycastHit m_hit,Quaternion.identity, .5f, m_Layer))
-        {
-            if(m_hit.collider.gameObject.TryGetComponent(out m_InteractObj))
-            {
-                m_InteractObj.Use();
-            }
-        }
-    }
+    // public void Interaction()
+    // {
+    //     if(Physics.BoxCast(transform.position, m_Collider.bounds.extents, Vector3.down, out RaycastHit m_hit,Quaternion.identity, .5f, m_Layer))
+    //     {
+    //         if(m_hit.collider.gameObject.TryGetComponent(out m_InteractObj))
+    //         {
+    //             m_InteractObj.Use();
+    //         }
+    //     }
+    // }
 
     public bool UseObject
     {

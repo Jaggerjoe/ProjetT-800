@@ -17,7 +17,6 @@ public class Interaction_Box : InteractionMother
             Debug.Log("je suis une caisse mais sans mon aniamtion");
             transform.parent = GlobalInteractionRef.transform;
             CharacterController.Speed = 5f;
-            Debug.Log(GlobalInteractionRef.UseObject);
             return;
         }
     }
