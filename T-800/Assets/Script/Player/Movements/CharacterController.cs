@@ -76,7 +76,7 @@ public class CharacterController : MonoBehaviour
     private Vector3 m_InitialPosPlayer = Vector3.zero;
 
     private float m_coucoutoi;
-
+    Camera m_cam;
     #endregion
 
     // Start is called before the first frame update
@@ -125,17 +125,9 @@ public class CharacterController : MonoBehaviour
         if (p_Direction != Vector3.zero)
         {
             transform.forward = l_DesireDirection;
-            m_Velocity += m_AccRatePerSec * Time.deltaTime;
+            m_Velocity += m_AccRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
-            //Collider[] hitCollider = Physics.OverlapBox(gameObject.transform.position, Extents, transform.rotation, m_LayerDeplacement);
-
-            //if (hitCollider.Length >= 1)
-            //{
-            //    Debug.Log("je touche : " + hitCollider[0].name);
-            //    transform.forward = l_RotationSave;
-            //}
-
-            float l_CastDist = l_DesireDirection.magnitude * Time.deltaTime * m_Velocity;
+            float l_CastDist = l_DesireDirection.magnitude * p_DeltaTime * m_Velocity;
             if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, transform.forward, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
             {
                 if(m_GroundAngle >= m_MaxGroundAnge) return;
@@ -149,7 +141,7 @@ public class CharacterController : MonoBehaviour
                    if (Physics.Raycast(transform.position, transform.forward, out RaycastHit HitRay, l_CastDist, m_LayerDeplacement))
                    {
                        Vector3 closestPoint = m_Collider.ClosestPoint(HitRay.point);
-                       transform.position = closestPoint - HitRay.normal * 1f;
+                       transform.position = closestPoint - HitRay.normal;
                    }
                 }
             }
@@ -166,7 +158,7 @@ public class CharacterController : MonoBehaviour
         //J'ajoute mon vecteur velocité a mon transform.position.
         else
         {
-            m_Velocity -= m_DecRatePerSec * Time.deltaTime;
+            m_Velocity -= m_DecRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Max(m_Velocity, 0);
 
             transform.position += forward * m_Velocity * p_DeltaTime;
@@ -197,7 +189,6 @@ public class CharacterController : MonoBehaviour
                 l_TargetPositionCollision.y = m_InitialPosPlayer.y + lastHeight + hit.distance;
                 transform.position = l_TargetPositionCollision;
                 StopJump();
-                Debug.Log("je touche un mur");
 
                 Vector3 lastPosition = transform.position;
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule , m_CapsuleCollider.radius , m_CollisionLayerDetection);
@@ -206,7 +197,6 @@ public class CharacterController : MonoBehaviour
                     transform.position = lastPosition;
                     if (Physics.Raycast(transform.position, transform.up, out RaycastHit HitRay, m_HeightJumpDetection, m_LayerDeplacement))
                     {
-                        Debug.Log("je traverse un mur");
                         Vector3 l_TargetPositionCollisionHead = transform.position;
                         l_TargetPositionCollisionHead.y = m_InitialPosPlayer.y + lastHeight + hit.distance;
                         transform.position = l_TargetPositionCollisionHead;
@@ -263,7 +253,6 @@ public class CharacterController : MonoBehaviour
             m_YVelocity = 0;
         }
     }
-
     void CheckGround()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out l_hit, (m_Height + m_HeighPadding), m_CollisionLayerDetection))
