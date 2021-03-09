@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Atlas_tuyaux_rouages_fils_DefaultMaterial_Normal
-  m_Shader: {fileID: -6465566751694194690, guid: 73d33503b2dc2a941b0c16d6adfb12e2,
+  m_Shader: {fileID: -6465566751694194690, guid: af0fbc2af6cacc9408e74e16b7387040,
     type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -33,6 +33,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_ACE87824:
+        m_Texture: {fileID: 2800000, guid: c7bc0006f44fa894596e340fee71371e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FB8C78A8:
+        m_Texture: {fileID: 2800000, guid: c74b93f31704ae64e9201843cce9f929, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 5134dd30fb1c7d947bd9b7693c0867e0, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -66,6 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_8220681A: 0.19
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
