@@ -10,7 +10,11 @@ public class CharacterController : MonoBehaviour
     private Collider m_Collider = null;
     [SerializeField]
     private CapsuleCollider m_CapsuleCollider = null;
+
+    [Header("Movement")]
     #region Movement
+    
+    #region SerialzeField
     [SerializeField]
     float m_MaxSpeed = 12;
 
@@ -25,20 +29,19 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField]
     private LayerMask m_LayerDeplacement;
-
-    //Variable d'acceleration et de deceleration
-    float m_AccRatePerSec = 0;
-
-    float m_DecRatePerSec = 0;
-    [SerializeField]
+     [SerializeField]
     private float m_HeighPadding = .015f;
 
     [SerializeField]
     private float m_Height = .015f;
+#endregion
+    //Variable d'acceleration et de deceleration
+    float m_AccRatePerSec = 0;
 
+    float m_DecRatePerSec = 0;
     RaycastHit l_hit;
 
-    Vector3 forward;
+    Vector3 m_MovementDirection;
 
     [SerializeField]
     private float m_MaxGroundAnge = 120;
@@ -48,8 +51,10 @@ public class CharacterController : MonoBehaviour
     private RaycastHit m_HitInfos;
 
     #endregion
-
+    [Header("Jump Info")]
     #region Jump
+   
+    #region SerialzeField
     [SerializeField]
     private float m_JumpTimer = 0;
 
@@ -66,7 +71,7 @@ public class CharacterController : MonoBehaviour
     private float m_GravityScale = 1f;
     [SerializeField]
     private float m_HeightJumpDetection = 0;
-
+#endregion
     private float m_YVelocity = 0f;
 
     private bool m_IsOnTheFloor = false;
@@ -91,22 +96,21 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(m_PlayerInput.MoveVector, Time.deltaTime);
-        Jump(Time.deltaTime);
-        CalculateForward();
         CheckGround();
         CalculateGroundAngle();
+        Move(m_PlayerInput.MoveVector, Time.deltaTime);
+        Jump(Time.deltaTime);
     }
 
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
         p_Direction = Vector3.ClampMagnitude(p_Direction, 1f);
-        //je recupère le forward de la camera
+        //je recupère le m_MovementDirection de la camera
         //je recupère le vecteur droit de la camera.
         Vector3 l_CameraForward = Camera.main.transform.forward;
         Vector3 l_CameraRight = Camera.main.transform.right;
 
-        //Mise a zero la valeur en Y du forward et du right de la camera
+        //Mise a zero la valeur en Y du m_MovementDirection et du right de la camera
         //Et nomrmaliztion des vecteur.
         l_CameraForward.y = 0f;
         l_CameraRight.y = 0f;
@@ -117,6 +121,8 @@ public class CharacterController : MonoBehaviour
         //Normalize notre vecteur DesireDirection pour eviter l'acceleration en diagonale
         Vector3 l_DesireDirection = p_Direction.y * l_CameraForward + p_Direction.x * l_CameraRight;
         l_DesireDirection = Vector3.ClampMagnitude(l_DesireDirection, 1f);
+        m_MovementDirection = l_DesireDirection;
+        CalculateForward();
 
         //si je le deplace, j'augmente mon acceleration.
         //j'enregistre mon sens de deplacement ainsi que ma vitesse dans un vecteur Velocity.
@@ -124,21 +130,25 @@ public class CharacterController : MonoBehaviour
         //J'ajoute la valuer de mon vecteur velocity a mon transform.position, afin de me deplacer.
         if (p_Direction != Vector3.zero)
         {
-            transform.forward = l_DesireDirection;
+            if(p_Direction.y > 0)
+            {
+                transform.forward = l_DesireDirection; 
+            }
             m_Velocity += m_AccRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
+
             float l_CastDist = l_DesireDirection.magnitude * p_DeltaTime * m_Velocity;
-            if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, transform.forward, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
+            if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, m_MovementDirection, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
             {
                 if(m_GroundAngle >= m_MaxGroundAnge) return;
                 Vector3 lastPosition = transform.position;
-                transform.position += forward * l_CastDist;
+                transform.position += m_MovementDirection * l_CastDist;
                 
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)
                 {
                    transform.position = lastPosition;
-                   if (Physics.Raycast(transform.position, transform.forward, out RaycastHit HitRay, l_CastDist, m_LayerDeplacement))
+                   if (Physics.Raycast(transform.position, m_MovementDirection, out RaycastHit HitRay, l_CastDist, m_LayerDeplacement))
                    {
                        Vector3 closestPoint = m_Collider.ClosestPoint(HitRay.point);
                        transform.position = closestPoint - HitRay.normal;
@@ -161,7 +171,7 @@ public class CharacterController : MonoBehaviour
             m_Velocity -= m_DecRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Max(m_Velocity, 0);
 
-            transform.position += forward * m_Velocity * p_DeltaTime;
+            transform.position += m_MovementDirection * m_Velocity * p_DeltaTime;
         }
     }
 
@@ -179,7 +189,7 @@ public class CharacterController : MonoBehaviour
             float lastJumpTime = m_JumpTimer;
             m_JumpTimer += p_DeltaTime;
 
-            float lastHeight = m_JumpCurve.Evaluate(lastJumpTime );
+            float lastHeight = m_JumpCurve.Evaluate(lastJumpTime);
             float targetHeight = m_JumpCurve.Evaluate(m_JumpTimer);
             float castDistance = (targetHeight - lastHeight);
 
@@ -191,7 +201,7 @@ public class CharacterController : MonoBehaviour
                 StopJump();
 
                 Vector3 lastPosition = transform.position;
-                Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule , m_CapsuleCollider.radius , m_CollisionLayerDetection);
+                Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule ,PointEndCapsule , m_CapsuleCollider.radius , m_CollisionLayerDetection);
                 if (hitCollider2.Length >= 1)
                 {
                     transform.position = lastPosition;
@@ -275,16 +285,16 @@ public class CharacterController : MonoBehaviour
             m_GroundAngle = 90f;
         }
          
-         m_GroundAngle = Vector3.Angle(m_HitInfos.normal, transform.forward);
+        m_GroundAngle = Vector3.Angle(m_HitInfos.normal, m_MovementDirection);
     }
     void CalculateForward()
     {
-        if (!m_IsOnTheFloor)
-        {
-            forward = transform.forward;
-            return;
-        }
-        forward = Vector3.Cross(l_hit.normal, -transform.right);
+        // if (!m_IsOnTheFloor)
+        // {
+        //     m_MovementDirection = m_VectorDirection;
+        //     return;
+        // }
+        m_MovementDirection = Vector3.Cross(l_hit.normal, Quaternion.AngleAxis(-90, Vector3.up) * m_MovementDirection);
     }
     private float DistanceBetweenTheStartSphereAndTheEndSphere
     {
