@@ -28,11 +28,15 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     [SerializeField]
     private bool m_DebugAlwaysDrawTrajectory = false;
 
-
+    public List<Vector3> m_CurvePoints = new List<Vector3>();
 
     //boolean pour le switch de camera
 
     private bool m_IsAiming = false;
+
+
+    [SerializeField]
+    private SimpleGrabSystem ThrowScript;
 
 
     /// <summary>
@@ -55,12 +59,14 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
         {
             
             DrawTrajectory();
+            ThrowScript.IsArming = true;
         }
         //J'éfface la traj quand je relache le click
         else
         {
 
             ClearTrajectory();
+            ThrowScript.IsArming = false;
         }
     }
 
@@ -79,8 +85,8 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     {
         m_IsAiming = true;
         //  Créer une liste de points de trajectoire
-        var curvePoints = new List<Vector3>();
-        curvePoints.Add(m_StartPosition);
+         List<Vector3> l_CurvePoints = new List<Vector3>();
+         l_CurvePoints.Add(m_StartPosition);
         // Valeurs initiales de la trajectoire
         var currentPosition = m_StartPosition;
         var currentVelocity = m_StartVelocity;
@@ -96,18 +102,19 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
             currentVelocity = currentVelocity + t * Physics.gravity;
             currentPosition = currentPosition + t * currentVelocity;
             // Ajouter un point à la trajectoire
-            curvePoints.Add(currentPosition);
+            l_CurvePoints.Add(currentPosition);
             // Créer un nouveau rayon
             ray = new Ray(currentPosition, currentVelocity.normalized);
         }
         // Si quelque chose a été touché, ajoutez le dernier point ici
         if (hit.transform)
         {
-            curvePoints.Add(hit.point);
+            l_CurvePoints.Add(hit.point);
         }
         // Afficher la ligne avec tous les points
-        m_Line.positionCount = curvePoints.Count;
-        m_Line.SetPositions(curvePoints.ToArray());
+        m_Line.positionCount = l_CurvePoints.Count;
+        m_Line.SetPositions(l_CurvePoints.ToArray());
+        m_CurvePoints = l_CurvePoints;
     }
 
     //efface la traj
