@@ -832,13 +832,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927384590}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.67078537, y: -0.1349676, z: 0.17299964, w: 0.7084504}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 85.662, y: 32.691, z: 57.865}
 --- !u!1 &1011602043 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ad85b41775f20f429b92ab78b83d932,
@@ -1525,11 +1525,21 @@ PrefabInstance:
       propertyPath: m_TimeMaxToZero
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
+        type: 3}
+      propertyPath: m_LayerDeplacement.m_Bits
+      value: 1792
+      objectReference: {fileID: 0}
     - target: {fileID: 1246262766981116671, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
       propertyPath: m_Name
       value: Automaton_Character
       objectReference: {fileID: 0}
+    - target: {fileID: 7822595511669513515, guid: 97066b882d74a344697af2626573c37a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ea968329607ec4984c8c1f96b53270, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97066b882d74a344697af2626573c37a, type: 3}
 --- !u!1001 &7677850403145444590
