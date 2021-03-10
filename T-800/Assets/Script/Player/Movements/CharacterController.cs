@@ -11,6 +11,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private CapsuleCollider m_CapsuleCollider = null;
 
+    private Animator m_Anim;
+
     [Header("Movement")]
     #region Movement
     
@@ -50,6 +52,7 @@ public class CharacterController : MonoBehaviour
 
     private RaycastHit m_HitInfos;
 
+    private Vector3 m_VectorMovement = Vector3.zero;
     #endregion
     [Header("Jump Info")]
     #region Jump
@@ -91,6 +94,7 @@ public class CharacterController : MonoBehaviour
         m_DecRatePerSec = m_MaxSpeed / m_TimeMaxToZero;
         m_Collider = GetComponent<Collider>();
         m_CapsuleCollider = GetComponent<CapsuleCollider>();
+        m_Anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -130,6 +134,7 @@ public class CharacterController : MonoBehaviour
         //J'ajoute la valuer de mon vecteur velocity a mon transform.position, afin de me deplacer.
         if (p_Direction != Vector3.zero)
         {
+            Debug.Log($"mon vector est de : {m_MovementDirection}");
             if(p_Direction.y > 0)
             {
                 transform.forward = l_DesireDirection; 
@@ -137,27 +142,31 @@ public class CharacterController : MonoBehaviour
             m_Velocity += m_AccRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
 
-            float l_CastDist = l_DesireDirection.magnitude * p_DeltaTime * m_Velocity;
+            float l_CastDist = m_MovementDirection.magnitude * m_Velocity * p_DeltaTime;
             if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, m_MovementDirection, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
             {
                 if(m_GroundAngle >= m_MaxGroundAnge) return;
                 Vector3 lastPosition = transform.position;
                 transform.position += m_MovementDirection * l_CastDist;
-                
+                m_VectorMovement = m_MovementDirection;
+                Debug.Log($"mon vecteur de déplacement après l'accéleration est de : {m_MovementDirection}");
+                m_Anim.SetFloat("Speed", m_Velocity);
+
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)
                 {
-                   transform.position = lastPosition;
-                   if (Physics.Raycast(transform.position, m_MovementDirection, out RaycastHit HitRay, l_CastDist, m_LayerDeplacement))
-                   {
-                       Vector3 closestPoint = m_Collider.ClosestPoint(HitRay.point);
-                       transform.position = closestPoint - HitRay.normal;
-                   }
+                    transform.position = lastPosition;
+                    if (Physics.Raycast(transform.position, m_MovementDirection, out RaycastHit HitRay, l_CastDist, m_LayerDeplacement))
+                    {
+                        Vector3 closestPoint = m_Collider.ClosestPoint(HitRay.point);
+                        transform.position = closestPoint - HitRay.normal;
+                    }
                 }
             }
             else
             {
                 m_Velocity = 0;
+                m_Anim.SetFloat("Speed", m_Velocity);
             }
         }
         //Sinon j'enregistre mon vecteur que je desire en soustrayant ma velocity a mon vecteur de direction qui est egale a VECTEUR3.Zero
@@ -168,10 +177,12 @@ public class CharacterController : MonoBehaviour
         //J'ajoute mon vecteur velocité a mon transform.position.
         else
         {
+            Debug.Log($"mon vector est de : {m_MovementDirection}");
             m_Velocity -= m_DecRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Max(m_Velocity, 0);
 
-            transform.position += m_MovementDirection * m_Velocity * p_DeltaTime;
+            m_Anim.SetFloat("Speed", m_Velocity);
+            transform.position += m_VectorMovement * m_Velocity * p_DeltaTime;
         }
     }
 
