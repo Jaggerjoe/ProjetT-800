@@ -82,9 +82,6 @@ public class CharacterController : MonoBehaviour
     private bool m_IsJumping = false;
 
     private Vector3 m_InitialPosPlayer = Vector3.zero;
-
-    private float m_coucoutoi;
-    Camera m_cam;
     #endregion
 
     // Start is called before the first frame update
@@ -100,10 +97,10 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckGround();
-        CalculateGroundAngle();
         Move(m_PlayerInput.MoveVector, Time.deltaTime);
         Jump(Time.deltaTime);
+        CheckGround();
+        CalculateGroundAngle(); 
     }
 
     void Move(Vector3 p_Direction, float p_DeltaTime)
@@ -134,11 +131,23 @@ public class CharacterController : MonoBehaviour
         //J'ajoute la valuer de mon vecteur velocity a mon transform.position, afin de me deplacer.
         if (p_Direction != Vector3.zero)
         {
-            Debug.Log($"mon vector est de : {m_MovementDirection}");
             if(p_Direction.y > 0)
             {
                 transform.forward = l_DesireDirection; 
             }
+            if(p_Direction.y < 0)
+            {
+                transform.forward = -l_DesireDirection;
+            }
+            if(p_Direction.z < 0)
+            {
+                transform.right = -l_DesireDirection;
+            }
+            if(p_Direction.z > 0)
+            {
+                transform.right = l_DesireDirection;
+            }
+
             m_Velocity += m_AccRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
 
@@ -149,7 +158,6 @@ public class CharacterController : MonoBehaviour
                 Vector3 lastPosition = transform.position;
                 transform.position += m_MovementDirection * l_CastDist;
                 m_VectorMovement = m_MovementDirection;
-                Debug.Log($"mon vecteur de déplacement après l'accéleration est de : {m_MovementDirection}");
                 m_Anim.SetFloat("Speed", m_Velocity);
 
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
@@ -177,7 +185,6 @@ public class CharacterController : MonoBehaviour
         //J'ajoute mon vecteur velocité a mon transform.position.
         else
         {
-            Debug.Log($"mon vector est de : {m_MovementDirection}");
             m_Velocity -= m_DecRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Max(m_Velocity, 0);
 
@@ -227,11 +234,8 @@ public class CharacterController : MonoBehaviour
             }
             else
             {
-                //Je recupère la position du player en X et en Z, mais le Y est tjr égale a 0;
-                //je récupère la position du player en ajoutant la valeur en Y par rapport a ma curve
-                //J'ajoute cettes valeur a mon transform.position.
                 Vector3 l_TargetPosition = transform.position;
-                l_TargetPosition.y = m_InitialPosPlayer.y + m_JumpCurve.Evaluate(m_JumpTimer);
+                l_TargetPosition.y = m_InitialPosPlayer.y  + m_JumpCurve.Evaluate(m_JumpTimer);
                 transform.position = l_TargetPosition;
             }
         }
@@ -300,13 +304,14 @@ public class CharacterController : MonoBehaviour
     }
     void CalculateForward()
     {
-        // if (!m_IsOnTheFloor)
-        // {
-        //     m_MovementDirection = m_VectorDirection;
-        //     return;
-        // }
+        if(!m_IsOnTheFloor)
+        {
+            m_VectorMovement = m_MovementDirection;
+            return;
+        }
         m_MovementDirection = Vector3.Cross(l_hit.normal, Quaternion.AngleAxis(-90, Vector3.up) * m_MovementDirection);
     }
+
     private float DistanceBetweenTheStartSphereAndTheEndSphere
     {
         get
