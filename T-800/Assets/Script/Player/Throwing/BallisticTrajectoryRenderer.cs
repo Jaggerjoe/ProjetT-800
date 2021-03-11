@@ -20,6 +20,10 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     // Distance de pas pour la trajectoire
     [SerializeField]
     private float m_TrajectoryVertDist = 0.25f;
+
+    [SerializeField]
+    private LayerMask m_IgnoreTrajectoryMask;
+
     // Longueur maximale de la trajectoire
     [SerializeField]
     private float m_MaxCurveLength = 5;

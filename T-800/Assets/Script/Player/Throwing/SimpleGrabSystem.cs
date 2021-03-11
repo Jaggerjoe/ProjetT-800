@@ -5,6 +5,8 @@ public class SimpleGrabSystem : MonoBehaviour
 {
     [SerializeField]
     private SO_PlayerController m_Controller;
+    [SerializeField]
+    private BallisticTrajectoryRenderer m_Trajectory;
     // Référence au point sur lequel se rend l'objet 
     [SerializeField]
     private Transform m_Slot;
@@ -29,6 +31,17 @@ public class SimpleGrabSystem : MonoBehaviour
     private Vector3 m_ThrowVelocity = new Vector3(0, 0, 5);
 
 
+    #region Lancé
+    [SerializeField]
+    private float m_ThrowSpeed;
+
+    private float m_Timer;
+
+    private int m_CurrentPoint;
+
+    static Vector3 m_CurrentPositionHolder;
+    #endregion
+
     /// Event class which will be displayed in the inspector.
     [System.Serializable]
     public class LocationChanged : UnityEvent<Vector3, Vector3> { }
@@ -39,7 +52,9 @@ public class SimpleGrabSystem : MonoBehaviour
 
     private void Start()
     {
+
         m_Arm.transform.position = m_Slot.position;
+        CheckPoint();
     }
     /// <summary>
     /// Method called very frame.
@@ -90,8 +105,8 @@ public class SimpleGrabSystem : MonoBehaviour
 
         if (m_IsArming && m_IsThrowing)
         {
-           
-            DropItem(m_Arm.GetComponent<PickableItem>());
+            ThrowIng();
+            //DropItem(m_Arm.GetComponent<PickableItem>());
             Debug.Log("drop:" + m_Controller.Aiming);
         }
 
@@ -147,18 +162,50 @@ public class SimpleGrabSystem : MonoBehaviour
     /// Method for dropping item.
     /// </summary>
     /// <param name="item">Item.</param>
-    private void DropItem(PickableItem item)
+    //private void DropItem(PickableItem item)
+    //{
+    //    // Remove reference
+    //    m_PickableItem = null;
+    //    // Remove parent
+    //    item.transform.SetParent(null);
+    //    // Enable rigidbody
+    //    item.Rb.isKinematic = false;
+    //    // Add force to throw item a little bit
+    //    item.Rb.AddForce(item.transform.forward  , ForceMode.VelocityChange);
+    //    // Add velocity to throw the item
+    //    item.Rb.velocity = m_Slot.rotation * m_ThrowVelocity * 0.63f;
+    //}
+
+    void CheckPoint()
     {
-        // Remove reference
-        m_PickableItem = null;
-        // Remove parent
-        item.transform.SetParent(null);
-        // Enable rigidbody
-        item.Rb.isKinematic = false;
-        // Add force to throw item a little bit
-        item.Rb.AddForce(item.transform.forward  , ForceMode.VelocityChange);
-        // Add velocity to throw the item
-        item.Rb.velocity = m_Slot.rotation * m_ThrowVelocity * 0.63f;
+        Debug.Log("list" + m_Trajectory.m_CurvePoints.Count);
+        if (m_CurrentPoint < m_Trajectory.m_CurvePoints.Count - 1)
+        {
+            m_Timer = 0;
+            m_CurrentPositionHolder = m_Trajectory.m_CurvePoints[m_CurrentPoint];
+
+            Debug.Log("check:" + m_CurrentPositionHolder);
+        }
+    }
+    private void ThrowIng()
+    {
+        m_Arm.transform.SetParent(null);
+        m_Timer += Time.deltaTime * m_ThrowSpeed;
+
+        if (m_Arm.transform.position != m_CurrentPositionHolder)
+        {
+            m_Arm.transform.position = Vector3.Lerp(m_Arm.transform.position, m_CurrentPositionHolder, m_Timer);
+            Debug.Log("pos" + m_Arm.transform.position);
+            Debug.Log("checkTHROW:" + m_CurrentPositionHolder);
+        }
+        else
+        {
+            if (m_CurrentPoint < m_Trajectory.m_CurvePoints.Count - 1)
+            {
+                m_CurrentPoint++;
+                CheckPoint();
+            }
+        }
     }
     public void SetArmThrow(/*PickableItem item*/)
     {

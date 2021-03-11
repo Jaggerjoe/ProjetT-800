@@ -145,6 +145,8 @@ MonoBehaviour:
   m_TrajectoryVertDist: 1
   m_MaxCurveLength: 100
   m_DebugAlwaysDrawTrajectory: 0
+  m_CurvePoints: []
+  ThrowScript: {fileID: 8829638048879706666}
 --- !u!1 &1246262766981116671
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Controller: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_Slot: {fileID: 870708540584095280}
-  m_ThrowVelocity: {x: 0, y: 0, z: 5}
+  m_Arm: {fileID: 0}
+  m_Automaton: {fileID: 2128782825769209516}
+  m_AutomatonArmless: {fileID: 1905614475896169149}
+  m_ThrowVelocity: {x: 0, y: 0, z: 15}
   OnLocationChanged:
     m_PersistentCalls:
       m_Calls:
@@ -323,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9212863272594668752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.161, y: 0, z: 0.1615}
+  m_LocalPosition: {x: -0.088, y: 0.119, z: 0.353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1246262766981116668}
@@ -494,6 +499,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74ee35b9107298e4cb4ce3ee34ab3f9d, type: 3}
+--- !u!1 &1905614475896169149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 74ee35b9107298e4cb4ce3ee34ab3f9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1635778173967736812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1241246271710328839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 74ee35b9107298e4cb4ce3ee34ab3f9d,
