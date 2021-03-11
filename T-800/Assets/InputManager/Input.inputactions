@@ -123,6 +123,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d81d7b74-3fdf-486e-bd62-e20cc2a97a0b",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movements",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "719a29ce-cc55-4e56-a26b-f251b94d95b9",
                     "path": "<Keyboard>/e",
                     "interactions": "",

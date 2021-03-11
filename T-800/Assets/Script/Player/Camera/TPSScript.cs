@@ -11,10 +11,10 @@ public class TPSScript : MonoBehaviour
     private float m_currentDistance = 0;
 
     [SerializeField]
-    private float smooth = 5;
+    private float m_Smooth = 5;
 
     [SerializeField]
-    private LayerMask layer;
+    private LayerMask m_Layer;
 
     [SerializeField] // la ou regarde la camera
     private Transform m_Target = null;
@@ -23,10 +23,10 @@ public class TPSScript : MonoBehaviour
     private SO_PlayerController m_PlayerController;
     #endregion
 
-
+    [SerializeField]
     private float m_XAngleMin = -80.0f;
-
-    private float m_XAngleMax = 5.0f;
+    [SerializeField]
+    private float m_XAngleMax = -15.0f;
 
     private Camera m_Cam = null;
 
@@ -57,10 +57,6 @@ public class TPSScript : MonoBehaviour
 
 
     #region Rotation to aim
-    [SerializeField]
-    private float m_XAngleMinAim = -80.0f;
-    [SerializeField]
-    private float m_XAngleMaxAim = 0;
     private float m_RotationXAim = 0f;
     private float m_RotationYAim = 0f;
     [SerializeField]
@@ -68,9 +64,6 @@ public class TPSScript : MonoBehaviour
 
     [SerializeField]
     private BallisticTrajectoryRenderer m_Trajectory;
-
-    [SerializeField]
-    private Transform m_Player;
 
     #endregion
 
@@ -85,41 +78,42 @@ public class TPSScript : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         m_TargetDistance = m_currentDistance;
-        m_OffsetCamera = m_Cam.transform.localPosition;
+        // m_OffsetCamera = m_Cam.transform.localPosition;
     }
     
     private void Update()
     {
-        if (!m_Trajectory.Aiming)
-        {
-            
-            RotationCamera(m_PlayerController.RotationVector);
-        }
 
+        // if (!m_Trajectory.Aiming)
+        // {
             
-            
-        else 
-        {
+        //     RotationCamera(m_PlayerController.RotationVector);
+        // }
+        // else 
+        // {
            
-            RotationAiming(m_PlayerController.RotationVector);
-        }
+        //     RotationAiming(m_PlayerController.RotationVector);
+        // }
        
         
-        //m_deltaTime += Time.deltaTime * 5.0f;
-        //if (m_currentDistance != m_TargetDistance)
-        //{
-        //    m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
-        //}
+        m_deltaTime += Time.deltaTime * 5.0f;
+        if (m_currentDistance != m_TargetDistance)
+        {
+           m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
+        }
         Collision();
     }
-
+private void LateUpdate() {
+            RotationCamera(m_PlayerController.RotationVector);
+    
+}
     public void RotationCamera(Vector3 p_PosCam)
     {
         //rotation par rapport a ma view, c'est ici qu'on peut gerer la sensibilité
         m_RotationX += p_PosCam.y * m_SensivityY;
         m_RotationY += p_PosCam.x * m_SensivityX;
 
-        //m_RotationY = Mathf.Clamp(m_RotationY, m_Y_Angle_Min, m_Y_Angle_Max);
+        // m_RotationY = Mathf.Clamp(m_RotationY, m_Y_Angle_Min, m_Y_Angle_Max);
         m_RotationX = Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);
        
         Quaternion l_Rotation = Quaternion.Euler(m_RotationX, m_RotationY, 0);
@@ -129,9 +123,9 @@ public class TPSScript : MonoBehaviour
         Vector3 l_NextPosition = l_Rotation * Vector3.forward * m_currentDistance;
         Vector3 l_CameraPosition = m_Target.position + m_OffsetCamera;
         //va gere la postion de la camera
-        m_CameraPosition = l_NextPosition + l_CameraPosition;
-        transform.position = Vector3.Lerp(m_AimCameraPosition, m_CameraPosition, 1);
-       // transform.position = l_NextPosition + l_CameraPosition;
+        // m_CameraPosition = l_NextPosition + l_CameraPosition;
+        // transform.position = Vector3.Lerp(m_AimCameraPosition, m_CameraPosition, 1);
+        transform.position = l_NextPosition + l_CameraPosition;
         transform.LookAt(m_Target);
     }
 
@@ -164,13 +158,13 @@ public class TPSScript : MonoBehaviour
     void Collision()
     {
         RaycastHit hit = new RaycastHit();
-        if (Physics.Linecast(m_Target.position, transform.position, out hit, layer))
+        if (Physics.Linecast(m_Target.position, transform.position, out hit, m_Layer))
         {
-            m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, hit.point, Time.deltaTime * smooth);
+            m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, hit.point, Time.deltaTime * m_Smooth);
         }
         else
         {
-            m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, this.transform.position, Time.deltaTime * smooth);
+            m_Cam.transform.position = Vector3.Lerp(m_Cam.transform.position, this.transform.position, Time.deltaTime * m_Smooth);
         }
     }
 
