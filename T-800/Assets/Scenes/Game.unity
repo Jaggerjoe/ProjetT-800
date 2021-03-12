@@ -14,14 +14,14 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.02
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
-  m_AmbientEquatorColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  m_AmbientEquatorColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
   m_AmbientGroundColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
@@ -32,7 +32,7 @@ RenderSettings:
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
@@ -209,6 +209,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &657569 stripped
@@ -289,6 +294,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_escalier_simple (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
 --- !u!4 &5146684 stripped
@@ -314,7 +324,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &13152918
 Transform:
@@ -476,6 +486,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -767,6 +782,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_chaudron
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 61ea671b8f5c7d94f8c3989752d8b595,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61ea671b8f5c7d94f8c3989752d8b595, type: 3}
@@ -1753,6 +1773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
 --- !u!4 &63046723 stripped
@@ -1937,6 +1962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (3)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -2154,7 +2184,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &87312232
 Transform:
@@ -2208,7 +2238,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &96097626
 Transform:
@@ -2371,6 +2401,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &96239163 stripped
@@ -2466,6 +2501,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &97168419 stripped
@@ -2560,6 +2600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -3043,6 +3088,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_reservoir (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48fcca4b3d0f03b45bba07f36686a025,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48fcca4b3d0f03b45bba07f36686a025, type: 3}
@@ -3575,7 +3625,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &133054668
 Transform:
@@ -3619,7 +3669,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &134329211
 Transform:
@@ -3824,6 +3874,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &141392039 stripped
@@ -3919,6 +3974,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &144727598 stripped
@@ -4013,6 +4073,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_wagon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09f0160bf1fec3d4d96f8db74cdcb804,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f0160bf1fec3d4d96f8db74cdcb804, type: 3}
@@ -4303,6 +4368,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_bouche_d'egout
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9996fe442dea4140b2f94052b608f2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9996fe442dea4140b2f94052b608f2e, type: 3}
 --- !u!4 &160078638 stripped
@@ -4377,6 +4447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_salle_2_Mur_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e96f52c1a7b235d43b1f157b34bb32b9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e96f52c1a7b235d43b1f157b34bb32b9, type: 3}
@@ -4772,6 +4847,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &178869060 stripped
@@ -5012,6 +5092,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -5498,6 +5583,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &195453357 stripped
@@ -5720,6 +5810,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &205990231 stripped
@@ -5799,6 +5894,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (13)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -6204,6 +6304,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &214658016 stripped
@@ -6487,6 +6592,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &218598579 stripped
@@ -6582,6 +6692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_statue
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b66733719fcca740941b18244c5bc01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b66733719fcca740941b18244c5bc01, type: 3}
 --- !u!4 &224292110 stripped
@@ -6676,6 +6791,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -6966,6 +7086,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &232581707 stripped
@@ -7253,6 +7378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_mov_rouage_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
@@ -7577,7 +7707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &264369375
 Transform:
   m_ObjectHideFlags: 0
@@ -7740,6 +7870,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &266992094 stripped
@@ -7819,6 +7954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (2)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -8484,6 +8624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_escalier_simple (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
 --- !u!4 &296187536 stripped
@@ -8802,7 +8947,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &316038566
 Transform:
@@ -9281,6 +9426,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_wagon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09f0160bf1fec3d4d96f8db74cdcb804,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f0160bf1fec3d4d96f8db74cdcb804, type: 3}
 --- !u!4 &330988173 stripped
@@ -9705,6 +9855,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &349003166 stripped
@@ -9998,6 +10153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9 (1)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
@@ -10493,6 +10653,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_escalier_simple (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
 --- !u!4 &369955474 stripped
@@ -10587,6 +10752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -10683,6 +10853,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &374722011 stripped
@@ -10753,6 +10928,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6a50a3a5d7bf5994b817ccc4ee03e633,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f6cc54eba7835c4dbca05330910f480, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a50a3a5d7bf5994b817ccc4ee03e633,
         type: 3}
       propertyPath: m_Name
@@ -10853,6 +11033,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &378830413 stripped
@@ -10933,6 +11118,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_escalier_simple (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
 --- !u!4 &382269317 stripped
@@ -10955,7 +11145,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &385550234
 Transform:
@@ -11155,6 +11345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -11435,6 +11630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_escalier_simple
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
@@ -11736,6 +11936,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &414410169 stripped
@@ -11930,6 +12135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_escalier_simple (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
@@ -12219,6 +12429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &441104873 stripped
@@ -12313,6 +12528,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_mov_rouage_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
@@ -13187,6 +13407,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &480703609 stripped
@@ -13226,6 +13451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.minColor.a
       value: 0.2784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857287625169387512, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7857287625169387513, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
@@ -13573,6 +13803,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &488351322 stripped
@@ -13668,6 +13903,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &490081667 stripped
@@ -13762,6 +14002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -13951,6 +14196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -14439,6 +14689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &503427072 stripped
@@ -14666,7 +14921,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &507834964
 Transform:
@@ -15108,6 +15363,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &522282785 stripped
@@ -15130,7 +15390,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &523924830
 Transform:
@@ -15173,7 +15433,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &534150622
 Transform:
@@ -15267,7 +15527,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &536332828
 Transform:
@@ -15431,6 +15691,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9 (1)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
 --- !u!4 &541695860 stripped
@@ -15525,6 +15790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -16258,6 +16528,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (15)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
 --- !u!4 &575724321 stripped
@@ -16352,6 +16627,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -16731,6 +17011,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &591190519 stripped
@@ -16919,6 +17204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -17409,6 +17699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &604442680 stripped
@@ -17587,6 +17882,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (10)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -18174,6 +18474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -18813,17 +19118,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8265486
+      value: 2.6694
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.0745068
+      value: -6.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.774874
+      value: 8.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
@@ -18868,17 +19173,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1355
+      value: 1.5699128
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.1355
+      value: 1.5699128
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.1355
+      value: 1.5699128
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 48fcca4b3d0f03b45bba07f36686a025,
         type: 3}
@@ -19094,6 +19399,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_wagon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09f0160bf1fec3d4d96f8db74cdcb804,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f0160bf1fec3d4d96f8db74cdcb804, type: 3}
@@ -19539,6 +19849,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &687691384 stripped
@@ -19564,7 +19879,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &691297943
 Transform:
@@ -20028,6 +20343,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &728227918 stripped
@@ -20216,6 +20536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -20764,7 +21089,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &754527001
 Transform:
@@ -20947,6 +21272,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &763033640 stripped
@@ -21041,6 +21371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -21137,6 +21472,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &766996387 stripped
@@ -21232,6 +21572,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &776006601 stripped
@@ -21311,6 +21656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (12)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -21905,6 +22255,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &809006157 stripped
@@ -22032,7 +22387,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &810520273
 Transform:
@@ -22438,6 +22793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -22953,6 +23313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &844314838 stripped
@@ -23047,6 +23412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9 (1)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
@@ -23772,7 +24142,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &877146541
 Transform:
@@ -24017,6 +24387,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -25422,6 +25797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &963275912 stripped
@@ -25621,6 +26001,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -26319,6 +26704,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1002905406 stripped
@@ -26413,6 +26803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -26509,6 +26904,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
 --- !u!4 &1007817336 stripped
@@ -26603,6 +27003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -26726,7 +27131,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1019919281
 Transform:
@@ -26884,6 +27289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1025513041 stripped
@@ -26978,6 +27388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_reservoir (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48fcca4b3d0f03b45bba07f36686a025,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48fcca4b3d0f03b45bba07f36686a025, type: 3}
@@ -27557,6 +27972,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1067057399 stripped
@@ -27652,6 +28072,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &1067319350 stripped
@@ -27746,6 +28171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -28175,6 +28605,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (8)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
 --- !u!4 &1084830384 stripped
@@ -28294,7 +28729,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1087151416
 Transform:
@@ -28557,6 +28992,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1087834746 stripped
@@ -28582,7 +29022,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1089709392
 Transform:
@@ -29040,6 +29480,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1117097066 stripped
@@ -29134,6 +29579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -29380,6 +29830,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1128344731 stripped
@@ -29438,18 +29893,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentDistance: 5
-  smooth: 5
-  layer:
+  m_Smooth: 5
+  m_Layer:
     serializedVersion: 2
-    m_Bits: 272
+    m_Bits: 0
   m_Target: {fileID: 1787072831}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  m_XAngleMin: -80
+  m_XAngleMax: -15
   m_OffsetCameraAim: {x: 0, y: 5, z: 0}
-  m_XAngleMinAim: -50
-  m_XAngleMaxAim: 5
   m_SensitivityYAim: 0.1
   m_Trajectory: {fileID: 1724767942}
-  m_Player: {fileID: 0}
 --- !u!4 &1136882836
 Transform:
   m_ObjectHideFlags: 0
@@ -29853,6 +30307,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1146553492 stripped
@@ -30041,6 +30500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -30425,6 +30889,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1168301402 stripped
@@ -30712,6 +31181,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -31100,6 +31574,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1187410752 stripped
@@ -31289,6 +31768,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1189148604 stripped
@@ -31383,6 +31867,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -31853,6 +32342,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1206743737 stripped
@@ -32041,6 +32535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -32241,6 +32740,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -32645,6 +33149,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1236907280 stripped
@@ -32839,6 +33348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -33325,6 +33839,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_bouche_d'egout (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9996fe442dea4140b2f94052b608f2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9996fe442dea4140b2f94052b608f2e, type: 3}
 --- !u!4 &1264472010 stripped
@@ -33519,6 +34038,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -33741,6 +34265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -34230,6 +34759,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1301728424 stripped
@@ -34324,6 +34858,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -34449,7 +34988,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1328156602
 Transform:
@@ -34850,6 +35389,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1332900135 stripped
@@ -35184,6 +35728,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
@@ -35856,6 +36405,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (9)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
 --- !u!4 &1374478746 stripped
@@ -35870,6 +36424,98 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 584904405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1376137215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1376137217}
+  - component: {fileID: 1376137216}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1376137216
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376137215}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 262.73
+  m_Range: 80.05
+  m_SpotAngle: 38.117912
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.02
+    m_NormalBias: 0.1
+    m_NearPlane: 0.1
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 2
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 3
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1376137217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376137215}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.88, y: 26.4, z: -50.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1376585134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36049,6 +36695,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7261216133401233546, guid: aef44171c2335c84184f90366047a1b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ea968329607ec4984c8c1f96b53270, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aef44171c2335c84184f90366047a1b8, type: 3}
 --- !u!1001 &1391912250
@@ -36742,6 +37393,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1413107669 stripped
@@ -37216,6 +37872,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &1424997732 stripped
@@ -37395,6 +38056,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (4)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -38001,6 +38667,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1440790907 stripped
@@ -38322,6 +38993,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1459556312 stripped
@@ -38511,6 +39187,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_wagon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09f0160bf1fec3d4d96f8db74cdcb804,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f0160bf1fec3d4d96f8db74cdcb804, type: 3}
 --- !u!1001 &1464850983
@@ -38599,6 +39280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -39123,7 +39809,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1482132045
 Transform:
@@ -39285,6 +39971,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_mov_rouage_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
@@ -39629,6 +40320,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1492981557 stripped
@@ -39751,7 +40447,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1494810065
 Transform:
@@ -39892,6 +40588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_salle_2_Mur_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e18dc5a2cb052f418736ef33c949c84,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e18dc5a2cb052f418736ef33c949c84, type: 3}
@@ -40567,6 +41268,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1515601185 stripped
@@ -40755,6 +41461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -41522,6 +42233,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_escalier_simple (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
 --- !u!4 &1547306179 stripped
@@ -41827,6 +42543,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1562310821 stripped
@@ -42022,6 +42743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1567808208 stripped
@@ -42044,7 +42770,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1568205159
 Transform:
@@ -42253,6 +42979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -42649,6 +43380,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1595809903 stripped
@@ -42743,6 +43479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -43124,6 +43865,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1614421624 stripped
@@ -43412,6 +44158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1617776452 stripped
@@ -43597,6 +44348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (11)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
 --- !u!4 &1623507957 stripped
@@ -43635,7 +44391,7 @@ PrefabInstance:
     - target: {fileID: 7857287625169387511, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
       propertyPath: InitialModule.startColor.minColor.a
-      value: 0.2784314
+      value: 0.05882353
       objectReference: {fileID: 0}
     - target: {fileID: 7857287625169387513, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
@@ -43665,7 +44421,7 @@ PrefabInstance:
     - target: {fileID: 7857287625735844254, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
       propertyPath: InitialModule.startColor.minColor.a
-      value: 0.21960784
+      value: 0.09019608
       objectReference: {fileID: 0}
     - target: {fileID: 7857287625735844254, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
@@ -43992,6 +44748,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1634023677 stripped
@@ -44086,6 +44847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -44267,6 +45033,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7479122cacb48d047900334f4904faaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7479122cacb48d047900334f4904faaf, type: 3}
 --- !u!4 &1643995350 stripped
@@ -44309,7 +45080,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1644240942
 Transform:
@@ -44916,6 +45687,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1664066311 stripped
@@ -45225,7 +46001,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1676508137
 Transform:
@@ -45349,6 +46125,11 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7857287625169387513, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7857287625735843936, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -45363,6 +46144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857287625735843937, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7857287625735844254, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
@@ -45464,6 +46250,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Smoke (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7857287626471869940, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7, type: 3}
 --- !u!4 &1685949359 stripped
@@ -45558,6 +46349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -46067,6 +46863,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
@@ -46583,6 +47384,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1725193274 stripped
@@ -46961,6 +47767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -47352,6 +48163,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1767135726 stripped
@@ -47526,6 +48342,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_escalier_simple (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
 --- !u!4 &1770717160 stripped
@@ -47590,7 +48411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1779726724
 Light:
   m_ObjectHideFlags: 0
@@ -48553,6 +49374,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (7)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
 --- !u!4 &1808571667 stripped
@@ -48742,6 +49568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1812873758 stripped
@@ -48836,6 +49667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_mov_rouage_cass\xE9 (1)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbc5809fee4450e418480d08bd0737ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc5809fee4450e418480d08bd0737ce, type: 3}
@@ -49132,6 +49968,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1832089151 stripped
@@ -49211,6 +50052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_escalier_simple (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
@@ -49407,6 +50253,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &1844671256 stripped
@@ -49429,7 +50280,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1849591835
 Transform:
@@ -49620,6 +50471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6e909e6a6d07644185890f3ebb327aa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e909e6a6d07644185890f3ebb327aa, type: 3}
@@ -50207,6 +51063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (14)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -50962,6 +51823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_escalier_simple (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b598a1c3dc9f4fd4b9efb6c8f38b6dac, type: 3}
 --- !u!4 &1920352810 stripped
@@ -51157,6 +52023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &1927419364 stripped
@@ -51252,6 +52123,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1936207050 stripped
@@ -51346,6 +52222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -51650,6 +52531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1955377230 stripped
@@ -51838,6 +52724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -52134,6 +53025,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &1978562954 stripped
@@ -52418,6 +53314,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (6)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
 --- !u!4 &1998992706 stripped
@@ -52497,6 +53398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "env_st_escalier_colima\xE7on (5)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfcf643aeca285343800f1e315dd81bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcf643aeca285343800f1e315dd81bf, type: 3}
@@ -52693,6 +53599,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_mov_rouage_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
 --- !u!4 &2006095976 stripped
@@ -52787,6 +53698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -52883,6 +53799,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_reservoir
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48fcca4b3d0f03b45bba07f36686a025,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48fcca4b3d0f03b45bba07f36686a025, type: 3}
 --- !u!4 &2009657024 stripped
@@ -52953,10 +53874,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3204b9b362466dc428b4083ea8d2b5ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4e70fdcab544e246a4e560cf6119636, type: 2}
     - target: {fileID: 919132149155446097, guid: 3204b9b362466dc428b4083ea8d2b5ca,
         type: 3}
       propertyPath: m_Name
       value: env_st_fresque
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3204b9b362466dc428b4083ea8d2b5ca,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3204b9b362466dc428b4083ea8d2b5ca, type: 3}
@@ -53756,6 +54687,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &2040312553 stripped
@@ -54344,6 +55280,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &2048720481 stripped
@@ -54471,7 +55412,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2059301782
 Transform:
@@ -54603,7 +55544,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2066653875
 Transform:
@@ -54906,7 +55847,7 @@ PrefabInstance:
     - target: {fileID: 7857287625169387511, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
       propertyPath: InitialModule.startColor.minColor.a
-      value: 0.19215687
+      value: 0.09803922
       objectReference: {fileID: 0}
     - target: {fileID: 7857287625169387511, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
@@ -54923,6 +55864,11 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 7857287625169387513, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7857287625735843936, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -54937,6 +55883,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857287625735843937, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7857287625735844254, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
@@ -54966,7 +55917,7 @@ PrefabInstance:
     - target: {fileID: 7857287625735844254, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
       propertyPath: InitialModule.startColor.minColor.a
-      value: 0.27058825
+      value: 0.12156863
       objectReference: {fileID: 0}
     - target: {fileID: 7857287625735844254, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
         type: 3}
@@ -55037,6 +55988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857287626471869940, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abc0c3ddaa8a1c4fb9049ec6a8942c7, type: 3}
@@ -55264,6 +56220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_rail_droit (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
@@ -55558,6 +56519,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_st_bouche_d'egout (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9996fe442dea4140b2f94052b608f2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9996fe442dea4140b2f94052b608f2e, type: 3}
@@ -56045,6 +57011,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_st_rail_droit (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb2fa0d988f5a4545815a08f4639b442,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2fa0d988f5a4545815a08f4639b442, type: 3}
 --- !u!4 &2146162748 stripped
@@ -56139,6 +57110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: env_mov_rouage_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b681d816e576b294cb07c92de01e8f3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b681d816e576b294cb07c92de01e8f3c, type: 3}
