@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 6386425845519459642, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
       propertyPath: m_IgnoreTrajectoryMask.m_Bits
-      value: 6
+      value: 3895
       objectReference: {fileID: 0}
     - target: {fileID: 8829638048879706666, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
@@ -457,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 8829638048879706666, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
       propertyPath: m_ThrowSpeed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8829638048879706666, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
@@ -980,7 +980,7 @@ PrefabInstance:
     - target: {fileID: 3649748994239532908, guid: b31f3e9f6aaff2b4087e1be33f30ad78,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9083342833765904126, guid: b31f3e9f6aaff2b4087e1be33f30ad78,
         type: 3}
