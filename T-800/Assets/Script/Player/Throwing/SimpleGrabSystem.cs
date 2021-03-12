@@ -54,7 +54,6 @@ public class SimpleGrabSystem : MonoBehaviour
 
     private void Start()
     {
-
         m_Arm.transform.position = m_Slot.position;
         CheckPoint();
     }
