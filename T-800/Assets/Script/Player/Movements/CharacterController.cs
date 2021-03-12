@@ -1,22 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterController : MonoBehaviour
 {
+    #region Subclass
+    [System.Serializable]
+    private class MovementEvent
+    {
+        public UnityEvent m_OnMove = new UnityEvent();
+    }
+    #endregion
     [SerializeField]
     private SO_PlayerController m_PlayerInput;
 
     private Collider m_Collider = null;
     [SerializeField]
     private CapsuleCollider m_CapsuleCollider = null;
-
     private Animator m_Anim;
 
+    [SerializeField]
+    private MovementEvent m_MovementEvent = new MovementEvent();
+    #region MovementInfo
     [Header("Movement")]
-    #region Movement
-    
-    #region SerialzeField
+
     [SerializeField]
     float m_MaxSpeed = 12;
 
@@ -36,7 +44,6 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField]
     private float m_Height = .015f;
-#endregion
     //Variable d'acceleration et de deceleration
     float m_AccRatePerSec = 0;
 
@@ -54,10 +61,10 @@ public class CharacterController : MonoBehaviour
 
     private Vector3 m_VectorMovement = Vector3.zero;
     #endregion
+
+    #region JumpInfo
     [Header("Jump Info")]
-    #region Jump
    
-    #region SerialzeField
     [SerializeField]
     private float m_JumpTimer = 0;
 
@@ -74,7 +81,6 @@ public class CharacterController : MonoBehaviour
     private float m_GravityScale = 1f;
     [SerializeField]
     private float m_HeightJumpDetection = 0;
-#endregion
     private float m_YVelocity = 0f;
 
     private bool m_IsOnTheFloor = false;
@@ -82,8 +88,7 @@ public class CharacterController : MonoBehaviour
     private bool m_IsJumping = false;
 
     private Vector3 m_InitialPosPlayer = Vector3.zero;
-    #endregion
-
+#endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -159,7 +164,8 @@ public class CharacterController : MonoBehaviour
                 transform.position += m_MovementDirection * l_CastDist;
                 m_VectorMovement = m_MovementDirection;
                 m_Anim.SetFloat("Speed", m_Velocity);
-
+                m_MovementEvent.m_OnMove.Invoke();
+                
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)
                 {
