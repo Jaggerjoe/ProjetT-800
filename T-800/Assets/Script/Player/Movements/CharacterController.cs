@@ -129,22 +129,13 @@ public class CharacterController : MonoBehaviour
         //J'ajoute la valuer de mon vecteur velocity a mon transform.position, afin de me deplacer.
         if (p_Direction != Vector3.zero)
         {
-            if(p_Direction.y > 0)
-            {
-                transform.forward = l_DesireDirection; 
-            }
-            if(p_Direction.y < 0)
-            {
-                transform.forward = -l_DesireDirection;
-            }
-            if(p_Direction.z < 0)
-            {
-                transform.right = -l_DesireDirection;
-            }
-            if(p_Direction.z > 0)
-            {
-                transform.right = l_DesireDirection;
-            }
+            if(p_Direction.y > 0){transform.forward = l_DesireDirection; }
+         
+            if(p_Direction.y < 0){transform.forward = -l_DesireDirection;}
+        
+            if(p_Direction.z < 0){transform.right = -l_DesireDirection;}
+
+            if(p_Direction.z > 0) {transform.right = l_DesireDirection;}
 
             m_Velocity += m_AccRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
@@ -186,8 +177,32 @@ public class CharacterController : MonoBehaviour
             m_Velocity -= m_DecRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Max(m_Velocity, 0);
 
-            m_Anim.SetFloat("Speed", m_Velocity);
-            transform.position += m_VectorMovement * m_Velocity * p_DeltaTime;
+            float l_CastDist = m_VectorMovement.magnitude * m_Velocity * p_DeltaTime;
+            if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, m_VectorMovement, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
+            {
+                if(m_GroundAngle >= m_MaxGroundAnge) return;
+                Vector3 lastPosition = transform.position;
+                transform.position += m_VectorMovement * m_Velocity * p_DeltaTime;
+
+                m_Anim.SetFloat("Speed", m_Velocity);
+                
+                Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
+                if (hitCollider2.Length >= 1)
+                {
+                    transform.position = lastPosition;
+                    if (Physics.Raycast(transform.position, m_VectorMovement, out RaycastHit HitRay, l_CastDist, m_LayerDeplacement))
+                    {
+                        Vector3 closestPoint = m_Collider.ClosestPoint(HitRay.point);
+                        transform.position = closestPoint - HitRay.normal;
+                    }
+                }
+            }
+             else
+            {
+                m_Velocity = 0;
+                m_Anim.SetFloat("Speed", m_Velocity);
+            }
+
         }
     }
 

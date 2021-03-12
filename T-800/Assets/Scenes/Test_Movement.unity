@@ -1560,6 +1560,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
+      propertyPath: m_TimeMaxToZero
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
+        type: 3}
       propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
