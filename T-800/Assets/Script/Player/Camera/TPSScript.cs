@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.InputSystem;
 
 public class TPSScript : MonoBehaviour
@@ -9,6 +10,9 @@ public class TPSScript : MonoBehaviour
     //distance de la camera par rapport au player
     [SerializeField]
     private float m_currentDistance = 0;
+
+    [SerializeField]
+    private float m_currentDistanceAim = 0;
 
     [SerializeField]
     private float m_Smooth = 5;
@@ -57,6 +61,11 @@ public class TPSScript : MonoBehaviour
 
 
     #region Rotation to aim
+
+    [SerializeField]
+    private float m_XAngleMinAim = -80.0f;
+    [SerializeField]
+    private float m_XAngleMaxAim = -15.0f;
     private float m_RotationXAim = 0f;
     private float m_RotationYAim = 0f;
     [SerializeField]
@@ -84,30 +93,30 @@ public class TPSScript : MonoBehaviour
     private void Update()
     {
 
-        // if (!m_Trajectory.Aiming)
-        // {
-            
-        //     RotationCamera(m_PlayerController.RotationVector);
-        // }
-        // else 
-        // {
-           
-        //     RotationAiming(m_PlayerController.RotationVector);
-        // }
-       
-        
-        m_deltaTime += Time.deltaTime * 5.0f;
-        if (m_currentDistance != m_TargetDistance)
+        if (m_Trajectory.Aiming)
         {
-           m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
+            RotationAiming(m_PlayerController.RotationVector);
+            
         }
-        Collision();
-    }
-private void LateUpdate() {
+        else
+        {
+
             RotationCamera(m_PlayerController.RotationVector);
-    
-}
-    public void RotationCamera(Vector3 p_PosCam)
+        }
+
+
+        //        m_deltaTime += Time.deltaTime * 5.0f;
+        //        if (m_currentDistance != m_TargetDistance)
+        //        {
+        //           m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
+        //        }
+        //        Collision();
+        //    }
+        //private void LateUpdate() {
+        //            RotationCamera(m_PlayerController.RotationVector);
+
+    }
+        public void RotationCamera(Vector3 p_PosCam)
     {
         //rotation par rapport a ma view, c'est ici qu'on peut gerer la sensibilité
         m_RotationX += p_PosCam.y * m_SensivityY;
@@ -118,15 +127,23 @@ private void LateUpdate() {
        
         Quaternion l_Rotation = Quaternion.Euler(m_RotationX, m_RotationY, 0);
 
+
+
         //on prend le forward du monde qui est le z est on fait y fait = la new position on multipli par la distance et la roation (rotation du quaternion qu'on va appliquer)
         //tout ça par rapport a l'input.
         Vector3 l_NextPosition = l_Rotation * Vector3.forward * m_currentDistance;
         Vector3 l_CameraPosition = m_Target.position + m_OffsetCamera;
         //va gere la postion de la camera
-        // m_CameraPosition = l_NextPosition + l_CameraPosition;
+        m_CameraPosition = l_NextPosition + l_CameraPosition;
         // transform.position = Vector3.Lerp(m_AimCameraPosition, m_CameraPosition, 1);
-        transform.position = l_NextPosition + l_CameraPosition;
+        transform.position = m_CameraPosition;
         transform.LookAt(m_Target);
+
+        //if (transform.position != m_CameraPosition)
+        //{
+        //    transform.DOMove(m_CameraPosition, 1f, false);
+        //}
+
     }
 
     private void RotationAiming(Vector3 p_MouseAim)
@@ -136,22 +153,31 @@ private void LateUpdate() {
             m_RotationXAim += p_MouseAim.y * m_SensitivityYAim;
             m_RotationYAim += p_MouseAim.x * m_SensitivityYAim;
 
-           // m_RotationXAim = Mathf.Clamp(m_RotationXAim, m_XAngleMinAim, m_XAngleMaxAim);
+           m_RotationXAim = Mathf.Clamp(m_RotationXAim, m_XAngleMinAim, m_XAngleMaxAim);
             Quaternion l_Rotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim,0);
 
             m_Target.rotation = l_Rotation;
+            //m_Cam.transform.rotation = l_Rotation;
             //transform.rotation = l_Rotation;
 
           
-            Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistance;
+            Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistanceAim;
             Vector3 l_CameraPosition = m_Target.position + m_OffsetCameraAim;
 
 
 
             m_AimCameraPosition = l_NextPosition + l_CameraPosition;
-            transform.position = Vector3.Lerp(m_CameraPosition, m_AimCameraPosition, 1);
-            //transform.position = l_NextPosition + l_CameraPosition;
+            //transform.position = Vector3.Lerp(m_CameraPosition, m_AimCameraPosition, 1);
+            transform.position = m_AimCameraPosition;
             transform.LookAt(m_Target );
+
+
+        //if (transform.position != m_AimCameraPosition)
+        //{
+
+        //    transform.DOMove(m_AimCameraPosition, 1f, false);
+        //}
+
 
     }
 
