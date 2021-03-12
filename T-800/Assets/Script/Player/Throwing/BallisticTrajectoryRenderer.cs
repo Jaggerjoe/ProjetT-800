@@ -98,7 +98,7 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(currentPosition, currentVelocity.normalized);
         // Bouclez jusqu'à ce que vous touchiez quelque chose ou que la distance soit trop grande
-        while (!Physics.Raycast(ray, out hit, m_TrajectoryVertDist) && Vector3.Distance(m_StartPosition, currentPosition) < m_MaxCurveLength)
+        while (!Physics.Raycast(ray, out hit, m_TrajectoryVertDist,m_IgnoreTrajectoryMask) && Vector3.Distance(m_StartPosition, currentPosition) < m_MaxCurveLength)
         {
             // Temps pour parcourir la distance de la trajectoireVertDist
             var t = m_TrajectoryVertDist / currentVelocity.magnitude;

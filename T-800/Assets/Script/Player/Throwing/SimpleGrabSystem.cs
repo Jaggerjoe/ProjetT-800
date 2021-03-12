@@ -39,6 +39,8 @@ public class SimpleGrabSystem : MonoBehaviour
 
     private int m_CurrentPoint;
 
+    private Vector3 m_StartPositon;
+
     static Vector3 m_CurrentPositionHolder;
     #endregion
 
@@ -105,9 +107,13 @@ public class SimpleGrabSystem : MonoBehaviour
 
         if (m_IsArming && m_IsThrowing)
         {
-            ThrowIng();
-            //DropItem(m_Arm.GetComponent<PickableItem>());
-            Debug.Log("drop:" + m_Controller.Aiming);
+            if(m_Arm.transform.parent = m_Slot)
+            {
+                ThrowIng();
+                //DropItem(m_Arm.GetComponent<PickableItem>());
+                Debug.Log("drop:" + m_Controller.Aiming);
+            }
+         
         }
 
         if (m_IsArming && !m_IsThrowing)
@@ -178,6 +184,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
     void CheckPoint()
     {
+        m_StartPositon = m_Arm.transform.position;
         Debug.Log("list" + m_Trajectory.m_CurvePoints.Count);
         if (m_CurrentPoint < m_Trajectory.m_CurvePoints.Count - 1)
         {
@@ -194,7 +201,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
         if (m_Arm.transform.position != m_CurrentPositionHolder)
         {
-            m_Arm.transform.position = Vector3.Lerp(m_Arm.transform.position, m_CurrentPositionHolder, m_Timer);
+            m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
             Debug.Log("pos" + m_Arm.transform.position);
             Debug.Log("checkTHROW:" + m_CurrentPositionHolder);
         }
