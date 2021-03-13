@@ -416,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 8829638048879706666, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
       propertyPath: m_ThrowSpeed
-      value: 0.5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8829638048879706666, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
@@ -1100,8 +1100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed73c7fcfea8f247a8cb2087007aa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentDistance: 10
-  m_currentDistanceAim: 10
+  m_currentDistance: 5
+  m_currentDistanceAim: 8
   m_Smooth: 5
   m_Layer:
     serializedVersion: 2

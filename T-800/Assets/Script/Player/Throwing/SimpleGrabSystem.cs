@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 
 public class SimpleGrabSystem : MonoBehaviour
@@ -13,7 +14,7 @@ public class SimpleGrabSystem : MonoBehaviour
     private Transform m_Slot;
     // Ref de l'objet
 
-
+    
 
     private bool m_IsArming = false;
     private bool m_IsThrowing = false;
@@ -31,6 +32,8 @@ public class SimpleGrabSystem : MonoBehaviour
     [SerializeField]
     private Vector3 m_ThrowVelocity = new Vector3(0, 0, 5);
 
+    [SerializeField]
+    private List<Vector3> m_ThrowPoints = new List<Vector3>();
 
     #region Lancé
     [SerializeField]
@@ -55,7 +58,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
     private void Start()
     {
-
+       
         m_Arm.transform.position = m_Slot.position;
         CheckPoint();
     }
@@ -119,7 +122,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
         if (m_IsArming && !m_IsThrowing)
         {
-            Debug.Log("It's OK");
+
             SetArmThrow(/*m_Arm.GetComponent<PickableItem>()*/);
 
 
@@ -178,30 +181,33 @@ public class SimpleGrabSystem : MonoBehaviour
     private void OnEnable()
     {
         
-        m_Controller.onThrow.AddListener(ThrowIng);
+        m_Controller.onThrow.AddListener(Throwing);
     }
     private void OnDisable()
     {
-        m_Controller.onThrow.RemoveListener(ThrowIng);
+        m_Controller.onThrow.RemoveListener(Throwing);
     }
 
     void CheckPoint()
     {
-        //m_StartPositon = m_Arm.transform.position;
+        m_StartPositon = m_Arm.transform.position;
        
-        if (m_CurrentPoint < m_Trajectory.m_CurvePoints.Count - 1)
+        if (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
             m_Timer = 0;
-            m_CurrentPositionHolder = m_Trajectory.m_CurvePoints[m_CurrentPoint];
+            m_CurrentPositionHolder = m_ThrowPoints[m_CurrentPoint];
 
          
         }
     }
-    private void ThrowIng()
+    void Throwing()
     {
-       
+        
+        m_ThrowPoints = m_Trajectory.m_CurvePoints;
+        m_Arm.transform.SetParent(null);
+
         CheckPoint();
-       
+        
         StartCoroutine(FollowCurve());
     }
     public void SetArmThrow(/*PickableItem item*/)
@@ -209,7 +215,7 @@ public class SimpleGrabSystem : MonoBehaviour
        
         m_Automaton.SetActive(false);
         m_AutomatonArmless.SetActive(true);
-
+        
         //Instantiate(m_Arm,m_Slot);
    
         ////    //// Assign reference
@@ -248,29 +254,31 @@ public class SimpleGrabSystem : MonoBehaviour
     {
 
         //m_Arm.transform.SetParent(null);
-        while (m_CurrentPoint < m_Trajectory.m_CurvePoints.Count - 1)
+        while (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
-            m_Timer += Time.deltaTime;
+
+            m_Timer += Time.deltaTime * m_ThrowSpeed;
             if (m_Arm.transform.position != m_CurrentPositionHolder)
             {
-                m_Arm.transform.position = Vector3.Lerp(m_Arm.transform.position, m_CurrentPositionHolder, m_Timer);
+                m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
                 Debug.Log("ok");
             }
             else
             {
-                if (m_CurrentPoint < m_Trajectory.m_CurvePoints.Count - 1)
-                {
-                    Debug.Log("vui");
-                    m_CurrentPoint++;
-                    CheckPoint();
-                }
-            }
+                
+                Debug.Log("vui");
+                m_CurrentPoint++;
+                CheckPoint();
 
+            }
+            yield return null;
         }
 
         
 
-        yield return null;
+        
+
+       
 
     }
     
