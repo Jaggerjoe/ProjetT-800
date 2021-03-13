@@ -5,13 +5,7 @@ using UnityEngine.Events;
 
 public class CharacterController : MonoBehaviour
 {
-    #region Subclass
-    [System.Serializable]
-    private class MovementEvent
-    {
-        public UnityEvent m_OnMove = new UnityEvent();
-    }
-    #endregion
+  
     [SerializeField]
     private SO_PlayerController m_PlayerInput;
 
@@ -20,8 +14,7 @@ public class CharacterController : MonoBehaviour
     private CapsuleCollider m_CapsuleCollider = null;
     private Animator m_Anim;
 
-    [SerializeField]
-    private MovementEvent m_MovementEvent = new MovementEvent();
+  
     #region MovementInfo
     [Header("Movement")]
 
@@ -164,7 +157,6 @@ public class CharacterController : MonoBehaviour
                 transform.position += m_MovementDirection * l_CastDist;
                 m_VectorMovement = m_MovementDirection;
                 m_Anim.SetFloat("Speed", m_Velocity);
-                m_MovementEvent.m_OnMove.Invoke();
                 
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)
