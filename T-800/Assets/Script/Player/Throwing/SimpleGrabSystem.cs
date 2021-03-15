@@ -14,7 +14,8 @@ public class SimpleGrabSystem : MonoBehaviour
     private Transform m_Slot;
     // Ref de l'objet
 
-    
+    [SerializeField]
+    private EtatDuPlayer m_EtatDeMonRobot = EtatDuPlayer.DeuxBras;
 
     private bool m_IsArming = false;
     private bool m_IsThrowing = false;
@@ -109,31 +110,35 @@ public class SimpleGrabSystem : MonoBehaviour
         //    }
         // Broadcast location change
 
-        if (m_IsArming && m_IsThrowing)
-        {
-            if(m_Arm.transform.parent = m_Slot)
-            {
+        //if (m_IsArming && m_IsThrowing)
+        //{
+        //    if(m_Arm.transform.parent = m_Slot)
+        //    {
                 
-                //DropItem(m_Arm.GetComponent<PickableItem>());
-                Debug.Log("drop:" + m_Controller.Aiming);
-            }
+        //        //DropItem(m_Arm.GetComponent<PickableItem>());
+        //        Debug.Log("drop:" + m_Controller.Aiming);
+        //    }
          
-        }
-
-        if (m_IsArming && !m_IsThrowing)
+        //}
+        if ( m_EtatDeMonRobot == EtatDuPlayer.DeuxBras)
         {
 
-            SetArmThrow(/*m_Arm.GetComponent<PickableItem>()*/);
+            if (m_IsArming && !m_IsThrowing)
+            {
+
+                SetArmThrow(/*m_Arm.GetComponent<PickableItem>()*/);
 
 
+            }
+            else
+            {
+                //if (Vector3.Distance(m_Arm.position, slot.position) <= 0.1f)
+                //{
+                SetArmPos(/*m_Arm.GetComponent<PickableItem>()*/);
+                //}
+            }
         }
-        else
-        {
-            //if (Vector3.Distance(m_Arm.position, slot.position) <= 0.1f)
-            //{
-            SetArmPos(/*m_Arm.GetComponent<PickableItem>()*/);
-            //}
-        }
+
      
 
 
@@ -205,6 +210,8 @@ public class SimpleGrabSystem : MonoBehaviour
         
         m_ThrowPoints = m_Trajectory.m_CurvePoints;
         m_Arm.transform.SetParent(null);
+        m_EtatDeMonRobot = EtatDuPlayer.UnBras;
+        m_AutomatonArmless.SetActive(true);
 
         CheckPoint();
         
@@ -274,8 +281,8 @@ public class SimpleGrabSystem : MonoBehaviour
             yield return null;
         }
 
-        
 
+        m_Arm = null;
         
 
        
