@@ -358,10 +358,7 @@ public class CharacterController : MonoBehaviour
         get { return m_MovementDirection; }
     }
 
-    public float Velocity
-    {
-        get { return m_Velocity; }
-    }
+
 
     public float Speed
     {
