@@ -218,6 +218,8 @@ public class CharacterController : MonoBehaviour
                 StopJump();
                 return;
             }
+            m_Anim.SetBool("Jump", true);
+
             float lastJumpTime = m_JumpTimer;
             m_JumpTimer += p_DeltaTime;
 
@@ -260,6 +262,7 @@ public class CharacterController : MonoBehaviour
             {
                 m_YVelocity = 0f;
                 m_JumpTimer = 0;
+                m_Anim.SetBool("Jump", false);
             }
             else
             {
@@ -270,6 +273,7 @@ public class CharacterController : MonoBehaviour
                 if (m_IsOnTheFloor)
                 {
                     m_IsOnTheFloor = false;
+
                 }
                 m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
             }    
@@ -353,6 +357,11 @@ public class CharacterController : MonoBehaviour
     {
         get { return m_MaxSpeed; }
         set { m_MaxSpeed = value; }
+    }
+    public float Velocity
+    {
+        get{ return m_Velocity; } 
+        set{ m_Velocity = value; }
     }
 
     private void OnDrawGizmos()
