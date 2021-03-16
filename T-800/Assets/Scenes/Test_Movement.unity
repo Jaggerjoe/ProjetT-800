@@ -885,40 +885,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3815947633016245875, guid: 3ad85b41775f20f429b92ab78b83d932, type: 3}
---- !u!1 &1061939005 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2128782825769209516, guid: 97066b882d74a344697af2626573c37a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1246262766982407047}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1061939006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061939005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4c989b0c937384c9eea9fc904ca521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovementEvent:
-    m_OnMove:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11400000, guid: 0f3097534d4ce054492e59f30ebae55f, type: 2}
-          m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
-          m_MethodName: InstantiatePrefab
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1197688826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,92 +1524,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f3097534d4ce054492e59f30ebae55f,
-        type: 2}
-    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InstantiatePrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Instantiator, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246262766981116670, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_MovementEvent.m_OnMove.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1246262766981116671, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
       propertyPath: m_Name
       value: Automaton_Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 1905614475896169149, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2383204336284844887, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2487913045773040144, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701502806995747820, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6319882853454681837, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7822595511669513515, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -1581467998920896106, guid: ff00587d7fe2bcd49939ed206f15e042,
-        type: 3}
-    - target: {fileID: 8383427922613960144, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8829638048879706666, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_Trajectory
-      value: 
-      objectReference: {fileID: 1357068500}
-    - target: {fileID: 9073023843585606907, guid: 97066b882d74a344697af2626573c37a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97066b882d74a344697af2626573c37a, type: 3}
