@@ -104,6 +104,7 @@ public class CharacterController : MonoBehaviour
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
         p_Direction = Vector3.ClampMagnitude(p_Direction, 1f);
+        Debug.Log($"ma magnitude est de {p_Direction.y}");
         //je recupère le m_MovementDirection de la camera
         //je recupère le vecteur droit de la camera.
         Vector3 l_CameraForward = Camera.main.transform.forward;
@@ -139,7 +140,6 @@ public class CharacterController : MonoBehaviour
 
             m_Velocity += m_AccRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
-
             float l_CastDist = m_MovementDirection.magnitude * m_Velocity * p_DeltaTime;
             if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, m_MovementDirection, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
             {
@@ -148,6 +148,7 @@ public class CharacterController : MonoBehaviour
                 transform.position += m_MovementDirection * l_CastDist;
                 m_VectorMovement = m_MovementDirection;
                 m_Anim.SetFloat("Speed", m_Velocity);
+                m_Anim.SetFloat("MoveDir", p_Direction.y);
                 
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)
@@ -217,6 +218,8 @@ public class CharacterController : MonoBehaviour
                 StopJump();
                 return;
             }
+            m_Anim.SetBool("Jump", true);
+
             float lastJumpTime = m_JumpTimer;
             m_JumpTimer += p_DeltaTime;
 
@@ -259,6 +262,7 @@ public class CharacterController : MonoBehaviour
             {
                 m_YVelocity = 0f;
                 m_JumpTimer = 0;
+                m_Anim.SetBool("Jump", false);
             }
             else
             {
@@ -269,6 +273,7 @@ public class CharacterController : MonoBehaviour
                 if (m_IsOnTheFloor)
                 {
                     m_IsOnTheFloor = false;
+
                 }
                 m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
             }    
@@ -362,6 +367,11 @@ public class CharacterController : MonoBehaviour
     {
         get { return m_MaxSpeed; }
         set { m_MaxSpeed = value; }
+    }
+    public float Velocity
+    {
+        get{ return m_Velocity; } 
+        set{ m_Velocity = value; }
     }
 
     private void OnDrawGizmos()
