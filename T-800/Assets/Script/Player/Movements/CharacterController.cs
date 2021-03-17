@@ -104,7 +104,6 @@ public class CharacterController : MonoBehaviour
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
         p_Direction = Vector3.ClampMagnitude(p_Direction, 1f);
-        Debug.Log($"ma magnitude est de {p_Direction.y}");
         //je recupère le m_MovementDirection de la camera
         //je recupère le vecteur droit de la camera.
         Vector3 l_CameraForward = Camera.main.transform.forward;
