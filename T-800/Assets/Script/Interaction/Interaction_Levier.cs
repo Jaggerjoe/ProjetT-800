@@ -12,10 +12,6 @@ public class Interaction_Levier : InteractionMother
 
     private Animator m_Anim;
 
-    private void Start()
-    {
- 
-    }
     // Start is called before the first frame update
 
     public override void Use()

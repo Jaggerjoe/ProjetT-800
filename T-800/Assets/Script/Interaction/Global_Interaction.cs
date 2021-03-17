@@ -49,8 +49,6 @@ public class Global_Interaction : InteractionMother
                         {
                             if(!m_UseObject)
                             {
-                                m_InteractObj.GlobalInteractionRef = this;
-                                m_InteractObj.CharacterController = GetComponent<CharacterController>();
                                 m_InteractObj.PlayerControllerSO = m_PLayerController;
                                 m_UseObject = true;
                                 m_InteractObj.Use();
