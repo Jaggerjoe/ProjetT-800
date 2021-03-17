@@ -8,6 +8,13 @@ public abstract class InteractionMother : MonoBehaviour
     private Global_Interaction m_PlayerInteraction = null;
     private CharacterController m_PlayerCharacterController = null;
     private SO_PlayerController m_SOCharacterController = null;
+    protected float m_Speed = 0;
+    public virtual void Start() 
+    {
+        m_PlayerCharacterController = FindObjectOfType<CharacterController>();
+        m_PlayerInteraction = FindObjectOfType<Global_Interaction>();
+        m_Speed = CharacterController.Speed;
+    }
     public virtual void Use()
     {
 

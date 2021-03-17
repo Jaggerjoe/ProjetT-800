@@ -87,6 +87,10 @@ public class SO_PlayerController : ScriptableObject
         }
     }   
 
+    private void BindInputMovement(bool p_AreEnabled)
+    {
+        
+    }
     private void Interaction(InputAction.CallbackContext p_Context)
     {
         m_OnInteract.Invoke();
@@ -99,7 +103,6 @@ public class SO_PlayerController : ScriptableObject
     private void StopInteraction(InputAction.CallbackContext p_Context)
     {
         m_IsInteract = false;
-
     }
     private void RotationCamera(InputAction.CallbackContext p_Context)
     {

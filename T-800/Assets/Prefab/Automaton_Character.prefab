@@ -243,7 +243,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.5
-      value: 5
+      value: 3
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Trajectory: {fileID: 6386425845519459642}
   m_Slot: {fileID: 870708540584095280}
   m_Arm: {fileID: 0}
+  m_SkeletArm: {fileID: 0}
   m_Automaton: {fileID: 2128782825769209516}
-  m_AutomatonArmless: {fileID: 0}
   m_ThrowVelocity: {x: 0, y: 0, z: 15}
   m_ThrowPoints: []
   m_ThrowSpeed: 0
@@ -358,6 +358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4c989b0c937384c9eea9fc904ca521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayerController: {fileID: 0}
+  m_PlayerCharacterController: {fileID: 0}
   m_MovementEvent:
     m_OnMove:
       m_PersistentCalls:
@@ -374,6 +376,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    m_OnStopMove:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &4824341562685356034
 GameObject:
   m_ObjectHideFlags: 0

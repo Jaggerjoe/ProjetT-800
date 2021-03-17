@@ -104,7 +104,6 @@ public class CharacterController : MonoBehaviour
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
         p_Direction = Vector3.ClampMagnitude(p_Direction, 1f);
-        Debug.Log($"ma magnitude est de {p_Direction.y}");
         //je recupère le m_MovementDirection de la camera
         //je recupère le vecteur droit de la camera.
         Vector3 l_CameraForward = Camera.main.transform.forward;
@@ -218,6 +217,8 @@ public class CharacterController : MonoBehaviour
                 StopJump();
                 return;
             }
+            m_Anim.SetBool("Jump", true);
+
             float lastJumpTime = m_JumpTimer;
             m_JumpTimer += p_DeltaTime;
 
@@ -260,6 +261,7 @@ public class CharacterController : MonoBehaviour
             {
                 m_YVelocity = 0f;
                 m_JumpTimer = 0;
+                m_Anim.SetBool("Jump", false);
             }
             else
             {
@@ -270,6 +272,7 @@ public class CharacterController : MonoBehaviour
                 if (m_IsOnTheFloor)
                 {
                     m_IsOnTheFloor = false;
+
                 }
                 m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
             }    
@@ -349,10 +352,22 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public Vector3 MovementDirection
+    {
+        get { return m_MovementDirection; }
+    }
+
+
+
     public float Speed
     {
         get { return m_MaxSpeed; }
         set { m_MaxSpeed = value; }
+    }
+    public float Velocity
+    {
+        get{ return m_Velocity; } 
+        set{ m_Velocity = value; }
     }
 
     private void OnDrawGizmos()
