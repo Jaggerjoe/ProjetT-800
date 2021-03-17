@@ -71,6 +71,7 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
             {
                 if (m_Etat.Etat == EtatDuPlayer.DeuxBras)
                 {
+                    
                     DrawTrajectory();
                     ThrowScript.IsArming = true;
             }    

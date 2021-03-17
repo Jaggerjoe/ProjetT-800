@@ -352,6 +352,13 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public Vector3 MovementDirection
+    {
+        get { return m_MovementDirection; }
+    }
+
+
+
     public float Speed
     {
         get { return m_MaxSpeed; }

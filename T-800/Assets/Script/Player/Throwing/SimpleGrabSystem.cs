@@ -18,16 +18,16 @@ public class SimpleGrabSystem : MonoBehaviour
 
 
     private bool m_IsArming = false;
-    private bool m_IsThrowing = false;
+ 
 
     // Ref de l'objet
     [SerializeField]
-    private GameObject m_Arm;
+    private GameObject m_Arm; 
+    [SerializeField]
+    private GameObject m_SkeletArm;
 
     [SerializeField]
     private GameObject m_Automaton;
-    [SerializeField]
-    private GameObject m_AutomatonArmless;
 
     [Header("Throw")]
     // 
@@ -61,7 +61,7 @@ public class SimpleGrabSystem : MonoBehaviour
     private void Start()
     {
        
-        // m_Arm.transform.position = m_Slot.position;
+        m_Arm.transform.position = m_Slot.position;
         CheckPoint();
     }
 
@@ -72,7 +72,7 @@ public class SimpleGrabSystem : MonoBehaviour
         if ( m_Etat.Etat == EtatDuPlayer.DeuxBras)
         {
 
-            if (m_IsArming && !m_IsThrowing)
+            if (m_IsArming )
             {
 
                 SetArmThrow();
@@ -112,7 +112,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
     void CheckPoint()
     {
-        // m_StartPositon = m_Arm.transform.position;
+        m_StartPositon = m_Arm.transform.position;
        
         if (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
@@ -126,9 +126,9 @@ public class SimpleGrabSystem : MonoBehaviour
     {
         
         m_ThrowPoints = m_Trajectory.m_CurvePoints;
-        // m_Arm.transform.SetParent(null);
+        m_Arm.transform.SetParent(null);
         m_Etat.Etat = EtatDuPlayer.UnBras;
-        // m_AutomatonArmless.SetActive(true);
+
 
         CheckPoint();
         
@@ -136,18 +136,18 @@ public class SimpleGrabSystem : MonoBehaviour
     }
     public void SetArmThrow()
     {
-       
-        m_Automaton.SetActive(false);
-        // m_AutomatonArmless.SetActive(true);
+
+        m_SkeletArm.SetActive(false);
+      
         
         
     }
 
     public void SetArmPos()
     {
-        // m_AutomatonArmless.SetActive(false);
-        m_Automaton.SetActive(true);
-     
+
+        m_SkeletArm.SetActive(true);
+
     }
 
     IEnumerator FollowCurve()
