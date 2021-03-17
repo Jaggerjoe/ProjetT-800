@@ -14,15 +14,16 @@ public class SimpleGrabSystem : MonoBehaviour
     // Référence au point sur lequel se rend l'objet 
     [SerializeField]
     private Transform m_Slot;
-    
+    private Animator m_Anim;
+
 
 
     private bool m_IsArming = false;
  
 
     // Ref de l'objet
-    [SerializeField]
-    private GameObject m_Arm; 
+    //[SerializeField]
+    //private GameObject m_Arm; 
     [SerializeField]
     private GameObject m_SkeletArm;
 
@@ -60,8 +61,8 @@ public class SimpleGrabSystem : MonoBehaviour
 
     private void Start()
     {
-       
-        m_Arm.transform.position = m_Slot.position;
+        m_Anim = GetComponentInChildren<Animator>();
+        //m_Arm.transform.position = m_Slot.position;
         CheckPoint();
     }
 
@@ -112,7 +113,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
     void CheckPoint()
     {
-        m_StartPositon = m_Arm.transform.position;
+        //m_StartPositon = m_Arm.transform.position;
        
         if (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
@@ -126,13 +127,13 @@ public class SimpleGrabSystem : MonoBehaviour
     {
         
         m_ThrowPoints = m_Trajectory.m_CurvePoints;
-        m_Arm.transform.SetParent(null);
+        //m_Arm.transform.SetParent(null);
         m_Etat.Etat = EtatDuPlayer.UnBras;
 
 
         CheckPoint();
         
-        StartCoroutine(FollowCurve());
+        //StartCoroutine(FollowCurve());
     }
     public void SetArmThrow()
     {
@@ -150,37 +151,37 @@ public class SimpleGrabSystem : MonoBehaviour
 
     }
 
-    IEnumerator FollowCurve()
-    {
+    //IEnumerator FollowCurve()
+    //{
 
        
-        while (m_CurrentPoint < m_ThrowPoints.Count - 1)
-        {
+    //    //while (m_CurrentPoint < m_ThrowPoints.Count - 1)
+    //    //{
 
-            m_Timer += Time.deltaTime * m_ThrowSpeed;
-            if (m_Arm.transform.position != m_CurrentPositionHolder)
-            {
-                m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
-                Debug.Log("ok");
-            }
-            else
-            {
+    //    //    m_Timer += Time.deltaTime * m_ThrowSpeed;
+    //    //    if (m_Arm.transform.position != m_CurrentPositionHolder)
+    //    //    {
+    //    //        m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
+    //    //        Debug.Log("ok");
+    //    //    }
+    //    //    else
+    //    //    {
                 
-                Debug.Log("vui");
-                m_CurrentPoint++;
-                CheckPoint();
+    //    //        Debug.Log("vui");
+    //    //        m_CurrentPoint++;
+    //    //        CheckPoint();
 
-            }
-            yield return null;
-        }
+    //    //    }
+    //    //    yield return null;
+    //    //}
 
 
-        m_Arm = null;
+    //    //m_Arm = null;
         
 
        
 
-    }
+    //}
     
 
     private void OnDrawGizmos()

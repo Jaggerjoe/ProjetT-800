@@ -66,7 +66,12 @@ public class TPSScript : MonoBehaviour
     private float m_XAngleMinAim = -80.0f;
     [SerializeField]
     private float m_XAngleMaxAim = -15.0f;
+    [SerializeField]
+    private float m_XAngleMinAimCam = -80.0f;
+    [SerializeField]
+    private float m_XAngleMaxAimCam = -15.0f;
     private float m_RotationXAim = 0f;
+    private float m_RotationXAimCam = 0f;
     private float m_RotationYAim = 0f;
     [SerializeField]
     private float m_SensitivityYAim = 0.1f;
@@ -151,14 +156,17 @@ public class TPSScript : MonoBehaviour
         
 
             m_RotationXAim += p_MouseAim.y * m_SensitivityYAim;
+            m_RotationXAimCam += p_MouseAim.y * m_SensitivityYAim;
             m_RotationYAim += p_MouseAim.x * m_SensitivityYAim;
 
-           m_RotationXAim = Mathf.Clamp(m_RotationXAim, m_XAngleMinAim, m_XAngleMaxAim);
+            m_RotationXAim = Mathf.Clamp(m_RotationXAim, m_XAngleMinAim, m_XAngleMaxAim);
+            m_RotationXAimCam = Mathf.Clamp(m_RotationXAimCam, m_XAngleMinAimCam, m_XAngleMaxAimCam);
             Quaternion l_Rotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim,0);
-
+            Quaternion l_CamRotation = Quaternion.Euler(m_RotationXAimCam, m_RotationYAim, 0);
+            
             m_Target.rotation = l_Rotation;
             //m_Cam.transform.rotation = l_Rotation;
-            //transform.rotation = l_Rotation;
+            transform.rotation = l_CamRotation;
 
           
             Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistanceAim;
@@ -169,7 +177,7 @@ public class TPSScript : MonoBehaviour
             m_AimCameraPosition = l_NextPosition + l_CameraPosition;
             //transform.position = Vector3.Lerp(m_CameraPosition, m_AimCameraPosition, 1);
             transform.position = m_AimCameraPosition;
-            transform.LookAt(m_Target );
+        //transform.LookAt(m_Target);
 
 
         //if (transform.position != m_AimCameraPosition)
