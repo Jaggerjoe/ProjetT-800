@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597935905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.34, y: 0.003, z: 1.37}
+  m_LocalPosition: {x: -0.176, y: 0.003, z: 0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1801978424670004046}
@@ -170,11 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Controller: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
-  startPosition: {x: 0, y: 0, z: 0}
-  startVelocity: {x: 0, y: 0, z: 0}
-  trajectoryVertDist: 0.25
-  maxCurveLength: 100
-  _debugAlwaysDrawTrajectory: 0
+  m_StartPosition: {x: 0, y: 0, z: 0}
+  m_StartVelocity: {x: 0, y: 0, z: 0}
+  m_TrajectoryVertDist: 0.25
+  m_MaxCurveLength: 5
+  m_DebugAlwaysDrawTrajectory: 0
+  ThrowScript: {fileID: 0}
 --- !u!1 &1801978422926669275
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +328,6 @@ MonoBehaviour:
   m_Angle: 60
   m_RefInteraction: {fileID: 1801978424670004043}
   m_PLayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
-  m_Collider: {fileID: 0}
 --- !u!114 &1801978424670004043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +363,7 @@ MonoBehaviour:
     m_Bits: 800
   m_HeighPadding: 0.015
   m_Height: 0.4
+  m_MaxGroundAnge: 120
   m_JumpTimer: 0
   m_JumpCurve:
     serializedVersion: 2
@@ -393,6 +394,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 544
   m_GravityScale: 6
+  m_HeightJumpDetection: 0
 --- !u!114 &1905940262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,10 +407,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd9468d16ec294db57d4732c530faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
-  characterCamera: {fileID: 0}
-  slot: {fileID: 597935906}
-  throwVelocity: {x: 0, y: 0, z: 15}
+  m_Controller: {fileID: 0}
+  m_Slot: {fileID: 0}
+  m_Arm: {fileID: 0}
+  m_Automaton: {fileID: 0}
+  m_AutomatonArmless: {fileID: 0}
+  m_ThrowVelocity: {x: 0, y: 0, z: 5}
   OnLocationChanged:
     m_PersistentCalls:
       m_Calls:

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_waterfall
+  m_Shader: {fileID: -6465566751694194690, guid: 50ec1011012408a4f85ea3d035abe927,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_27d2abc34f4e4b63ad7f008a49f9ca45: 1.25
+    - Vector1_3fcec742dbf449ae8af95739ad63c5c2: 0
+    - Vector1_95dd34442a1c4e96bcea0af56103b997: 3.5
+    - Vector1_a5eb80aad4fe434cae9617c757353fc4: 1.47
+    - Vector1_bf6e2ad8376f4b11b71236e89075c409: 2.11
+    - Vector1_c819bb633e3d4be9afbaa3ff97be096a: 0.16
+    - Vector1_caf52d96d96749ffb5bfa8137dd4d308: 18.06
+    m_Colors:
+    - Color_682ee1f2c32c4d6c8305ee6252da08f9: {r: 0, g: 0.3301887, b: 0.12188173,
+        a: 1}
+    - Vector2_e82a3a71c9a7439189b9b35416b8eb12: {r: 0, g: 0.2, b: 0, a: 0}
+  m_BuildTextureStacks: []

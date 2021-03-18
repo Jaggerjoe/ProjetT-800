@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,12 +12,15 @@ public class Interaction_Levier : InteractionMother
 
     private Animator m_Anim;
 
-    private void Start()
-    {
- 
-    }
-    // Start is called before the first frame update
+    private MeshCollider m_Collider = null;
+    
+    
 
+    public override void Start() 
+    {
+        base.Start();
+        m_Collider = GetComponent<MeshCollider>();
+    }
     public override void Use()
     {
         if(TryGetComponent(out m_Anim))
@@ -35,6 +38,7 @@ public class Interaction_Levier : InteractionMother
     public void Levier()
     {
         m_Anim.SetBool("Interact",true);
+        m_Collider.enabled = false;
     }
 
     public void OpenDoor()

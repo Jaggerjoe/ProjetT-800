@@ -33,6 +33,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_7C869D6F:
+        m_Texture: {fileID: 2800000, guid: c5b9a275e545b0a40806222fc48bd7f0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_ACE87824:
         m_Texture: {fileID: 2800000, guid: 8812e7443dd6852489e087ee763aad9d, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -99,10 +103,11 @@ Material:
     - _attenuation_rim: 0.632
     - _densite_trait: 31.2
     - _offset_ombre: 0.24
-    - _taille_rim: 0.638
+    - _taille_rim: 1
     - _taille_trait: 0.18
     - _zone_ombre: 0.02
     m_Colors:
+    - Color_C1EAEF8D: {r: 0, g: 0.9256198, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -14,11 +14,12 @@ public class SO_PlayerController : ScriptableObject
     private Vector2 m_PosCamera = Vector2.zero;
 
     private bool m_IsAiming = false;
-    private bool m_IsGrabAndThrow = false;
+    private bool m_IsThrowing = false;
     private bool m_IsJumping = false;
     private bool m_IsInteract = false;
-    private VoidEvent m_OnJump = new VoidEvent();
+   // private VoidEvent m_OnJump = new VoidEvent();
     private VoidEvent m_OnInteract = new VoidEvent();
+    private VoidEvent m_OnThrow = new VoidEvent();
 
     private void OnEnable()
     {
@@ -53,8 +54,8 @@ public class SO_PlayerController : ScriptableObject
             m_InputAsset.FindAction("Player/Aiming").performed += Aim;
             m_InputAsset.FindAction("Player/Aiming").canceled += StopAim;
 
-            m_InputAsset.FindAction("Player/GrabAndThrow").performed += GAT;
-            m_InputAsset.FindAction("Player/GrabAndThrow").canceled += StopGAT;
+            m_InputAsset.FindAction("Player/GrabAndThrow").performed += Throw;
+            m_InputAsset.FindAction("Player/GrabAndThrow").canceled += StopThrow;
 
 
             m_InputAsset.Enable();
@@ -76,8 +77,9 @@ public class SO_PlayerController : ScriptableObject
             m_InputAsset.FindAction("Player/Aiming").performed -= Aim;
             m_InputAsset.FindAction("Player/Aiming").canceled -= StopAim;
 
-            m_InputAsset.FindAction("Player/GrabAndThrow").performed -= GAT;
-            m_InputAsset.FindAction("Player/GrabAndThrow").canceled -= StopGAT;
+            //m_InputAsset.FindAction("Player/GrabAndThrow").performed -= Throw;
+            m_InputAsset.FindAction("Player/GrabAndThrow").started -= Throw;
+            m_InputAsset.FindAction("Player/GrabAndThrow").canceled -= StopThrow;
 
 
 
@@ -85,6 +87,10 @@ public class SO_PlayerController : ScriptableObject
         }
     }   
 
+    private void BindInputMovement(bool p_AreEnabled)
+    {
+        
+    }
     private void Interaction(InputAction.CallbackContext p_Context)
     {
         m_OnInteract.Invoke();
@@ -97,7 +103,6 @@ public class SO_PlayerController : ScriptableObject
     private void StopInteraction(InputAction.CallbackContext p_Context)
     {
         m_IsInteract = false;
-
     }
     private void RotationCamera(InputAction.CallbackContext p_Context)
     {
@@ -125,17 +130,17 @@ public class SO_PlayerController : ScriptableObject
     {
         m_IsJumping = false;
     }
-    private void GAT(InputAction.CallbackContext p_Context)
+    private void Throw(InputAction.CallbackContext p_Context)
     {
-        if (!m_IsGrabAndThrow)
+        if (!m_IsThrowing)
         {
-
-           m_IsGrabAndThrow = true;
+            m_OnThrow.Invoke();
+           m_IsThrowing = true;
         }
     }
-    private void StopGAT(InputAction.CallbackContext p_Context)
+    private void StopThrow(InputAction.CallbackContext p_Context)
     {
-        m_IsGrabAndThrow = false;
+        m_IsThrowing = false;
     }
     private void Aim(InputAction.CallbackContext p_Context)
     {
@@ -150,7 +155,9 @@ public class SO_PlayerController : ScriptableObject
         m_IsAiming = false;
     }
 
-    public VoidEvent onJump => m_OnJump;
+    //public VoidEvent onJump => m_OnJump;
+
+    public VoidEvent onThrow => m_OnThrow;
     public bool Jumping
     {
         get { return m_IsJumping; }
@@ -162,7 +169,7 @@ public class SO_PlayerController : ScriptableObject
     public VoidEvent InteractionObj => m_OnInteract;
     public bool Aiming => m_IsAiming;
 
-    public bool GrabAndThrow => m_IsGrabAndThrow;
+    public bool GrabAndThrow => m_IsThrowing;
 }
 
    

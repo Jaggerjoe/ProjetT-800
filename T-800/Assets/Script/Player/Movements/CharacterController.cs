@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterController : MonoBehaviour
 {
+  
     [SerializeField]
     private SO_PlayerController m_PlayerInput;
 
     private Collider m_Collider = null;
     [SerializeField]
     private CapsuleCollider m_CapsuleCollider = null;
-
     private Animator m_Anim;
 
+  
+    #region MovementInfo
     [Header("Movement")]
-    #region Movement
-    
-    #region SerialzeField
+
     [SerializeField]
     float m_MaxSpeed = 12;
 
@@ -36,7 +37,6 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField]
     private float m_Height = .015f;
-#endregion
     //Variable d'acceleration et de deceleration
     float m_AccRatePerSec = 0;
 
@@ -54,10 +54,10 @@ public class CharacterController : MonoBehaviour
 
     private Vector3 m_VectorMovement = Vector3.zero;
     #endregion
+
+    #region JumpInfo
     [Header("Jump Info")]
-    #region Jump
    
-    #region SerialzeField
     [SerializeField]
     private float m_JumpTimer = 0;
 
@@ -74,7 +74,6 @@ public class CharacterController : MonoBehaviour
     private float m_GravityScale = 1f;
     [SerializeField]
     private float m_HeightJumpDetection = 0;
-#endregion
     private float m_YVelocity = 0f;
 
     private bool m_IsOnTheFloor = false;
@@ -82,8 +81,7 @@ public class CharacterController : MonoBehaviour
     private bool m_IsJumping = false;
 
     private Vector3 m_InitialPosPlayer = Vector3.zero;
-    #endregion
-
+#endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -131,26 +129,16 @@ public class CharacterController : MonoBehaviour
         //J'ajoute la valuer de mon vecteur velocity a mon transform.position, afin de me deplacer.
         if (p_Direction != Vector3.zero)
         {
-            if(p_Direction.y > 0)
-            {
-                transform.forward = l_DesireDirection; 
-            }
-            if(p_Direction.y < 0)
-            {
-                transform.forward = -l_DesireDirection;
-            }
-            if(p_Direction.z < 0)
-            {
-                transform.right = -l_DesireDirection;
-            }
-            if(p_Direction.z > 0)
-            {
-                transform.right = l_DesireDirection;
-            }
+            if(p_Direction.y > 0){transform.forward = l_DesireDirection; }
+         
+            if(p_Direction.y < 0){transform.forward = -l_DesireDirection;}
+        
+            if(p_Direction.z < 0){transform.right = -l_DesireDirection;}
+
+            if(p_Direction.z > 0) {transform.right = l_DesireDirection;}
 
             m_Velocity += m_AccRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Min(m_Velocity, m_MaxSpeed);
-
             float l_CastDist = m_MovementDirection.magnitude * m_Velocity * p_DeltaTime;
             if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, m_MovementDirection, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
             {
@@ -159,7 +147,8 @@ public class CharacterController : MonoBehaviour
                 transform.position += m_MovementDirection * l_CastDist;
                 m_VectorMovement = m_MovementDirection;
                 m_Anim.SetFloat("Speed", m_Velocity);
-
+                m_Anim.SetFloat("MoveDir", p_Direction.y);
+                
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)
                 {
@@ -188,8 +177,32 @@ public class CharacterController : MonoBehaviour
             m_Velocity -= m_DecRatePerSec * p_DeltaTime;
             m_Velocity = Mathf.Max(m_Velocity, 0);
 
-            m_Anim.SetFloat("Speed", m_Velocity);
-            transform.position += m_VectorMovement * m_Velocity * p_DeltaTime;
+            float l_CastDist = m_VectorMovement.magnitude * m_Velocity * p_DeltaTime;
+            if (!Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0,.2f,0), m_CapsuleCollider.radius, m_VectorMovement, out RaycastHit hitInfo, l_CastDist, m_LayerDeplacement))
+            {
+                if(m_GroundAngle >= m_MaxGroundAnge) return;
+                Vector3 lastPosition = transform.position;
+                transform.position += m_VectorMovement * m_Velocity * p_DeltaTime;
+
+                m_Anim.SetFloat("Speed", m_Velocity);
+                
+                Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
+                if (hitCollider2.Length >= 1)
+                {
+                    transform.position = lastPosition;
+                    if (Physics.Raycast(transform.position, m_VectorMovement, out RaycastHit HitRay, l_CastDist, m_LayerDeplacement))
+                    {
+                        Vector3 closestPoint = m_Collider.ClosestPoint(HitRay.point);
+                        transform.position = closestPoint - HitRay.normal;
+                    }
+                }
+            }
+             else
+            {
+                m_Velocity = 0;
+                m_Anim.SetFloat("Speed", m_Velocity);
+            }
+
         }
     }
 
@@ -204,6 +217,8 @@ public class CharacterController : MonoBehaviour
                 StopJump();
                 return;
             }
+            m_Anim.SetBool("Jump", true);
+
             float lastJumpTime = m_JumpTimer;
             m_JumpTimer += p_DeltaTime;
 
@@ -246,6 +261,7 @@ public class CharacterController : MonoBehaviour
             {
                 m_YVelocity = 0f;
                 m_JumpTimer = 0;
+                m_Anim.SetBool("Jump", false);
             }
             else
             {
@@ -256,6 +272,7 @@ public class CharacterController : MonoBehaviour
                 if (m_IsOnTheFloor)
                 {
                     m_IsOnTheFloor = false;
+
                 }
                 m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
             }    
@@ -335,10 +352,22 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public Vector3 MovementDirection
+    {
+        get { return m_MovementDirection; }
+    }
+
+
+
     public float Speed
     {
         get { return m_MaxSpeed; }
         set { m_MaxSpeed = value; }
+    }
+    public float Velocity
+    {
+        get{ return m_Velocity; } 
+        set{ m_Velocity = value; }
     }
 
     private void OnDrawGizmos()

@@ -18,9 +18,9 @@ TagManager:
   - Ground
   - Pickable
   - Player
-  - 
-  - 
-  - 
+  - Arm
+  - Respawner
+  - RespawnPoint
   - 
   - 
   - 
