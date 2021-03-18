@@ -76,14 +76,14 @@ public class SimpleGrabSystem : MonoBehaviour
             if (m_IsArming )
             {
 
-                SetArmThrow();
+                //SetArmThrow();
 
 
             }
             else
             {
                
-                SetArmPos();
+                //SetArmPos();
                 
             }
         }
@@ -135,21 +135,21 @@ public class SimpleGrabSystem : MonoBehaviour
         
         //StartCoroutine(FollowCurve());
     }
-    public void SetArmThrow()
-    {
+    //public void SetArmThrow()
+    //{
 
-        m_SkeletArm.SetActive(false);
+    //    m_SkeletArm.SetActive(false);
       
         
         
-    }
+    //}
 
-    public void SetArmPos()
-    {
+    //public void SetArmPos()
+    //{
 
-        m_SkeletArm.SetActive(true);
+    //    m_SkeletArm.SetActive(true);
 
-    }
+    //}
 
     //IEnumerator FollowCurve()
     //{

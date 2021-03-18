@@ -618,6 +618,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1061939006, guid: 97066b882d74a344697af2626573c37a, type: 3}
+      propertyPath: m_PlayerController
+      value: 
+      objectReference: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e,
+        type: 2}
+    - target: {fileID: 1061939006, guid: 97066b882d74a344697af2626573c37a, type: 3}
+      propertyPath: m_PlayerCharacterController
+      value: 
+      objectReference: {fileID: 685359542}
+    - target: {fileID: 1061939006, guid: 97066b882d74a344697af2626573c37a, type: 3}
+      propertyPath: m_MovementEvent.m_OnStopMove.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061939006, guid: 97066b882d74a344697af2626573c37a, type: 3}
+      propertyPath: m_MovementEvent.m_OnStopMove.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061939006, guid: 97066b882d74a344697af2626573c37a, type: 3}
+      propertyPath: m_MovementEvent.m_OnStopMove.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1246262766981116668, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
       propertyPath: m_RootOrder
