@@ -109,13 +109,13 @@ public class TPSScript : MonoBehaviour
             RotationCamera(m_PlayerController.RotationVector);
         }
 
+        Collision();
 
         //        m_deltaTime += Time.deltaTime * 5.0f;
         //        if (m_currentDistance != m_TargetDistance)
         //        {
         //           m_Cam.transform.localPosition = Vector3.Lerp(m_OffsetCamera, m_Target.localPosition, m_deltaTime);
         //        }
-        //        Collision();
         //    }
         //private void LateUpdate() {
         //            RotationCamera(m_PlayerController.RotationVector);
