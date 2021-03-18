@@ -5,9 +5,10 @@ using UnityEngine;
 public class InteractionOpenDoor : InteractionMother
 {
     private Animator m_Anim = null;
- 
-    private void Start()
+
+    public override void Start()
     {
+        base.Start();
         m_Anim = GetComponent<Animator>();
     }
 
