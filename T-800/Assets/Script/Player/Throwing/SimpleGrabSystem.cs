@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class SimpleGrabSystem : MonoBehaviour
 {
     [SerializeField]
+    private CallAnimEvent ThrowEvents;
+    [SerializeField]
     private IntercationBodyPlayer m_Etat;
     [SerializeField]
     private SO_PlayerController m_Controller;
@@ -19,13 +21,12 @@ public class SimpleGrabSystem : MonoBehaviour
 
 
     private bool m_IsArming = false;
- 
+
 
     // Ref de l'objet
-    //[SerializeField]
-    //private GameObject m_Arm; 
     [SerializeField]
-    private GameObject m_SkeletArm;
+    private GameObject m_Arm;
+
 
     [SerializeField]
     private GameObject m_Automaton;
@@ -68,7 +69,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
     private void Update()
     {
-
+        m_Arm = ThrowEvents.Arm;
        
         if ( m_Etat.Etat == EtatDuPlayer.DeuxBras)
         {
@@ -113,7 +114,7 @@ public class SimpleGrabSystem : MonoBehaviour
 
     void CheckPoint()
     {
-        //m_StartPositon = m_Arm.transform.position;
+        m_StartPositon = m_Arm.transform.position;
        
         if (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
@@ -127,21 +128,21 @@ public class SimpleGrabSystem : MonoBehaviour
     {
         
         m_ThrowPoints = m_Trajectory.m_CurvePoints;
-        //m_Arm.transform.SetParent(null);
+        m_Arm.transform.SetParent(null);
         m_Etat.Etat = EtatDuPlayer.UnBras;
 
 
         CheckPoint();
-        
-        //StartCoroutine(FollowCurve());
+
+        StartCoroutine(FollowCurve());
     }
     //public void SetArmThrow()
     //{
 
     //    m_SkeletArm.SetActive(false);
-      
-        
-        
+
+
+
     //}
 
     //public void SetArmPos()
@@ -149,42 +150,42 @@ public class SimpleGrabSystem : MonoBehaviour
 
     //    m_SkeletArm.SetActive(true);
 
-    //}
+//}
 
-    //IEnumerator FollowCurve()
-    //{
-
-       
-    //    //while (m_CurrentPoint < m_ThrowPoints.Count - 1)
-    //    //{
-
-    //    //    m_Timer += Time.deltaTime * m_ThrowSpeed;
-    //    //    if (m_Arm.transform.position != m_CurrentPositionHolder)
-    //    //    {
-    //    //        m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
-    //    //        Debug.Log("ok");
-    //    //    }
-    //    //    else
-    //    //    {
-                
-    //    //        Debug.Log("vui");
-    //    //        m_CurrentPoint++;
-    //    //        CheckPoint();
-
-    //    //    }
-    //    //    yield return null;
-    //    //}
+IEnumerator FollowCurve()
+{
 
 
-    //    //m_Arm = null;
-        
+        while (m_CurrentPoint < m_ThrowPoints.Count - 1)
+        {
 
-       
+            m_Timer += Time.deltaTime * m_ThrowSpeed;
+            if (m_Arm.transform.position != m_CurrentPositionHolder)
+            {
+                m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
+                Debug.Log("ok");
+            }
+            else
+            {
 
-    //}
-    
+                Debug.Log("vui");
+                m_CurrentPoint++;
+                CheckPoint();
 
-    private void OnDrawGizmos()
+            }
+            yield return null;
+        }
+
+
+        m_Arm = null;
+
+
+
+
+    }
+
+
+private void OnDrawGizmos()
     {
         Vector3 position = transform.position + transform.forward * 3;
         Gizmos.DrawLine(transform.position,position);

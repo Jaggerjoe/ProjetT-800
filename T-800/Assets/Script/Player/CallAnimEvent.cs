@@ -11,9 +11,14 @@ public class CallAnimEvent : MonoBehaviour
     private CharacterController m_PlayerCharacterController;
 
     [SerializeField]
-    private GameObject m_SkeletArm;  
+    private GameObject m_SkeletArm;
     [SerializeField]
+    private GameObject m_ArmPrefab;
+    [SerializeField]
+    private Transform m_ArmPos;
+
     private GameObject m_Arm;
+
     #region Subclass
     [System.Serializable]
     private class MovementEvents
@@ -33,9 +38,12 @@ public class CallAnimEvent : MonoBehaviour
 
     public void SetArmThrow()
     {
+        
         m_SkeletArm.SetActive(false);
-        //Instantiate(m_Arm)
+        m_Arm = Instantiate(m_ArmPrefab, m_ArmPos);
     }
+
+    public GameObject Arm { get { return m_Arm; } }
 
     // public void StopMove()
     // {
