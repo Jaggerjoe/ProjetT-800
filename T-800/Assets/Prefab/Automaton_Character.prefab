@@ -186,7 +186,6 @@ Transform:
   - {fileID: 1639631455428367382}
   - {fileID: 870708540584095280}
   - {fileID: 8255669814258298488}
-  - {fileID: 7019306704863133428}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -424,8 +423,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.97823286, b: 0.91886795, a: 1}
   m_Intensity: 200
-  m_Range: 41.18
-  m_SpotAngle: 30
+  m_Range: 19
+  m_SpotAngle: 57.80288
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -498,13 +497,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6307072721557207104}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.053, y: 0.275, z: 0.038}
+  m_LocalRotation: {x: 0.5, y: -0.49999923, z: -0.5, w: -0.5000007}
+  m_LocalPosition: {x: -0.061630324, y: 0.0379997, z: 0.052999597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1207643297355442376}
-  m_Father: {fileID: 1246262766981116668}
-  m_RootOrder: 3
+  m_Father: {fileID: 2025910604648012492}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &8557615688601358208
 Light:
@@ -519,8 +518,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
+  m_Range: 19
+  m_SpotAngle: 57.80288
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -618,7 +617,7 @@ MonoBehaviour:
   intensityOutside: 1
   blendingMode: 0
   spotAngleFromLight: 1
-  spotAngle: 30
+  spotAngle: 57.80288
   coneRadiusStart: 0
   shaderAccuracy: 0
   geomMeshType: 0
@@ -631,7 +630,7 @@ MonoBehaviour:
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
-  fallOffEnd: 10
+  fallOffEnd: 19
   depthBlendDistance: 2
   cameraClippingDistance: 0.5
   glareFrontal: 0.5
