@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class SimpleGrabSystem : MonoBehaviour
 {
     [SerializeField]
+    private CallAnimEvent ThrowEvents;
+    [SerializeField]
     private IntercationBodyPlayer m_Etat;
     [SerializeField]
     private SO_PlayerController m_Controller;
@@ -14,17 +16,17 @@ public class SimpleGrabSystem : MonoBehaviour
     // Référence au point sur lequel se rend l'objet 
     [SerializeField]
     private Transform m_Slot;
-    
+    private Animator m_Anim;
+
 
 
     private bool m_IsArming = false;
- 
+
 
     // Ref de l'objet
     [SerializeField]
-    private GameObject m_Arm; 
-    [SerializeField]
-    private GameObject m_SkeletArm;
+    private GameObject m_Arm;
+
 
     [SerializeField]
     private GameObject m_Automaton;
@@ -60,14 +62,14 @@ public class SimpleGrabSystem : MonoBehaviour
 
     private void Start()
     {
-       
-        m_Arm.transform.position = m_Slot.position;
+        m_Anim = GetComponentInChildren<Animator>();
+        //m_Arm.transform.position = m_Slot.position;
         CheckPoint();
     }
 
     private void Update()
     {
-
+        m_Arm = ThrowEvents.Arm;
        
         if ( m_Etat.Etat == EtatDuPlayer.DeuxBras)
         {
@@ -75,14 +77,14 @@ public class SimpleGrabSystem : MonoBehaviour
             if (m_IsArming )
             {
 
-                SetArmThrow();
+                //SetArmThrow();
 
 
             }
             else
             {
                
-                SetArmPos();
+                //SetArmPos();
                 
             }
         }
@@ -131,29 +133,29 @@ public class SimpleGrabSystem : MonoBehaviour
 
 
         CheckPoint();
-        
+
         StartCoroutine(FollowCurve());
     }
-    public void SetArmThrow()
-    {
+    //public void SetArmThrow()
+    //{
 
-        m_SkeletArm.SetActive(false);
-      
-        
-        
-    }
+    //    m_SkeletArm.SetActive(false);
 
-    public void SetArmPos()
-    {
 
-        m_SkeletArm.SetActive(true);
 
-    }
+    //}
 
-    IEnumerator FollowCurve()
-    {
+    //public void SetArmPos()
+    //{
 
-       
+    //    m_SkeletArm.SetActive(true);
+
+//}
+
+IEnumerator FollowCurve()
+{
+
+
         while (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
 
@@ -165,7 +167,7 @@ public class SimpleGrabSystem : MonoBehaviour
             }
             else
             {
-                
+
                 Debug.Log("vui");
                 m_CurrentPoint++;
                 CheckPoint();
@@ -176,14 +178,14 @@ public class SimpleGrabSystem : MonoBehaviour
 
 
         m_Arm = null;
-        
 
-       
+
+
 
     }
-    
 
-    private void OnDrawGizmos()
+
+private void OnDrawGizmos()
     {
         Vector3 position = transform.position + transform.forward * 3;
         Gizmos.DrawLine(transform.position,position);
