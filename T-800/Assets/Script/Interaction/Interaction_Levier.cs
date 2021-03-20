@@ -13,8 +13,9 @@ public class Interaction_Levier : InteractionMother
     private Animator m_Anim;
 
     private MeshCollider m_Collider = null;
-    
-    
+
+    private bool m_isLevered = false;
+
 
     public override void Start() 
     {
@@ -37,6 +38,8 @@ public class Interaction_Levier : InteractionMother
 
     public void Levier()
     {
+        m_isLevered = true;
+        Debug.Log("Levered:" + m_isLevered);
         m_Anim.SetBool("Interact",true);
         m_Collider.enabled = false;
     }
@@ -47,4 +50,6 @@ public class Interaction_Levier : InteractionMother
         GlobalInteractionRef.UseObject = false;
         PlayerControllerSO.BindInputs(true);
     }
+
+    public bool IsLevered { get { return m_isLevered; } }
 }
