@@ -19,6 +19,10 @@ public class Global_Interaction : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerController;
 
+    private Material[] m_ArrayMat = { };
+    private Material m_InitialMat = null;
+    private Material m_CurrentMat = null;
+
     private bool m_UseObject = false;
 
     private InteractionMother m_InteractObj;
@@ -31,6 +35,11 @@ public class Global_Interaction : MonoBehaviour
     private void OnDisable()
     {
         m_PlayerController.InteractionObj.RemoveListener(DetectionInteraction);
+    }
+
+    private void Update()
+    {
+        DetectionObjectInteractable();
     }
     public void DetectionInteraction()
     {
@@ -59,6 +68,28 @@ public class Global_Interaction : MonoBehaviour
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    public void DetectionObjectInteractable()
+    {
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position,10f, m_Layer);
+        {
+            foreach (var item in l_Collides)
+            {
+                if(m_CurrentMat == null)
+                {
+                    m_CurrentMat = item.GetComponentInChildren<Renderer>().materials[1];
+                }
+                if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                {
+                    m_CurrentMat.SetFloat("_Taille_Outline", 0.01f);
+                }
+                else
+                {
+                    m_CurrentMat.SetFloat("_Taille_Outline", 0.0f);
                 }
             }
         }
