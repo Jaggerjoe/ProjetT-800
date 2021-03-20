@@ -42,9 +42,10 @@ public class Interaction_Levier : InteractionMother
 
     public void Levier()
     {
-        m_Anim.SetBool("Interact",true);
+        if (m_AnimPlayer == null)
+            RecuperationAniamtorOnPlayer();
         m_isLevered = true;
-        Debug.Log("Levered:" + m_isLevered);
+        m_AnimLevier.SetBool("Interact", true);
         m_Collider.enabled = false;
         m_AnimPlayer.SetTrigger("StartUse");
     }
