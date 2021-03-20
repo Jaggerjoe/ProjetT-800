@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MaxCurveLength: 100
   m_IgnoreTrajectoryMask:
     serializedVersion: 2
-    m_Bits: 28471
+    m_Bits: 126775
   m_CurvePoints: []
 --- !u!1 &1246262766981116671
 GameObject:

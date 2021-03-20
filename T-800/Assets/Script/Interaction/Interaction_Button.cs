@@ -6,9 +6,6 @@ public class Interaction_Button : InteractionMother
 {
     //private Animator m_Anim = null;
     private bool m_IsButtoned = false;
-   
-    [SerializeField]
-    private GameObject m_Levier;
 
     [SerializeField]
     private InteractionOpenDoor m_DoorOpen;
@@ -43,7 +40,6 @@ public class Interaction_Button : InteractionMother
     public void Button()
     {
         m_IsButtoned = true;
-        Debug.Log("Levered:" + m_IsButtoned);
         m_Anim.SetBool("Interact", true);
         m_Collider.enabled = false;
     }
