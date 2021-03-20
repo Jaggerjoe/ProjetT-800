@@ -21,24 +21,25 @@ public class Interaction_Box : InteractionMother
             RecuperationAniamtorOnPlayer();
             transform.parent = GlobalInteractionRef.transform;
             CharacterController.Speed = m_Speed / 2;
-            m_AnimPlayer.SetBool("TakeBox", true);
+            m_AnimPlayer.SetTrigger("StartTakeBox");
         }
         else
         {
             transform.parent = GlobalInteractionRef.transform;
             CharacterController.Speed = m_Speed / 2;
-            m_AnimPlayer.SetBool("TakeBox", true);
+            m_AnimPlayer.SetTrigger("StartTakeBox");
         }
     }
 
     public override void StopUse()
     {
+        base.StopUse();
         if (GlobalInteractionRef.UseObject)
         {
             GlobalInteractionRef.UseObject = false;
             transform.parent = null;
             CharacterController.Speed = m_Speed;
-            m_AnimPlayer.SetBool("TakeBox", false);
+            m_AnimPlayer.SetTrigger("StopTakeBox");
         }
     }
 }

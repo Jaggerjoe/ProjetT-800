@@ -55,6 +55,17 @@ public class CallAnimEvent : MonoBehaviour
     {
         m_PlayerController.InputAsset.FindAction("Player/Movements").Enable();
     }
+
+    public void RemoveJump()
+    {
+        m_PlayerController.InputAsset.FindAction("Player/Jump").Disable();
+    }
+
+    public void AddJump()
+    {
+        m_PlayerController.InputAsset.FindAction("Player/Jump").Enable();
+    }
+
     public void EquipArm()
     {
         Collider[] l_Collide = Physics.OverlapSphere(transform.position, 5f, m_LayerDetection);
