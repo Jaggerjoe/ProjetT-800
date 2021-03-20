@@ -14,6 +14,7 @@ public class Interaction_Levier : InteractionMother
 
     private MeshCollider m_Collider = null;
 
+    [SerializeField]
     private bool m_isLevered = false;
 
 

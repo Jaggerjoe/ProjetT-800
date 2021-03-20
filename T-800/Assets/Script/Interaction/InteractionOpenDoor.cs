@@ -21,11 +21,16 @@ public class InteractionOpenDoor : InteractionMother
         base.Start();
         m_Anim = GetComponent<Animator>();
     }
+    private void Update()
+    {
+        OpenDoor();
+    }
 
     public override void Use()
     {
         OpenDoor();
     }
+
     public void OpenDoor()
     {
         if (m_HowManyInteract == HowManyInteract.One)
@@ -38,17 +43,24 @@ public class InteractionOpenDoor : InteractionMother
         else
         if (m_HowManyInteract == HowManyInteract.Two)
         {
-            if (m_LeverInteract.IsLevered  )
+            if (m_LeverInteract.IsLevered)
             {
 
                 if (m_ButtonInteract.IsButtoned)
                 {
-                    Debug.Log("ok");
                     m_Anim.SetBool("Open", true);
                 }
             }
         }
-        
+    }
+
+    // creation d'un fct qui check les bool si les deux sont valide je lance l'animation.
+    void OpenDoorWithDeuxAction()
+    {
+        if(m_LeverInteract.IsLevered && m_ButtonInteract.IsButtoned)
+        {
+            m_Anim.SetBool("Open", true);
+        }
     }
 }
 public enum HowManyInteract

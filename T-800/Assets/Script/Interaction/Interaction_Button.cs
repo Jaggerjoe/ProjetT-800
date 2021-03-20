@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interaction_Button : InteractionMother
 {
     //private Animator m_Anim = null;
+    [SerializeField]
     private bool m_IsButtoned = false;
 
     [SerializeField]

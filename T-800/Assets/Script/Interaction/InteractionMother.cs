@@ -10,19 +10,26 @@ public abstract class InteractionMother : MonoBehaviour
     private Global_Interaction m_PlayerInteraction = null;
     private CharacterController m_PlayerCharacterController = null;
     private SO_PlayerController m_SOCharacterController = null;
+    protected IntercationBodyPlayer m_InteractPlayer = null;
     protected Animator m_AnimPlayer = null;
     protected float m_Speed = 0;
     public virtual void Start() 
     {
         m_PlayerCharacterController = FindObjectOfType<CharacterController>();
-        m_PlayerInteraction = FindObjectOfType<Global_Interaction>(); 
+        m_PlayerInteraction = FindObjectOfType<Global_Interaction>();
+        m_InteractPlayer = FindObjectOfType<IntercationBodyPlayer>();
         m_Speed = CharacterController.Speed;
+
     }
     public virtual void Use()
     {
 
     }
 
+    public virtual void UseWithOneArm()
+    {
+
+    }
     public virtual void RecuperationAniamtorOnPlayer()
     {
         Collider[] l_Collide = Physics.OverlapSphere(transform.position, 10f, m_LayerDetection);

@@ -52,8 +52,8 @@ public class Global_Interaction : MonoBehaviour
             {
                 if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
                 {
-                    //if(m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
-                    //{
+                    if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
+                    {
                         if (hit.gameObject.TryGetComponent(out m_InteractObj))
                         {
                             if(!m_UseObject)
@@ -67,7 +67,14 @@ public class Global_Interaction : MonoBehaviour
                                 m_InteractObj.StopUse();
                             }
                         }
-                    //}
+                    }
+                    else if(m_RefInteraction.Etat == EtatDuPlayer.UnBras)
+                    {
+                        if (hit.gameObject.TryGetComponent(out m_InteractObj))
+                        {
+                            m_InteractObj.UseWithOneArm();
+                        }
+                    }
                 }
             }
         }

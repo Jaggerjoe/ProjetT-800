@@ -21,7 +21,7 @@ public class Interaction_ArmPacket : InteractionMother
         base.RecuperationAniamtorOnPlayer();
     }
 
-    public override void Use()
+    public override void UseWithOneArm()
     {
         Debug.Log("ArmPack");
         if(m_AnimPlayer == null)
