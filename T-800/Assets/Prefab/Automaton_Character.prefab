@@ -135,7 +135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792576127296535586}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62d1244188456f648abe4c00815da429, type: 3}
   m_Name: 
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MaxCurveLength: 100
   m_IgnoreTrajectoryMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 28471
   m_CurvePoints: []
 --- !u!1 &1246262766981116671
 GameObject:
@@ -265,21 +265,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246262766981116671}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5bd9468d16ec294db57d4732c530faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowEvents: {fileID: 0}
+  ThrowEvents: {fileID: 1061939006}
   m_Etat: {fileID: 6136512161367936154}
   m_Controller: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_Trajectory: {fileID: 6386425845519459642}
-  m_Slot: {fileID: 870708540584095280}
+  m_Slot: {fileID: 258350581973075773}
   m_Arm: {fileID: 0}
   m_Automaton: {fileID: 2128782825769209516}
   m_ThrowVelocity: {x: 0, y: 0, z: 15}
   m_ThrowPoints: []
-  m_ThrowSpeed: 0
+  m_ThrowSpeed: 20
   OnLocationChanged:
     m_PersistentCalls:
       m_Calls:
@@ -362,8 +362,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   m_SkeletArm: {fileID: 5209125544616856914}
-  m_ArmPrefab: {fileID: 0}
-  m_ArmPos: {fileID: 0}
+  m_ArmPrefab: {fileID: 2869932055879624216, guid: f509da92fcc12b948b788f88e1cdf1fa,
+    type: 3}
+  m_ArmPos: {fileID: 258350581973075773}
   m_MovementEvent:
     m_OnMove:
       m_PersistentCalls:
