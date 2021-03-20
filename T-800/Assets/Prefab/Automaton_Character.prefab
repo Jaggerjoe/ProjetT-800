@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Velocity: 0
   m_LayerDeplacement:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 34560
   m_HeighPadding: 0.015
   m_Height: 0.3
   m_MaxGroundAnge: 120
