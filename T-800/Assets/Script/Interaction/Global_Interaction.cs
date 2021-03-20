@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Global_Interaction : InteractionMother
+public class Global_Interaction : MonoBehaviour
 {
     [SerializeField]
     private LayerMask m_Layer;
@@ -17,7 +17,7 @@ public class Global_Interaction : InteractionMother
     private IntercationBodyPlayer m_RefInteraction;
 
     [SerializeField]
-    private SO_PlayerController m_PLayerController;
+    private SO_PlayerController m_PlayerController;
 
     private bool m_UseObject = false;
 
@@ -25,12 +25,12 @@ public class Global_Interaction : InteractionMother
 
     private void OnEnable()
     {
-        m_PLayerController.InteractionObj.AddListener(DetectionInteraction);
+        m_PlayerController.InteractionObj.AddListener(DetectionInteraction);
     }
 
     private void OnDisable()
     {
-        m_PLayerController.InteractionObj.RemoveListener(DetectionInteraction);
+        m_PlayerController.InteractionObj.RemoveListener(DetectionInteraction);
     }
     public void DetectionInteraction()
     {
@@ -49,7 +49,7 @@ public class Global_Interaction : InteractionMother
                         {
                             if(!m_UseObject)
                             {
-                                m_InteractObj.PlayerControllerSO = m_PLayerController;
+                                m_InteractObj.PlayerControllerSO = m_PlayerController;
                                 m_UseObject = true;
                                 m_InteractObj.Use();
                             }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2447490629087311889}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Levier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,30 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035d4de9bb7d413468dbff71acaf8f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ListOfGameObject:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  m_ListOfGameObject: []
   m_Color: {r: 0.28672493, g: 1, b: 0.0037735105, a: 1}
   m_Intensity: 245
 --- !u!1001 &5721239469483486050
@@ -90,6 +67,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_DoorOpen
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185734087081885496, guid: 279f0034e39ada944b12d18046ddf6f6,
+        type: 3}
+      propertyPath: m_LayerDetection.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 8508188878985427653, guid: 279f0034e39ada944b12d18046ddf6f6,
         type: 3}

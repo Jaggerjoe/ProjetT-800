@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class Interaction_Box : InteractionMother
 {
-    private Animator m_Anim;
-
     public override void Start()
     {
         base.Start();
     }
+
+    public override void RecuperationAniamtorOnPlayer()
+    {
+        base.RecuperationAniamtorOnPlayer();
+        
+    }
     public override void Use()
     {
-        Debug.Log("je compile ou pas");
-        // if(CharacterController == null)
-        // {
-        //     Debug.Log("je passe ici");
-        //     CharacterController = FindObjectOfType<CharacterController>();
-        // }
-        if (TryGetComponent(out m_Anim))
+        if(m_AnimPlayer == null)
         {
-            m_Anim.SetTrigger("Interact");
+            RecuperationAniamtorOnPlayer();
+            transform.parent = GlobalInteractionRef.transform;
+            CharacterController.Speed = m_Speed / 2;
+            m_AnimPlayer.SetBool("TakeBox", true);
         }
         else
         {
-            Debug.Log("je suis une caisse mais sans mon aniamtion");
             transform.parent = GlobalInteractionRef.transform;
-            CharacterController.Speed = m_Speed/2;
-            return;
+            CharacterController.Speed = m_Speed / 2;
+            m_AnimPlayer.SetBool("TakeBox", true);
         }
     }
 
@@ -38,6 +38,7 @@ public class Interaction_Box : InteractionMother
             GlobalInteractionRef.UseObject = false;
             transform.parent = null;
             CharacterController.Speed = m_Speed;
+            m_AnimPlayer.SetBool("TakeBox", false);
         }
     }
 }
