@@ -4,11 +4,21 @@ using UnityEngine;
 using UnityEngine.Events;
 public class CallAnimEvent : MonoBehaviour
 {
-  [SerializeField]
-  private SO_PlayerController m_PlayerController;
+    [SerializeField]
+    private SO_PlayerController m_PlayerController;
 
-  [SerializeField]
-  private CharacterController m_PlayerCharacterController;
+    [SerializeField]
+    private CharacterController m_PlayerCharacterController;
+
+    [SerializeField]
+    private GameObject m_SkeletArm;
+    [SerializeField]
+    private GameObject m_ArmPrefab;
+    [SerializeField]
+    private Transform m_ArmPos;
+
+    private GameObject m_Arm;
+
     #region Subclass
     [System.Serializable]
     private class MovementEvents
@@ -20,10 +30,20 @@ public class CallAnimEvent : MonoBehaviour
     private MovementEvents m_MovementEvent = new MovementEvents();
 
     #endregion
+   
     public void OnMovement()
     {
       m_MovementEvent.m_OnMove.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
     }
+
+    public void SetArmThrow()
+    {
+        
+        m_SkeletArm.SetActive(false);
+        m_Arm = Instantiate(m_ArmPrefab, m_ArmPos);
+    }
+
+    public GameObject Arm { get { return m_Arm; } }
 
     // public void StopMove()
     // {
