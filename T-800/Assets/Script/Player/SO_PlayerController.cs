@@ -57,7 +57,6 @@ public class SO_PlayerController : ScriptableObject
             m_InputAsset.FindAction("Player/GrabAndThrow").performed += Throw;
             m_InputAsset.FindAction("Player/GrabAndThrow").canceled += StopThrow;
 
-
             m_InputAsset.Enable();
         }
         else
@@ -89,7 +88,7 @@ public class SO_PlayerController : ScriptableObject
 
     private void BindInputMovement(bool p_AreEnabled)
     {
-        
+
     }
     private void Interaction(InputAction.CallbackContext p_Context)
     {
@@ -169,6 +168,11 @@ public class SO_PlayerController : ScriptableObject
     public VoidEvent InteractionObj => m_OnInteract;
     public bool Aiming => m_IsAiming;
 
+    public InputActionAsset InputAsset
+    {
+        get { return m_InputAsset; }
+        set { m_InputAsset = value; }
+    }
     public bool GrabAndThrow => m_IsThrowing;
 }
 

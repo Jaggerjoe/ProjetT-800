@@ -104,6 +104,7 @@ public class CharacterController : MonoBehaviour
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
         p_Direction = Vector3.ClampMagnitude(p_Direction, 1f);
+   
         //je recupère le m_MovementDirection de la camera
         //je recupère le vecteur droit de la camera.
         Vector3 l_CameraForward = Camera.main.transform.forward;
@@ -148,6 +149,8 @@ public class CharacterController : MonoBehaviour
                 m_VectorMovement = m_MovementDirection;
                 m_Anim.SetFloat("Speed", m_Velocity);
                 m_Anim.SetFloat("MoveDir", p_Direction.y);
+                m_Anim.SetFloat("MoveDirX", p_Direction.x);
+                
                 
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)

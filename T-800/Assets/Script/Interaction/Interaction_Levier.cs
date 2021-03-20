@@ -10,7 +10,7 @@ public class Interaction_Levier : InteractionMother
     [SerializeField]
     private InteractionOpenDoor m_DoorOpen;
 
-    private Animator m_Anim;
+    private Animator m_AnimLevier;
 
     private MeshCollider m_Collider = null;
 
@@ -22,11 +22,15 @@ public class Interaction_Levier : InteractionMother
         base.Start();
         m_Collider = GetComponent<MeshCollider>();
     }
+
+    public override void RecuperationAniamtorOnPlayer()
+    {
+        base.RecuperationAniamtorOnPlayer();
+    }
     public override void Use()
     {
-        if(TryGetComponent(out m_Anim))
+        if(TryGetComponent(out m_AnimLevier))
         {
-            PlayerControllerSO.BindInputs(false);
             Levier();
         }
         else
@@ -38,17 +42,21 @@ public class Interaction_Levier : InteractionMother
 
     public void Levier()
     {
+        m_Anim.SetBool("Interact",true);
         m_isLevered = true;
         Debug.Log("Levered:" + m_isLevered);
-        m_Anim.SetBool("Interact",true);
         m_Collider.enabled = false;
+        m_AnimPlayer.SetTrigger("StartUse");
+    }
+    public void EndAnimationLevier()
+    {
+        m_AnimPlayer.SetTrigger("StopUse");
     }
 
     public void OpenDoor()
     {
         m_DoorOpen.OpenDoor();
         GlobalInteractionRef.UseObject = false;
-        PlayerControllerSO.BindInputs(true);
     }
 
     public bool IsLevered { get { return m_isLevered; } }
