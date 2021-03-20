@@ -319,16 +319,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368c26199e98fc8428575ce01cf0a674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LayerDetection:
-    serializedVersion: 2
-    m_Bits: 0
   m_Layer:
     serializedVersion: 2
     m_Bits: 1024
   m_Radius: 2
   m_Angle: 120
   m_RefInteraction: {fileID: 6136512161367936154}
-  m_PLayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
 --- !u!95 &190124590
 Animator:
   serializedVersion: 3
@@ -361,7 +358,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
-  m_PlayerCharacterController: {fileID: 0}
+  m_LayerDetection:
+    serializedVersion: 2
+    m_Bits: 0
   m_SkeletArm: {fileID: 5209125544616856914}
   m_ArmPrefab: {fileID: 0}
   m_ArmPos: {fileID: 0}
