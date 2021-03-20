@@ -360,7 +360,7 @@ MonoBehaviour:
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_LayerDetection:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_SkeletArm: {fileID: 5209125544616856914}
   m_ArmPrefab: {fileID: 0}
   m_ArmPos: {fileID: 0}
