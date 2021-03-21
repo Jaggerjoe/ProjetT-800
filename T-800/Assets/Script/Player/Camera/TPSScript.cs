@@ -23,6 +23,9 @@ public class TPSScript : MonoBehaviour
     [SerializeField] // la ou regarde la camera
     private Transform m_Target = null;
 
+    [SerializeField] // la ou regarde la camera
+    private Transform m_Slot = null;
+
     [SerializeField]
     private SO_PlayerController m_PlayerController;
     #endregion
@@ -161,10 +164,13 @@ public class TPSScript : MonoBehaviour
 
             m_RotationXAim = Mathf.Clamp(m_RotationXAim, m_XAngleMinAim, m_XAngleMaxAim);
             m_RotationXAimCam = Mathf.Clamp(m_RotationXAimCam, m_XAngleMinAimCam, m_XAngleMaxAimCam);
-            Quaternion l_Rotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim,0);
+            Quaternion l_Rotation = Quaternion.Euler(0, m_RotationYAim,0);
+            Quaternion l_SlotRotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim, 0);
             Quaternion l_CamRotation = Quaternion.Euler(m_RotationXAimCam, m_RotationYAim, 0);
             
+
             m_Target.rotation = l_Rotation;
+            m_Slot.rotation = l_SlotRotation;
             //m_Cam.transform.rotation = l_Rotation;
             transform.rotation = l_CamRotation;
 
@@ -177,7 +183,7 @@ public class TPSScript : MonoBehaviour
             m_AimCameraPosition = l_NextPosition + l_CameraPosition;
             //transform.position = Vector3.Lerp(m_CameraPosition, m_AimCameraPosition, 1);
             transform.position = m_AimCameraPosition;
-        //transform.LookAt(m_Target);
+        transform.LookAt(m_Target);
 
 
         //if (transform.position != m_AimCameraPosition)
