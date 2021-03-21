@@ -20,10 +20,20 @@ public class Interaction_ArmPacket : InteractionMother
     {
         base.RecuperationAniamtorOnPlayer();
     }
-
+    public override void Use()
+    {
+        if (m_AnimPlayer == null)
+        {
+            RecuperationAniamtorOnPlayer();
+            m_AnimPlayer.SetTrigger("StartUsePackArm");
+        }
+        else
+        {
+            m_AnimPlayer.SetTrigger("StartUsePackArm");
+        }
+    }
     public override void UseWithOneArm()
     {
-        Debug.Log("ArmPack");
         if(m_AnimPlayer == null)
         {
             RecuperationAniamtorOnPlayer();

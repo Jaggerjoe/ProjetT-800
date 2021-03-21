@@ -19,8 +19,6 @@ public class Global_Interaction : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerController;
 
-    private Material[] m_ArrayMat = { };
-    private Material m_InitialMat = null;
     private Material m_CurrentMat = null;
 
     private bool m_UseObject = false;
@@ -97,6 +95,7 @@ public class Global_Interaction : MonoBehaviour
                 else
                 {
                     m_CurrentMat.SetFloat("_Taille_Outline", 0.0f);
+                    m_CurrentMat = null;
                 }
             }
         }
