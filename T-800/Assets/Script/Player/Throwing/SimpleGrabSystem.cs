@@ -74,19 +74,19 @@ public class SimpleGrabSystem : MonoBehaviour
         if ( m_Etat.Etat == EtatDuPlayer.DeuxBras)
         {
 
-            if (m_IsArming )
-            {
+            //if (m_IsArming )
+            //{
 
-                //SetArmThrow();
+            //    SetArmThrow();
 
 
-            }
-            else
-            {
-               
-                //SetArmPos();
-                
-            }
+            //}
+            //else
+            //{
+
+            //    SetArmPos();
+
+            //}
         }
 
      
@@ -150,9 +150,9 @@ public class SimpleGrabSystem : MonoBehaviour
 
     //    m_SkeletArm.SetActive(true);
 
-//}
+    //}
 
-IEnumerator FollowCurve()
+    IEnumerator FollowCurve()
 {
 
 

@@ -19,6 +19,8 @@ public class Global_Interaction : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerController;
 
+    private Material m_CurrentMat = null;
+
     private bool m_UseObject = false;
 
     private InteractionMother m_InteractObj;
@@ -32,6 +34,11 @@ public class Global_Interaction : MonoBehaviour
     {
         m_PlayerController.InteractionObj.RemoveListener(DetectionInteraction);
     }
+
+    private void Update()
+    {
+        DetectionObjectInteractable();
+    }
     public void DetectionInteraction()
     {
         Collider[] hitCollier = Physics.OverlapSphere(transform.position, m_Radius, m_Layer);
@@ -43,7 +50,7 @@ public class Global_Interaction : MonoBehaviour
             {
                 if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
                 {
-                    if(m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
+                    if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
                     {
                         if (hit.gameObject.TryGetComponent(out m_InteractObj))
                         {
@@ -59,6 +66,36 @@ public class Global_Interaction : MonoBehaviour
                             }
                         }
                     }
+                    else if(m_RefInteraction.Etat == EtatDuPlayer.UnBras)
+                    {
+                        if (hit.gameObject.TryGetComponent(out m_InteractObj))
+                        {
+                            m_InteractObj.UseWithOneArm();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void DetectionObjectInteractable()
+    {
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position,10f, m_Layer);
+        {
+            foreach (var item in l_Collides)
+            {
+                if(m_CurrentMat == null)
+                {
+                    m_CurrentMat = item.GetComponentInChildren<Renderer>().materials[1];
+                }
+                if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                {
+                    m_CurrentMat.SetFloat("_Taille_Outline", 0.01f);
+                }
+                else
+                {
+                    m_CurrentMat.SetFloat("_Taille_Outline", 0.0f);
+                    m_CurrentMat = null;
                 }
             }
         }
