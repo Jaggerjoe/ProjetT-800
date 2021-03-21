@@ -19,8 +19,6 @@ public class Global_Interaction : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerController;
 
-    private Material[] m_ArrayMat = { };
-    private Material m_InitialMat = null;
     private Material m_CurrentMat = null;
 
     private bool m_UseObject = false;
@@ -52,8 +50,8 @@ public class Global_Interaction : MonoBehaviour
             {
                 if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
                 {
-                    //if(m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
-                    //{
+                    if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
+                    {
                         if (hit.gameObject.TryGetComponent(out m_InteractObj))
                         {
                             if(!m_UseObject)
@@ -67,7 +65,14 @@ public class Global_Interaction : MonoBehaviour
                                 m_InteractObj.StopUse();
                             }
                         }
-                    //}
+                    }
+                    else if(m_RefInteraction.Etat == EtatDuPlayer.UnBras)
+                    {
+                        if (hit.gameObject.TryGetComponent(out m_InteractObj))
+                        {
+                            m_InteractObj.UseWithOneArm();
+                        }
+                    }
                 }
             }
         }
@@ -90,6 +95,7 @@ public class Global_Interaction : MonoBehaviour
                 else
                 {
                     m_CurrentMat.SetFloat("_Taille_Outline", 0.0f);
+                    m_CurrentMat = null;
                 }
             }
         }
