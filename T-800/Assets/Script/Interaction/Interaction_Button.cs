@@ -5,12 +5,13 @@ using UnityEngine;
 public class Interaction_Button : InteractionMother
 {
     //private Animator m_Anim = null;
-    private bool m_IsButtoned = false;
+    [SerializeField]
+    private bool m_ButtonIsPressed = false;
 
     [SerializeField]
-    private InteractionOpenDoor m_DoorOpen;
+    private InteractionOpenDoor m_DoorOpen = null;
 
-    private Animator m_Anim;
+    private Animator m_Anim = null;
 
     private MeshCollider m_Collider = null;
 
@@ -21,60 +22,30 @@ public class Interaction_Button : InteractionMother
     {
         base.Start();
         m_Collider = GetComponent<MeshCollider>();
+        m_Anim = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        Debug.Log(m_ButtonIsPressed);
     }
     public override void Use()
     {
         Button();
-        //if (TryGetComponent(out m_Anim))
-        //{
-        //    PlayerControllerSO.BindInputs(false);
-
-        //}
-        //else
-        //{
-        //    Debug.Log("je suis un levier mais sans mon aniamtion");
-        //    return;
-        //}
     }
 
     public void Button()
     {
-        m_IsButtoned = true;
-        m_Anim.SetBool("Interact", true);
+        m_ButtonIsPressed = true;
+        m_Anim.SetBool("Push", true);
         m_Collider.enabled = false;
     }
 
     public void OpenDoor()
     {
+        Debug.Log(m_ButtonIsPressed);
         m_DoorOpen.OpenDoor();
         GlobalInteractionRef.UseObject = false;
-        PlayerControllerSO.BindInputs(true);
     }
 
-    public bool IsButton { get { return m_IsButtoned; } }
-    //[SerializeField]
-    //private InteractionOpenDoor m_DoorOpen;
-
-    //public override void Use()
-    //{
-    //    m_DoorOpen.OpenDoor();
-    //    m_IsButtoned = true;
-    //    Debug.Log("buttoned :" + m_IsButtoned);
-
-    //    //if (TryGetComponent(out m_Anim))
-    //    //{
-    //    //    Debug.Log("coucou");
-    //    //    m_Anim.SetBool("Push", true);
-    //    //}
-    //    //else
-    //    //{
-
-
-    //    //    Debug.Log("je suis le bouton sans l'animation");
-    ////}
-
-
-    //}
-
-    public bool IsButtoned { get { return m_IsButtoned; } }
+    public bool IsButtoned { get { return m_ButtonIsPressed; } }
 }

@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 8829638048879706666}
   - component: {fileID: 6136512161367936154}
   - component: {fileID: 1927240807}
+  - component: {fileID: 5267053654282643334}
   m_Layer: 11
   m_Name: Automaton_Character
   m_TagString: Untagged
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_Etat: {fileID: 6136512161367936154}
   m_Controller: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_Trajectory: {fileID: 6386425845519459642}
-  m_Slot: {fileID: 258350581973075773}
+  m_Slot: {fileID: 870708540584095280}
   m_Arm: {fileID: 0}
   m_Automaton: {fileID: 2128782825769209516}
   m_ThrowVelocity: {x: 0, y: 0, z: 15}
@@ -326,6 +327,28 @@ MonoBehaviour:
   m_Angle: 120
   m_RefInteraction: {fileID: 6136512161367936154}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+--- !u!114 &5267053654282643334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246262766981116671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877b0346162bf2b4a83675005c48b792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Controller: {fileID: 1246262766981116670}
+  m_CapsuleCollider: {fileID: 1246262766981116669}
+  m_CastDistance: 0
+  m_RespawnDetection:
+    serializedVersion: 2
+    m_Bits: 8192
+  m_RespawnPointDetection:
+    serializedVersion: 2
+    m_Bits: 16384
+  m_SpawnPoint: {fileID: 0}
 --- !u!95 &190124590
 Animator:
   serializedVersion: 3
@@ -438,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9212863272594668752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.173, y: -0.085, z: 0.353}
+  m_LocalPosition: {x: 0.004, y: 0.015, z: 0.271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1246262766981116668}

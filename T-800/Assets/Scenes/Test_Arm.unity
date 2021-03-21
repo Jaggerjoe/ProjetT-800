@@ -512,6 +512,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &274785351 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 870708540584095280, guid: 97066b882d74a344697af2626573c37a,
+    type: 3}
+  m_PrefabInstance: {fileID: 765335214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446338310
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7f83d2da7488349ad6004f6c946505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_LayerDetection:
+    serializedVersion: 2
+    m_Bits: 0
   m_Levier: {fileID: 446338310}
   m_DoorOpen: {fileID: 0}
 --- !u!1 &454385644 stripped
@@ -854,7 +863,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Slot
       value: 
-      objectReference: {fileID: 868378923}
+      objectReference: {fileID: 274785351}
     - target: {fileID: 8829638048879706666, guid: 97066b882d74a344697af2626573c37a,
         type: 3}
       propertyPath: ThrowEvents
@@ -1748,6 +1757,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_Target: {fileID: 685359544}
+  m_Slot: {fileID: 0}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_XAngleMin: -80
   m_XAngleMax: -15
