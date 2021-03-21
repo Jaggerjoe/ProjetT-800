@@ -39,7 +39,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -55,7 +55,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
 --- !u!1102 &860463170664386480
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -82,7 +82,7 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1107 &2635581447140915517
 AnimatorStateMachine:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,7 +91,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3098721907890691677}
-    m_Position: {x: 240, y: 510, z: 0}
+    m_Position: {x: 250, y: 510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 860463170664386480}
     m_Position: {x: 243.87762, y: 220.7143, z: 0}
@@ -107,7 +107,7 @@ AnimatorStateMachine:
   m_DefaultState: {fileID: 860463170664386480}
 --- !u!1102 &3098721907890691677
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
