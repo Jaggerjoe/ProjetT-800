@@ -106,7 +106,7 @@ public class SimpleGrabSystem : MonoBehaviour
     private void OnEnable()
     {
         
-        m_Controller.onThrow.AddListener(Throwing);
+            m_Controller.onThrow.AddListener(Throwing);
     }
 
 
@@ -119,6 +119,8 @@ public class SimpleGrabSystem : MonoBehaviour
     void CheckPoint()
     {
         m_StartPositon = m_Arm.transform.position;
+
+       
        
         if (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
@@ -130,15 +132,17 @@ public class SimpleGrabSystem : MonoBehaviour
     }
     void Throwing()
     {
-        
-        m_ThrowPoints = m_Trajectory.m_CurvePoints;
-        m_Arm.transform.SetParent(null);
-        m_Etat.Etat = EtatDuPlayer.SansBras;
+        if (m_Etat.Etat == EtatDuPlayer.UnBras)
+        {
+            m_ThrowPoints = m_Trajectory.m_CurvePoints;
+            m_Arm.transform.SetParent(null);
+            m_Etat.Etat = EtatDuPlayer.SansBras;
 
 
-        CheckPoint();
+            CheckPoint();
 
-        StartCoroutine(FollowCurve());
+            StartCoroutine(FollowCurve());
+        }
     }
     //public void SetArmThrow()
     //{
