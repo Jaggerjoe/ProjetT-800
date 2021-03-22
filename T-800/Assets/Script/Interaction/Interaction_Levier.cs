@@ -14,7 +14,8 @@ public class Interaction_Levier : InteractionMother
 
     private MeshCollider m_Collider = null;
 
-    private bool m_isLevered = false;
+    [SerializeField]
+    private bool m_LeverIsActive = false;
 
 
     public override void Start() 
@@ -44,7 +45,7 @@ public class Interaction_Levier : InteractionMother
     {
         if (m_AnimPlayer == null)
             RecuperationAniamtorOnPlayer();
-        m_isLevered = true;
+        m_LeverIsActive = true;
         m_AnimLevier.SetBool("Interact", true);
         m_Collider.enabled = false;
         m_AnimPlayer.SetTrigger("StartUse");
@@ -56,9 +57,10 @@ public class Interaction_Levier : InteractionMother
 
     public void OpenDoor()
     {
+        Debug.Log(m_LeverIsActive);
         m_DoorOpen.OpenDoor();
         GlobalInteractionRef.UseObject = false;
     }
 
-    public bool IsLevered { get { return m_isLevered; } }
+    public bool IsLevered { get { return m_LeverIsActive; } }
 }

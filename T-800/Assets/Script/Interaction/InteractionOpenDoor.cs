@@ -12,6 +12,7 @@ public class InteractionOpenDoor : InteractionMother
     [SerializeField]
     private Interaction_Button m_ButtonInteract;
 
+
     [SerializeField]
     HowManyInteract m_HowManyInteract;
 
@@ -21,39 +22,71 @@ public class InteractionOpenDoor : InteractionMother
         base.Start();
         m_Anim = GetComponent<Animator>();
     }
+    private void Update()
+    {
+        //OpenDoor();
+    }
 
     public override void Use()
     {
-        OpenDoor();
+        //OpenDoor();
     }
+
     public void OpenDoor()
     {
-        if (m_HowManyInteract == HowManyInteract.One)
+        switch(m_HowManyInteract)
         {
-            if (m_LeverInteract.IsLevered)
-            {
-                m_Anim.SetBool("Open", true);
-            }
-        }
-        else
-        if (m_HowManyInteract == HowManyInteract.Two)
-        {
-            if (m_LeverInteract.IsLevered  )
-            {
+            case HowManyInteract.One:
+                OneInteraction();
+                break;
+            case HowManyInteract.Two:
+                TwoInteraction();
+                break;
+            default:
+                Debug.Log("je n'est rien");
+                break;
 
-                if (m_ButtonInteract.IsButtoned)
-                {
-                    Debug.Log("ok");
-                    m_Anim.SetBool("Open", true);
-                }
-            }
         }
-        
+        //if (m_HowManyInteract == HowManyInteract.One)
+        //{
+        //    if (m_LeverInteract.IsLevered)
+        //    {
+        //        m_Anim.SetBool("Open", true);
+        //    }
+        //}
+
+        //if (m_HowManyInteract == HowManyInteract.Two)
+        //{
+        //    Debug.Log("coucou");
+        //    if (m_LeverInteract.IsLevered && m_ButtonInteract.IsButtoned)
+        //    {
+        //        m_Anim.SetBool("Open", true);
+        //    }
+        //}
     }
+
+    void OneInteraction()
+    {
+        if (m_LeverInteract.IsLevered)
+        {
+            m_Anim.SetBool("Open", true);
+        }
+    }
+    void TwoInteraction()
+    {
+        Debug.Log("coucou");
+        if (m_LeverInteract.IsLevered && m_ButtonInteract.IsButtoned || m_ButtonInteract.IsButtoned && m_LeverInteract.IsLevered)
+        {
+            m_Anim.SetBool("Open", true);
+        }
+    }
+
 }
+
 public enum HowManyInteract
 {
     One,
-    Two
+    Two,
+    Default
 }
 
