@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IntercationBodyPlayer : MonoBehaviour
 {
-
+    [SerializeField]
     EtatDuPlayer m_EtatDeMonRobot = EtatDuPlayer.DeuxBras;
 
     // Start is called before the first frame update
