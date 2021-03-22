@@ -69,7 +69,7 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
             //Je dessine la trajectoire lorsque j'appuie sur le click gauche
             if (m_Controller.Aiming )
             {
-                if (m_Etat.Etat == EtatDuPlayer.DeuxBras)
+                if (m_Etat.Etat != EtatDuPlayer.SansBras)
                 {
                     
                     DrawTrajectory();
