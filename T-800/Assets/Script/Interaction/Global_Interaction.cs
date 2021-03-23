@@ -25,6 +25,8 @@ public class Global_Interaction : MonoBehaviour
 
     private InteractionMother m_InteractObj;
 
+    private float m_Time = 0.001f;
+
     private void OnEnable()
     {
         m_PlayerController.InteractionObj.AddListener(DetectionInteraction);
@@ -90,12 +92,13 @@ public class Global_Interaction : MonoBehaviour
                 }
                 if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
                 {
-                    m_CurrentMat.SetFloat("_Taille_Outline", 0.01f);
+                    m_CurrentMat.SetFloat("_Taille_Outline", .01f);
                 }
                 else
                 {
                     m_CurrentMat.SetFloat("_Taille_Outline", 0.0f);
                     m_CurrentMat = null;
+                    m_Time = 0;
                 }
             }
         }
