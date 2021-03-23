@@ -36,7 +36,7 @@ public class CallAnimEvent : MonoBehaviour
    
     public void OnMovement()
     {
-      m_MovementEvent.m_OnMove.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
+        m_MovementEvent.m_OnMove.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
     }
 
     public void SetArmThrow()
