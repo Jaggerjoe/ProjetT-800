@@ -92,8 +92,8 @@ public class TPSScript : MonoBehaviour
         m_OffsetCamera = new Vector3(0.0f, -1.0f, 0.0f);
         //Cacher le curseur de la souris
         //Bloquer la souris
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
         m_TargetDistance = m_currentDistance;
         // m_OffsetCamera = m_Cam.transform.localPosition;
     }
