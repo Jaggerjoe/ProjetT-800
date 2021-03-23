@@ -13,8 +13,8 @@ public class Interaction_ArmPacket : InteractionMother
     [SerializeField]
     private IntercationBodyPlayer m_Etat;
 
-    [SerializeField]
-    private GameObject m_Socket;
+    //[SerializeField]
+    //private GameObject m_Socket;
 
     public override void RecuperationAniamtorOnPlayer()
     {
@@ -49,9 +49,10 @@ public class Interaction_ArmPacket : InteractionMother
     {
         m_AnimPlayer.SetTrigger("StopUsePackArm");
         GlobalInteractionRef.UseObject = false;
-        if (m_Etat.Etat == EtatDuPlayer.UnBras)
+        if (m_Etat.Etat == EtatDuPlayer.SansBras)
         {
             m_SkeletArm.SetActive(true);
+            m_Etat.Etat = EtatDuPlayer.DeuxBras;
         }
 
         //Collider[] l_HitColliders = Physics.OverlapSphere(transform.position, 10, m_LayerDetection);
