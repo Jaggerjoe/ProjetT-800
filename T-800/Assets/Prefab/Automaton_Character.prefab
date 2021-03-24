@@ -396,10 +396,10 @@ MonoBehaviour:
         - m_Target: {fileID: 11400000, guid: 0f3097534d4ce054492e59f30ebae55f, type: 2}
           m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
           m_MethodName: InstantiatePrefab
-          m_Mode: 0
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 790099934634368332}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -887,6 +887,12 @@ Transform:
 --- !u!1 &5209125544616856914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6413430945410268847, guid: ff00587d7fe2bcd49939ed206f15e042,
+    type: 3}
+  m_PrefabInstance: {fileID: 1246262767772513277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &790099934634368332 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1998862481775193777, guid: ff00587d7fe2bcd49939ed206f15e042,
     type: 3}
   m_PrefabInstance: {fileID: 1246262767772513277}
   m_PrefabAsset: {fileID: 0}

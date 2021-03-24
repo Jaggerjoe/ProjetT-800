@@ -26,19 +26,36 @@ public class CallAnimEvent : MonoBehaviour
     [System.Serializable]
     private class MovementEvents
     {
-      public MovementInfosEvent m_OnMove = new MovementInfosEvent();
+      public MovementInfosEvent m_OnMoveFootRight = new MovementInfosEvent();
+      public MovementInfosEvent m_OnMoveFootLeft = new MovementInfosEvent();
       public UnityEvent m_OnStopMove = new UnityEvent();
+    }
+    [System.Serializable]
+    private class JumpEvents
+    {
+        public JumpInfoEvent m_OnJump = new JumpInfoEvent();
     }
     [SerializeField]
     private MovementEvents m_MovementEvent = new MovementEvents();
 
+    [SerializeField]
+    JumpEvents m_JumpEvent = new JumpEvents();
     #endregion
-   
-    public void OnMovement()
+
+    public void OnMovementFootRight()
     {
-      m_MovementEvent.m_OnMove.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
+        m_MovementEvent.m_OnMoveFootRight.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
     }
 
+    public void OnMovementFootLeft()
+    {
+        m_MovementEvent.m_OnMoveFootLeft.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
+    }
+
+    public void OnJump()
+    {
+        m_JumpEvent.m_OnJump.Invoke(new JumpInfo { JumpOrigin = transform.position });
+    }
     public void SetArmThrow()
     {
         
