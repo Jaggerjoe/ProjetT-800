@@ -26,7 +26,6 @@ public class Interaction_Button : InteractionMother
     }
     private void Update()
     {
-        Debug.Log(m_ButtonIsPressed);
     }
     public override void Use()
     {
