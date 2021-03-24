@@ -60,7 +60,7 @@ public class Global_Interaction : MonoBehaviour
             {
                 if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
                 {
-                    if (m_RefInteraction.Etat != EtatDuPlayer.SansBras)
+                    if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
                     {
                         if (hit.gameObject.TryGetComponent(out m_InteractObj))
                         {

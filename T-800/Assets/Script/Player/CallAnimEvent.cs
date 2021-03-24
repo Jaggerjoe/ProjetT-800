@@ -90,7 +90,12 @@ public class CallAnimEvent : MonoBehaviour
         {
             if(m_InteractArmPacket == null)
             {
+
                 m_InteractArmPacket = item.GetComponentInChildren<Interaction_ArmPacket>();
+                m_InteractArmPacket.EquipeArm();
+            }
+            else
+            {
                 m_InteractArmPacket.EquipeArm();
             }
         }
