@@ -82,7 +82,7 @@ public class Global_Interaction : MonoBehaviour
 
     public void DetectionObjectInteractable()
     {
-        Collider[] l_Collides = Physics.OverlapSphere(transform.position,10f, m_Layer);
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position, 5f, m_Layer);
         {
             foreach (var item in l_Collides)
             {
@@ -92,13 +92,14 @@ public class Global_Interaction : MonoBehaviour
                 }
                 if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
                 {
-                    m_CurrentMat.SetFloat("_Taille_Outline", .01f);
+                    m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
+                    m_Time += Time.deltaTime;
                 }
-                else
+                else 
                 {
-                    m_CurrentMat.SetFloat("_Taille_Outline", 0.0f);
-                    m_CurrentMat = null;
+                    m_CurrentMat.SetColor("_Color_Outline", Color.black);
                     m_Time = 0;
+                    m_CurrentMat = null;
                 }
             }
         }
