@@ -20,18 +20,18 @@ public class Interaction_ArmPacket : InteractionMother
     {
         base.RecuperationAniamtorOnPlayer();
     }
-    public override void Use()
-    {
-        if (m_AnimPlayer == null)
-        {
-            RecuperationAniamtorOnPlayer();
-            m_AnimPlayer.SetTrigger("StartUsePackArm");
-        }
-        else
-        {
-            m_AnimPlayer.SetTrigger("StartUsePackArm");
-        }
-    }
+    //public override void Use()
+    //{
+    //    if (m_AnimPlayer == null)
+    //    {
+    //        RecuperationAniamtorOnPlayer();
+    //        m_AnimPlayer.SetTrigger("StartUsePackArm");
+    //    }
+    //    else
+    //    {
+    //        m_AnimPlayer.SetTrigger("StartUsePackArm");
+    //    }
+    //}
     public override void UseWithOneArm()
     {
         if(m_AnimPlayer == null)
@@ -47,13 +47,11 @@ public class Interaction_ArmPacket : InteractionMother
 
     public void EquipeArm()
     {
-        m_AnimPlayer.SetTrigger("StopUsePackArm");
+        Debug.Log("je suis appelé");
+        m_AnimPlayer.SetTrigger("StopUsePackArm");  
         GlobalInteractionRef.UseObject = false;
-        if (m_Etat.Etat == EtatDuPlayer.SansBras)
-        {
-            m_SkeletArm.SetActive(true);
-            m_Etat.Etat = EtatDuPlayer.DeuxBras;
-        }
+        m_SkeletArm.SetActive(true);
+        m_Etat.Etat = EtatDuPlayer.DeuxBras;
 
         //Collider[] l_HitColliders = Physics.OverlapSphere(transform.position, 10, m_LayerDetection);
         //foreach (var hitCollider in l_HitColliders)
