@@ -16,6 +16,10 @@ public class Instantiator : ScriptableObject
     public void InstantiatePrefab(Transform p_Trsf)
     {
         Instantiate(m_Prefab, p_Trsf.position, Quaternion.identity);
+    }
 
+    public void InstantiatePrefab(JumpInfo p_infos)
+    {
+        Instantiate(m_Prefab, p_infos.JumpOrigin, Quaternion.identity);
     }
 }
