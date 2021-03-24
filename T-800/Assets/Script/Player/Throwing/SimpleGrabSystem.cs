@@ -182,7 +182,6 @@ public class SimpleGrabSystem : MonoBehaviour
         }
 
         m_Arm = null;
-        m_Timer = 0;
     }
 
 
