@@ -162,8 +162,13 @@ public class SimpleGrabSystem : MonoBehaviour
 
     IEnumerator FollowCurve()
     {
-        while (m_CurrentPoint < m_ThrowPoints.Count - 1)
+       
+            m_CurrentPoint = 0;
+        
+        while (m_CurrentPoint <= m_ThrowPoints.Count - 1)
         {
+          
+
             m_Timer += Time.deltaTime * m_ThrowSpeed;
             if (m_Arm.transform.position != m_CurrentPositionHolder)
             {
