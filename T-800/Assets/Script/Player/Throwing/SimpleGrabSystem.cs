@@ -70,17 +70,21 @@ public class SimpleGrabSystem : MonoBehaviour
     private void Update()
     {
         m_Arm = ThrowEvents.Arm;
-       
-        if ( m_Etat.Etat == EtatDuPlayer.DeuxBras)
+
+        if (m_Etat.Etat == EtatDuPlayer.DeuxBras)
         {
 
-            //if (m_IsArming )
-            //{
+            if (m_IsArming && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("ArracherBras")  )
+            {
 
-            //    SetArmThrow();
+                m_Anim.SetTrigger("ArmRemove");
+                m_Etat.Etat = EtatDuPlayer.UnBras;
 
 
-            //}
+
+
+
+            }
             //else
             //{
 
@@ -89,7 +93,7 @@ public class SimpleGrabSystem : MonoBehaviour
             //}
         }
 
-     
+
 
 
         OnLocationChanged?.Invoke(m_Slot.position, m_Slot.rotation * m_ThrowVelocity);
@@ -102,7 +106,7 @@ public class SimpleGrabSystem : MonoBehaviour
     private void OnEnable()
     {
         
-        m_Controller.onThrow.AddListener(Throwing);
+            m_Controller.onThrow.AddListener(Throwing);
     }
 
 
@@ -115,6 +119,8 @@ public class SimpleGrabSystem : MonoBehaviour
     void CheckPoint()
     {
         m_StartPositon = m_Arm.transform.position;
+
+       
        
         if (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
@@ -126,15 +132,17 @@ public class SimpleGrabSystem : MonoBehaviour
     }
     void Throwing()
     {
-        
-        m_ThrowPoints = m_Trajectory.m_CurvePoints;
-        m_Arm.transform.SetParent(null);
-        m_Etat.Etat = EtatDuPlayer.UnBras;
+        if (m_Etat.Etat == EtatDuPlayer.UnBras)
+        {
+            m_ThrowPoints = m_Trajectory.m_CurvePoints;
+            m_Arm.transform.SetParent(null);
+            m_Etat.Etat = EtatDuPlayer.SansBras;
 
 
-        CheckPoint();
+            CheckPoint();
 
-        StartCoroutine(FollowCurve());
+            StartCoroutine(FollowCurve());
+        }
     }
     //public void SetArmThrow()
     //{

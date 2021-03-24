@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c689cc9dbdd68048ba74a63e27d39e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EtatDeMonRobot: 0
 --- !u!114 &1927240807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Controller: {fileID: 1246262766981116670}
   m_CapsuleCollider: {fileID: 1246262766981116669}
-  m_CastDistance: 0
+  m_CastDistance: 10
   m_RespawnDetection:
     serializedVersion: 2
     m_Bits: 8192
