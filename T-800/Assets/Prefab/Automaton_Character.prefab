@@ -390,7 +390,7 @@ MonoBehaviour:
     type: 3}
   m_ArmPos: {fileID: 258350581973075773}
   m_MovementEvent:
-    m_OnMove:
+    m_OnMoveFootRight:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 11400000, guid: 0f3097534d4ce054492e59f30ebae55f, type: 2}
@@ -398,7 +398,22 @@ MonoBehaviour:
           m_MethodName: InstantiatePrefab
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 790099934634368332}
+            m_ObjectArgument: {fileID: 8566681293123377373}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_OnMoveFootLeft:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 0f3097534d4ce054492e59f30ebae55f, type: 2}
+          m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
+          m_MethodName: InstantiatePrefab
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2415217328177655875}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -408,6 +423,22 @@ MonoBehaviour:
     m_OnStopMove:
       m_PersistentCalls:
         m_Calls: []
+  m_JumpEvent:
+    m_OnJump:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 0a63e433c1f5b4d4f872d2ee9cc56d39, type: 2}
+          m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
+          m_MethodName: InstantiatePrefab
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8627371649451431573
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,9 +921,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1246262767772513277}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &790099934634368332 stripped
+--- !u!4 &2415217328177655875 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1998862481775193777, guid: ff00587d7fe2bcd49939ed206f15e042,
+  m_CorrespondingSourceObject: {fileID: -5706326537154493506, guid: ff00587d7fe2bcd49939ed206f15e042,
+    type: 3}
+  m_PrefabInstance: {fileID: 1246262767772513277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8566681293123377373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7469618404995525408, guid: ff00587d7fe2bcd49939ed206f15e042,
     type: 3}
   m_PrefabInstance: {fileID: 1246262767772513277}
   m_PrefabAsset: {fileID: 0}
