@@ -10,6 +10,12 @@ public class Instantiator : ScriptableObject
 
     public void InstantiatePrefab(MovementInfo p_infos)
     {
-        Instantiate(m_Prefab, p_infos.currentPosition + new Vector3(.2F,-.5f,0), Quaternion.identity);
+        Instantiate(m_Prefab, p_infos.currentPosition + new Vector3(0,-.5f,0), Quaternion.identity);
+    }
+
+    public void InstantiatePrefab(Transform p_Trsf)
+    {
+        Instantiate(m_Prefab, p_Trsf.position, Quaternion.identity);
+
     }
 }
