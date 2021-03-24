@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using DG.Tweening;
 public class Global_Interaction : MonoBehaviour
 {
     [SerializeField]
@@ -19,7 +20,13 @@ public class Global_Interaction : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerController;
 
+    [SerializeField]
+    private GameObject m_Camera = null;
+
     private Material m_CurrentMat = null;
+
+    
+    private Image m_CurrentUI = null;
 
     private bool m_UseObject = false;
 
@@ -39,6 +46,7 @@ public class Global_Interaction : MonoBehaviour
 
     private void Update()
     {
+        DetectionObjectUI();
         DetectionObjectInteractable();
     }
     public void DetectionInteraction()
@@ -105,6 +113,35 @@ public class Global_Interaction : MonoBehaviour
         }
     }
 
+    public void DetectionObjectUI()
+    {
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position, 10f, m_Layer);
+        {
+            foreach (var item in l_Collides)
+            {
+                if (m_CurrentUI == null)
+                {
+                    m_CurrentUI = item.GetComponentInChildren<Image>();
+                }
+                if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                {
+                    Sequence l_ESequence = DOTween.Sequence();
+                    l_ESequence.Insert(0, m_CurrentUI.DOFade(1, 1));
+                    l_ESequence.Insert(0, m_CurrentUI.transform.DOScale(1, 1));
+                    m_CurrentUI.transform.LookAt(m_Camera.transform);
+                }
+                else
+                {
+
+                    Sequence l_ESequence = DOTween.Sequence();
+                    l_ESequence.Insert(0, m_CurrentUI.DOFade(0, 1));
+                    l_ESequence.Insert(0, m_CurrentUI.transform.DOScale(0, 1));
+                    m_CurrentUI = null;
+                    //m_Time = 0;
+                }
+            }
+        }
+    }
     // public void Interaction()
     // {
     //     if(Physics.BoxCast(transform.position, m_Collider.bounds.extents, Vector3.down, out RaycastHit m_hit,Quaternion.identity, .5f, m_Layer))
