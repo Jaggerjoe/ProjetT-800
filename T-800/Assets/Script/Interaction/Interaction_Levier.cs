@@ -57,7 +57,6 @@ public class Interaction_Levier : InteractionMother
 
     public void OpenDoor()
     {
-        Debug.Log(m_LeverIsActive);
         m_DoorOpen.OpenDoor();
         GlobalInteractionRef.UseObject = false;
     }
