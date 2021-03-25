@@ -17,6 +17,7 @@ public class SimpleGrabSystem : MonoBehaviour
     [SerializeField]
     private Transform m_Slot;
     private Animator m_Anim;
+    private bool m_ClearTrajectory = false;
 
 
 
@@ -137,7 +138,7 @@ public class SimpleGrabSystem : MonoBehaviour
             m_ThrowPoints = m_Trajectory.m_CurvePoints;
             m_Arm.transform.SetParent(null);
             m_Etat.Etat = EtatDuPlayer.SansBras;
-
+            m_ClearTrajectory = true;
 
             CheckPoint();
 
@@ -186,7 +187,8 @@ public class SimpleGrabSystem : MonoBehaviour
             yield return null;
         }
 
-        m_Arm = null;
+        Destroy(m_Arm);
+        //m_Arm = null;
     }
 
 
@@ -197,5 +199,6 @@ private void OnDrawGizmos()
     }
 
     public bool IsArming { get { return m_IsArming; } set { m_IsArming = value; } }
+    public bool Clear { get { return m_ClearTrajectory; } set { m_ClearTrajectory = value; } }
 }
 
