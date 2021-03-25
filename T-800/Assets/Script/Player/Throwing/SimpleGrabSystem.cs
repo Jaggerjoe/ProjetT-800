@@ -74,7 +74,7 @@ public class SimpleGrabSystem : MonoBehaviour
         if (m_Etat.Etat == EtatDuPlayer.DeuxBras)
         {
 
-            if (m_IsArming && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("ArracherBras")  )
+            if (m_IsArming && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("ArracherBras"))
             {
 
                 m_Anim.SetTrigger("ArmRemove");
@@ -161,11 +161,13 @@ public class SimpleGrabSystem : MonoBehaviour
     //}
 
     IEnumerator FollowCurve()
-{
-
-
-        while (m_CurrentPoint < m_ThrowPoints.Count - 1)
+    {
+       
+            m_CurrentPoint = 0;
+        
+        while (m_CurrentPoint <= m_ThrowPoints.Count - 1)
         {
+          
 
             m_Timer += Time.deltaTime * m_ThrowSpeed;
             if (m_Arm.transform.position != m_CurrentPositionHolder)
@@ -184,12 +186,7 @@ public class SimpleGrabSystem : MonoBehaviour
             yield return null;
         }
 
-
         m_Arm = null;
-
-
-
-
     }
 
 
