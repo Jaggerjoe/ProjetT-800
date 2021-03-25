@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb4caf481f833b48bbd2a3d4af2a88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ButtonInteraction: {fileID: 8489370840625797404, guid: 4cf98a2b208c2d645a4aa391d7286f62,
-    type: 3}
   m_CapsuleCollider: {fileID: 2885223196626567064}
   m_CastDistance: 1
   m_ButtonDetection:
@@ -128,6 +126,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: aaf9c72b64293a744a2bbf6db1dcb3b9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ea968329607ec4984c8c1f96b53270, type: 2}
     - target: {fileID: 919132149155446097, guid: aaf9c72b64293a744a2bbf6db1dcb3b9,
         type: 3}
       propertyPath: m_Name
