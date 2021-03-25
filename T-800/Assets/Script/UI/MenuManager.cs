@@ -14,6 +14,8 @@ public class MenuManager : MonoBehaviour
     private GameObject m_PauseMenu = null;
     [SerializeField]
     private GameObject m_MainMenu = null;
+    [SerializeField]
+    private Image m_FondNoir = null;
 
     [SerializeField]
     private Image[] m_PauseImageArray;
@@ -28,10 +30,22 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_PauseImageArray = m_PauseMenu.GetComponentsInChildren<Image>();
-      
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
 
-       m_MainMenuImageArray = m_MainMenu.GetComponentsInChildren<Image>();
+        m_PauseImageArray = m_PauseMenu.GetComponentsInChildren<Image>();
+     
+
+        m_MainMenuImageArray = m_MainMenu.GetComponentsInChildren<Image>();
+
+        Sequence l_MySequence = DOTween.Sequence();
+
+        l_MySequence.Insert(0, m_FondNoir.DOFade(0, 6));
+        foreach (Image image in m_MainMenuImageArray)
+        {
+            l_MySequence.Insert(0.75f, image.DOFade(1, 3f));
+        }
+
     }
 
     // Update is called once per frame
@@ -39,6 +53,9 @@ public class MenuManager : MonoBehaviour
     {
         if(m_controller.OnPause && !m_IsOnMenu)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+
             foreach (Image image in m_PauseImageArray)
             {
                 image.DOFade(1, 1f);
@@ -54,6 +71,8 @@ public class MenuManager : MonoBehaviour
     public void PlayGame()
     {
         m_IsOnMenu = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Sequence l_MySequence = DOTween.Sequence();
 
         foreach (Image image in m_MainMenuImageArray)
@@ -80,8 +99,11 @@ public class MenuManager : MonoBehaviour
     {
         m_controller.OnPause = false;
         Time.timeScale = 1f;
-       
-        foreach(Image image in m_PauseImageArray)
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        foreach (Image image in m_PauseImageArray)
         {
             image.DOFade(0, 1.5f);
 
