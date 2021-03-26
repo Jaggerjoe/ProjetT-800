@@ -11,12 +11,15 @@ public class CallAnimEvent : MonoBehaviour
 
     [SerializeField]
     private LayerMask m_LayerDetection = 0;
+
     Interaction_ArmPacket m_InteractArmPacket = null;
 
     [SerializeField]
     private GameObject m_SkeletArm;
+
     [SerializeField]
     private GameObject m_ArmPrefab;
+
     [SerializeField]
     private Transform m_ArmPos;
 
@@ -30,6 +33,7 @@ public class CallAnimEvent : MonoBehaviour
       public MovementInfosEvent m_OnMoveFootLeft = new MovementInfosEvent();
       public UnityEvent m_OnStopMove = new UnityEvent();
     }
+
     [System.Serializable]
     private class JumpEvents
     {
@@ -50,6 +54,7 @@ public class CallAnimEvent : MonoBehaviour
     public void OnMovementFootLeft()
     {
         m_MovementEvent.m_OnMoveFootLeft.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
+
     }
 
     public void OnJump()
@@ -100,5 +105,8 @@ public class CallAnimEvent : MonoBehaviour
             }
         }
     }
+
+
+
     public GameObject Arm { get { return m_Arm; } }
 }
