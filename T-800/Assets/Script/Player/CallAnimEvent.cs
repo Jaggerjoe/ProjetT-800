@@ -7,8 +7,6 @@ public class CallAnimEvent : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerController = null;
 
-    private CharacterController m_PlayerCharacterController = null;
-
     [SerializeField]
     private LayerMask m_LayerDetection = 0;
 
@@ -38,6 +36,7 @@ public class CallAnimEvent : MonoBehaviour
     private class JumpEvents
     {
         public JumpInfoEvent m_OnJump = new JumpInfoEvent();
+        public JumpInfoEvent m_OnStopJump = new JumpInfoEvent();
     }
     [SerializeField]
     private MovementEvents m_MovementEvent = new MovementEvents();
@@ -54,7 +53,6 @@ public class CallAnimEvent : MonoBehaviour
     public void OnMovementFootLeft()
     {
         m_MovementEvent.m_OnMoveFootLeft.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
-
     }
 
     public void OnJump()
@@ -86,6 +84,11 @@ public class CallAnimEvent : MonoBehaviour
     public void AddJump()
     {
         m_PlayerController.InputAsset.FindAction("Player/Jump").Enable();
+    }
+
+    public void StopJump()
+    {
+        m_JumpEvent.m_OnStopJump.Invoke(new JumpInfo { JumpOrigin = transform.position });
     }
 
     public void EquipArm()
