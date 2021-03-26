@@ -15,8 +15,7 @@ MonoBehaviour:
   naming: NamingSound
   clip:
   - {fileID: 8300000, guid: e2631eb8e8acdce4b81c8e601703d7aa, type: 3}
-  volume: 0.2
+  volume: 0.05
   pitch: 1
   loop: 0
   mixer: {fileID: 0}
-  source: {fileID: 0}

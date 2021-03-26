@@ -46,11 +46,7 @@ public class InputManager : MonoBehaviour
         //jumpAction.canceled += (ctx) => { m_Movements.JumpInputbool = false; };
     }
 
-    private void Update()
-    {
-        m_Movements.Move(m_Movement, Time.deltaTime);
-        m_RefCamera.RotationCamera(m_PosCamera);
-    }
+
     private void OnEnable()
     {
         m_InputManage.Enable();
@@ -61,6 +57,11 @@ public class InputManager : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        m_Movements.Move(m_Movement, Time.deltaTime);
+        m_RefCamera.RotationCamera(m_PosCamera);
+    }
     public Vector3 CameraPos
     {
         get { return m_PosCamera; }
