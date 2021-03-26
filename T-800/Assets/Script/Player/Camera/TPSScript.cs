@@ -137,7 +137,7 @@ public class TPSScript : MonoBehaviour
         Quaternion l_RotationTarget = Quaternion.Euler(0, m_RotationY, 0);
 
 
-        Debug.Log("fbn" + m_Target.rotation);
+        //Debug.Log("fbn" + m_Target.rotation);
         //m_Target.rotation = l_RotationTarget;
 
         //on prend le forward du monde qui est le z est on fait y fait = la new position on multipli par la distance et la roation (rotation du quaternion qu'on va appliquer)
