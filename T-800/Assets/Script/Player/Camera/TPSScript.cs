@@ -134,8 +134,11 @@ public class TPSScript : MonoBehaviour
         m_RotationX = Mathf.Clamp(m_RotationX, m_XAngleMin, m_XAngleMax);
        
         Quaternion l_Rotation = Quaternion.Euler(m_RotationX, m_RotationY, 0);
+        Quaternion l_RotationTarget = Quaternion.Euler(0, m_RotationY, 0);
 
 
+        //Debug.Log("fbn" + m_Target.rotation);
+        //m_Target.rotation = l_RotationTarget;
 
         //on prend le forward du monde qui est le z est on fait y fait = la new position on multipli par la distance et la roation (rotation du quaternion qu'on va appliquer)
         //tout ça par rapport a l'input.
@@ -167,14 +170,14 @@ public class TPSScript : MonoBehaviour
             Quaternion l_Rotation = Quaternion.Euler(0, m_RotationYAim,0);
             Quaternion l_SlotRotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim, 0);
             Quaternion l_CamRotation = Quaternion.Euler(m_RotationXAimCam, m_RotationYAim, 0);
-            
+        Debug.Log("fbx" + m_Target.rotation);
 
-            m_Target.rotation = l_Rotation;
-            m_Slot.rotation = l_SlotRotation;
+        m_Target.rotation = l_Rotation;
+             m_Slot.rotation = l_SlotRotation;
             //m_Cam.transform.rotation = l_Rotation;
             transform.rotation = l_CamRotation;
+     
 
-          
             Vector3 l_NextPosition = l_Rotation * Vector3.back * m_currentDistanceAim;
             Vector3 l_CameraPosition = m_Target.position + m_OffsetCameraAim;
 

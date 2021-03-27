@@ -7,16 +7,17 @@ public class CallAnimEvent : MonoBehaviour
     [SerializeField]
     private SO_PlayerController m_PlayerController = null;
 
-    private CharacterController m_PlayerCharacterController = null;
-
     [SerializeField]
     private LayerMask m_LayerDetection = 0;
+
     Interaction_ArmPacket m_InteractArmPacket = null;
 
     [SerializeField]
     private GameObject m_SkeletArm;
+
     [SerializeField]
     private GameObject m_ArmPrefab;
+
     [SerializeField]
     private Transform m_ArmPos;
 
@@ -30,10 +31,12 @@ public class CallAnimEvent : MonoBehaviour
       public MovementInfosEvent m_OnMoveFootLeft = new MovementInfosEvent();
       public UnityEvent m_OnStopMove = new UnityEvent();
     }
+
     [System.Serializable]
     private class JumpEvents
     {
         public JumpInfoEvent m_OnJump = new JumpInfoEvent();
+        public JumpInfoEvent m_OnStopJump = new JumpInfoEvent();
     }
     [SerializeField]
     private MovementEvents m_MovementEvent = new MovementEvents();
@@ -83,6 +86,11 @@ public class CallAnimEvent : MonoBehaviour
         m_PlayerController.InputAsset.FindAction("Player/Jump").Enable();
     }
 
+    public void StopJump()
+    {
+        m_JumpEvent.m_OnStopJump.Invoke(new JumpInfo { JumpOrigin = transform.position });
+    }
+
     public void EquipArm()
     {
         Collider[] l_Collide = Physics.OverlapSphere(transform.position, 5f, m_LayerDetection);
@@ -100,5 +108,8 @@ public class CallAnimEvent : MonoBehaviour
             }
         }
     }
+
+
+
     public GameObject Arm { get { return m_Arm; } }
 }
