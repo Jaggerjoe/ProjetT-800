@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Etat: {fileID: 6136512161367936154}
   m_Controller: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
-  ThrowScript: {fileID: 8829638048879706666}
+  m_ThrowScript: {fileID: 8829638048879706666}
   m_StartPosition: {x: 0, y: 0, z: 0}
   m_StartVelocity: {x: 0, y: 0, z: 0}
   m_TrajectoryVertDist: 1
@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 6136512161367936154}
   - component: {fileID: 1927240807}
   - component: {fileID: 5267053654282643334}
+  - component: {fileID: 1250821209}
   m_Layer: 11
   m_Name: Automaton_Character
   m_TagString: Untagged
@@ -328,6 +329,7 @@ MonoBehaviour:
   m_Angle: 120
   m_RefInteraction: {fileID: 6136512161367936154}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
+  m_Camera: {fileID: 0}
 --- !u!114 &5267053654282643334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +352,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   m_SpawnPoint: {fileID: 0}
+--- !u!81 &1250821209
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246262766981116671}
+  m_Enabled: 1
 --- !u!95 &190124590
 Animator:
   serializedVersion: 3
@@ -405,6 +415,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 325c8f9bfe564ca4494c82fb3d37b09f, type: 2}
+          m_TargetAssemblyTypeName: SoundScriptable, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Walk
+            m_BoolArgument: 0
+          m_CallState: 2
     m_OnMoveFootLeft:
       m_PersistentCalls:
         m_Calls:
@@ -420,6 +442,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 325c8f9bfe564ca4494c82fb3d37b09f, type: 2}
+          m_TargetAssemblyTypeName: SoundScriptable, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Walk
+            m_BoolArgument: 0
+          m_CallState: 2
     m_OnStopMove:
       m_PersistentCalls:
         m_Calls: []
@@ -431,6 +465,21 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
           m_MethodName: InstantiatePrefab
           m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_OnStopJump:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 046352965c00a97428c4d80adf51e4bc, type: 2}
+          m_TargetAssemblyTypeName: SoundScriptable, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
