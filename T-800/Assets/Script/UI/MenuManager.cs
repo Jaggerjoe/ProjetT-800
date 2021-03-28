@@ -78,9 +78,10 @@ public class MenuManager : MonoBehaviour
         foreach (Image image in m_MainMenuImageArray)
         {
           l_MySequence.Insert( 0, image.DOFade(0, 1.5f));
+          l_MySequence.Insert(1.5f, m_MainMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector3(0, 1167, 0), 1f));
         }
 
-        l_MySequence.Insert(1.5f, m_MainMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector3(0, 1167, 0), 1f));
+        
        
     }
 
