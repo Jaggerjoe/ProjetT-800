@@ -73,6 +73,37 @@ PrefabInstance:
       propertyPath: m_LayerDetection.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 8185734087081885496, guid: 279f0034e39ada944b12d18046ddf6f6,
+        type: 3}
+      propertyPath: m_LeverEvent.m_ActivateLever.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185734087081885496, guid: 279f0034e39ada944b12d18046ddf6f6,
+        type: 3}
+      propertyPath: m_LeverEvent.m_ActivateLever.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: c96f1343d1db8284bb724c63a18aa740,
+        type: 2}
+    - target: {fileID: 8185734087081885496, guid: 279f0034e39ada944b12d18046ddf6f6,
+        type: 3}
+      propertyPath: m_LeverEvent.m_ActivateLever.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185734087081885496, guid: 279f0034e39ada944b12d18046ddf6f6,
+        type: 3}
+      propertyPath: m_LeverEvent.m_ActivateLever.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InstantiatePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185734087081885496, guid: 279f0034e39ada944b12d18046ddf6f6,
+        type: 3}
+      propertyPath: m_LeverEvent.m_ActivateLever.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Instantiator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185734087081885496, guid: 279f0034e39ada944b12d18046ddf6f6,
+        type: 3}
+      propertyPath: m_LeverEvent.m_ActivateLever.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8508188878985427653, guid: 279f0034e39ada944b12d18046ddf6f6,
         type: 3}
       propertyPath: m_RootOrder

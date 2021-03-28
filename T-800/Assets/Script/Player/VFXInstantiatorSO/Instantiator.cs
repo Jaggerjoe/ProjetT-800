@@ -27,4 +27,9 @@ public class Instantiator : ScriptableObject
     {
         Instantiate(m_Prefab, p_infos.Origin, p_infos.OriginRotation);
     }
+
+    public void InstantiatePrefab(DoorInfos p_infos)
+    {
+        Instantiate(m_Prefab, p_infos.Origin + new Vector3(-.4f,0,0), p_infos.Rotation);
+    }
 }
