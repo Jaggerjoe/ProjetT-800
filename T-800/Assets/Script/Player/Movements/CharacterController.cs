@@ -81,7 +81,18 @@ public class CharacterController : MonoBehaviour
     private bool m_IsJumping = false;
 
     private Vector3 m_InitialPosPlayer = Vector3.zero;
-#endregion
+    #endregion
+    #region JumpEvent
+    [System.Serializable]
+    private class JumpEvents
+    {
+        public JumpInfoEvent m_OnJump = new JumpInfoEvent();
+    }
+
+    [SerializeField]
+    JumpEvents m_JumpEvent = new JumpEvents();
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -275,10 +286,9 @@ public class CharacterController : MonoBehaviour
                 if (m_IsOnTheFloor)
                 {
                     m_IsOnTheFloor = false;
-
                 }
                 m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
-            }    
+            }
         }
         if (m_PlayerInput.Jumping && m_IsOnTheFloor)
         {
@@ -287,6 +297,7 @@ public class CharacterController : MonoBehaviour
             m_InitialPosPlayer = transform.position;
             m_JumpTimer = 0f;
             m_YVelocity = 1f;
+            m_JumpEvent.m_OnJump.Invoke(new JumpInfo { JumpOrigin = m_InitialPosPlayer });
         }
     }
 
