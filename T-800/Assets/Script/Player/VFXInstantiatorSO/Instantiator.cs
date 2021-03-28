@@ -17,9 +17,14 @@ public class Instantiator : ScriptableObject
     {
         Instantiate(m_Prefab, p_Trsf.position, Quaternion.identity);
     }
-
+    
     public void InstantiatePrefab(JumpInfo p_infos)
     {
-        Instantiate(m_Prefab, p_infos.JumpOrigin, Quaternion.identity);
+        Instantiate(m_Prefab, p_infos.JumpOrigin + new Vector3(0, -.3f, 0), Quaternion.identity);
+    }
+
+    public void InstantiatePrefab(LeverInfos p_infos)
+    {
+        Instantiate(m_Prefab, p_infos.Origin, p_infos.OriginRotation);
     }
 }

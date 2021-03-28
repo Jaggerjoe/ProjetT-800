@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9e63512597c509449ccadf4a5f087e8, type: 3}
-  m_Name: JumpFX
+  m_Name: FX_Atterissage
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 1867508611727474804, guid: 4a88b4f5cdd139645976f82d9942538b,
+  m_Prefab: {fileID: 7050064449793572276, guid: c37217e230926f44eaffbeaff7213be2,
     type: 3}
