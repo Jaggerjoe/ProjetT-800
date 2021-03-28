@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7050064449320827120}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.048, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.06551, y: 0.06551, z: 0.06551}
   m_Children: []
   m_Father: {fileID: 7050064449793572278}
@@ -4890,6 +4890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7050064449793572278}
   - component: {fileID: 7050064449793572279}
+  - component: {fileID: 5572208602306497544}
   m_Layer: 0
   m_Name: Pf_Atterrissage_Perso
   m_TagString: Untagged
@@ -9619,6 +9620,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &5572208602306497544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050064449793572276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6294a658c105549aa9c9080380553d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DestroyDelay: 1
 --- !u!1 &7050064449902660272
 GameObject:
   m_ObjectHideFlags: 0
@@ -9645,7 +9659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7050064449902660272}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.048, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.06551, y: 0.06551, z: 0.06551}
   m_Children: []
   m_Father: {fileID: 7050064449793572278}

@@ -23,6 +23,13 @@ public class CallAnimEvent : MonoBehaviour
 
     private GameObject m_Arm;
 
+    private Animator m_Anim = null;
+
+    private IntercationBodyPlayer m_EtatPlayer = null;
+
+    private Global_Interaction m_GlobalInteractPlayer = null;
+
+
     #region Subclass
     [System.Serializable]
     private class MovementEvents
@@ -35,7 +42,6 @@ public class CallAnimEvent : MonoBehaviour
     [System.Serializable]
     private class JumpEvents
     {
-        public JumpInfoEvent m_OnJump = new JumpInfoEvent();
         public JumpInfoEvent m_OnStopJump = new JumpInfoEvent();
     }
     [SerializeField]
@@ -44,7 +50,12 @@ public class CallAnimEvent : MonoBehaviour
     [SerializeField]
     JumpEvents m_JumpEvent = new JumpEvents();
     #endregion
-
+    private void Start()
+    {
+        m_GlobalInteractPlayer = GetComponentInParent<Global_Interaction>();
+        m_EtatPlayer = GetComponentInParent<IntercationBodyPlayer>();
+        m_Anim = GetComponent<Animator>();
+    }
     public void OnMovementFootRight()
     {
         m_MovementEvent.m_OnMoveFootRight.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
@@ -55,13 +66,8 @@ public class CallAnimEvent : MonoBehaviour
         m_MovementEvent.m_OnMoveFootLeft.Invoke(new MovementInfo { entity = this.gameObject, currentPosition = transform.position, orientation = transform.position });
     }
 
-    public void OnJump()
-    {
-        m_JumpEvent.m_OnJump.Invoke(new JumpInfo { JumpOrigin = transform.position });
-    }
     public void SetArmThrow()
     {
-        
         m_SkeletArm.SetActive(false);
         m_Arm = Instantiate(m_ArmPrefab, m_ArmPos);
     }
@@ -88,7 +94,7 @@ public class CallAnimEvent : MonoBehaviour
 
     public void StopJump()
     {
-        m_JumpEvent.m_OnStopJump.Invoke(new JumpInfo { JumpOrigin = transform.position });
+        m_JumpEvent.m_OnStopJump.Invoke(new JumpInfo { JumpOrigin = transform.position +new Vector3(0,.3f,0) });
     }
 
     public void EquipArm()
@@ -98,13 +104,18 @@ public class CallAnimEvent : MonoBehaviour
         {
             if(m_InteractArmPacket == null)
             {
-
                 m_InteractArmPacket = item.GetComponentInChildren<Interaction_ArmPacket>();
                 m_InteractArmPacket.EquipeArm();
+                m_Anim.SetTrigger("StopUsePackArm");
+                m_GlobalInteractPlayer.UseObject = false;
+                m_EtatPlayer.Etat = EtatDuPlayer.DeuxBras;
             }
             else
             {
                 m_InteractArmPacket.EquipeArm();
+                m_Anim.SetTrigger("StopUsePackArm");
+                m_GlobalInteractPlayer.UseObject = false;
+                m_EtatPlayer.Etat = EtatDuPlayer.DeuxBras;
             }
         }
     }
