@@ -40,6 +40,7 @@ public class Interaction_Box : InteractionMother
             transform.parent = null;
             CharacterController.Speed = m_Speed;
             m_AnimPlayer.SetTrigger("StopTakeBox");
+            PlayerControllerSO.InputAsset.FindAction("Player/Jump").Enable();
         }
     }
 }
