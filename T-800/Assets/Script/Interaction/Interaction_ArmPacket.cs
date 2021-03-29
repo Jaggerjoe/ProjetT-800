@@ -17,6 +17,12 @@ public class Interaction_ArmPacket : InteractionMother
     {
         base.RecuperationAniamtorOnPlayer();
     }
+
+    public override void Use()
+    {
+        GlobalInteractionRef.UseObject = false;
+    }
+
     public override void UseWithOneArm()
     {
         if(m_AnimPlayer == null)
