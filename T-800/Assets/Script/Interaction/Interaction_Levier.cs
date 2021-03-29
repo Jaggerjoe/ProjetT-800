@@ -1,22 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interaction_Levier : InteractionMother
 {
+    #region SeriazeField
     [SerializeField]
     private GameObject m_Levier;
 
     [SerializeField]
     private InteractionOpenDoor m_DoorOpen;
 
+    [SerializeField]
+    private bool m_LeverIsActive = false;
+    #endregion
     private Animator m_AnimLevier;
 
     private MeshCollider m_Collider = null;
 
-    [SerializeField]
-    private bool m_LeverIsActive = false;
+    [System.Serializable]
+    private class LeverEvent
+    {
+        public LeverInfoEvent m_ActivateLever = new LeverInfoEvent();
+    }
 
+    [SerializeField]
+    private LeverEvent m_LeverEvent = new LeverEvent();
 
     public override void Start() 
     {
@@ -53,6 +63,7 @@ public class Interaction_Levier : InteractionMother
     public void EndAnimationLevier()
     {
         m_AnimPlayer.SetTrigger("StopUse");
+        m_LeverEvent.m_ActivateLever.Invoke( new LeverInfos { Origin = transform.position, OriginRotation = transform.parent.rotation });
     }
 
     public void OpenDoor()
