@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Interaction_Button : InteractionMother
 {
@@ -15,8 +14,14 @@ public class Interaction_Button : InteractionMother
 
     private MeshCollider m_Collider = null;
 
-  
+    [System.Serializable]
+    private class ButtonEvent
+    {
+        public UnityEvent m_OnPressButton = new UnityEvent();
+    }
 
+    [SerializeField]
+    private ButtonEvent m_ButtonEvent = new ButtonEvent();
 
     public override void Start()
     {
@@ -37,11 +42,11 @@ public class Interaction_Button : InteractionMother
         m_ButtonIsPressed = true;
         m_Anim.SetBool("Push", true);
         m_Collider.enabled = false;
+        m_ButtonEvent.m_OnPressButton.Invoke();
     }
 
     public void OpenDoor()
     {
-        Debug.Log(m_ButtonIsPressed);
         m_DoorOpen.OpenDoor();
         GlobalInteractionRef.UseObject = false;
     }

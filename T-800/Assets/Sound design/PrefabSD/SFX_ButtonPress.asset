@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb52814ccc5fd43449720379dbef51f9, type: 3}
+  m_Name: SFX_ButtonPress
+  m_EditorClassIdentifier: 
+  naming: NamingSound
+  clip:
+  - {fileID: 8300000, guid: 0200074cd9ca16f4695e67c3dbe4d07f, type: 3}
+  volume: 0.3
+  pitch: 1
+  loop: 0
+  mixer: {fileID: 0}
