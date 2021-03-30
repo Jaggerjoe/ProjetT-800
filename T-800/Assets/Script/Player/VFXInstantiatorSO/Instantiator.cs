@@ -32,4 +32,9 @@ public class Instantiator : ScriptableObject
     {
         Instantiate(m_Prefab, p_infos.Origin + new Vector3(-.4f,0,0), p_infos.Rotation);
     }
+
+    public void InstantiatePrefab(ArmSnatchInfos p_infos)
+    {
+        Instantiate(m_Prefab, p_infos.Position , p_infos.Rotation);
+    }
 }

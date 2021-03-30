@@ -38,6 +38,8 @@ public class CallAnimEvent : MonoBehaviour
       public MovementInfosEvent m_OnMoveFootLeft = new MovementInfosEvent();
       public UnityEvent m_OnStopMove = new UnityEvent();
     }
+    [SerializeField]
+    private MovementEvents m_MovementEvent = new MovementEvents();
 
     [System.Serializable]
     private class JumpEvents
@@ -45,10 +47,25 @@ public class CallAnimEvent : MonoBehaviour
         public JumpInfoEvent m_OnStopJump = new JumpInfoEvent();
     }
     [SerializeField]
-    private MovementEvents m_MovementEvent = new MovementEvents();
-
-    [SerializeField]
     JumpEvents m_JumpEvent = new JumpEvents();
+
+    [System.Serializable]
+    private class SnatchArmEvent
+    {
+        public UnityEvent m_OnSnatchArm = new UnityEvent();
+
+        public UnityEvent m_OnSnatchArmFx = new UnityEvent();
+    }
+    [SerializeField]
+    private SnatchArmEvent m_SntachEvent = new SnatchArmEvent();
+
+    [System.Serializable]
+    private class SeachInArmPack
+    {
+        public UnityEvent m_OnSearch = new UnityEvent();
+    }
+    [SerializeField]
+    private SeachInArmPack m_SearchInArmPacket = new SeachInArmPack();
     #endregion
     private void Start()
     {
@@ -97,6 +114,19 @@ public class CallAnimEvent : MonoBehaviour
         m_JumpEvent.m_OnStopJump.Invoke(new JumpInfo { JumpOrigin = transform.position +new Vector3(0,.3f,0) });
     }
 
+    public void SnatchArm()
+    {
+        m_SntachEvent.m_OnSnatchArm.Invoke();
+    }
+
+    public void SnatchArmFX()
+    {
+        m_SntachEvent.m_OnSnatchArmFx.Invoke();
+    }
+    public void SearchInArmPacket()
+    {
+        m_SearchInArmPacket.m_OnSearch.Invoke();
+    }
     public void EquipArm()
     {
         Collider[] l_Collide = Physics.OverlapSphere(transform.position, 5f, m_LayerDetection);
