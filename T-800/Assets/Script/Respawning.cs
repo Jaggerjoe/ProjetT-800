@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Respawning : MonoBehaviour
 {
@@ -26,11 +28,15 @@ public class Respawning : MonoBehaviour
     private LayerMask m_RespawnPointDetection;
     [SerializeField]
     private Transform m_SpawnPoint;
+    [SerializeField]
+    private Image m_BlackScreen;
+
 
     private void Update()
     {
         if (Physics.CapsuleCast(PointStartCapsule, PointEndCapsule, m_CapsuleCollider.radius * 0.95f, Vector3.up, out RaycastHit hit, m_CastDistance, m_RespawnDetection))
         {
+
             transform.position = m_SpawnPoint.position;
         }
 

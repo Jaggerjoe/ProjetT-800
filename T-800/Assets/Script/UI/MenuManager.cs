@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour
         l_MySequence.Insert(0, m_FondNoir.DOFade(0, 6));
         foreach (Image image in m_MainMenuImageArray)
         {
-            l_MySequence.Insert(0.75f, image.DOFade(1, 3f));
+            l_MySequence.Insert(0.75f, image.DOFade(1, 2f));
         }
         m_controller.InputAsset.FindAction("Player/Movements").Disable();
         m_controller.InputAsset.FindAction("Player/Look").Disable();
