@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 1927240807}
   - component: {fileID: 5267053654282643334}
   - component: {fileID: 1250821209}
+  - component: {fileID: 31618308}
   m_Layer: 11
   m_Name: Automaton_Character
   m_TagString: Untagged
@@ -376,6 +377,30 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246262766981116671}
   m_Enabled: 1
+--- !u!167 &31618308
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246262766981116671}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 15
+  m_ReverbPreset: 9
+  m_Room: -1000
+  m_RoomHF: 0
+  m_DecayTime: 2.91
+  m_DecayHFRatio: 1.3
+  m_Reflections: -602
+  m_ReflectionsDelay: 0.015
+  m_Reverb: -302
+  m_ReverbDelay: 0.022
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
 --- !u!95 &190124590
 Animator:
   serializedVersion: 3
@@ -493,6 +518,53 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
           m_MethodName: InstantiatePrefab
           m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  m_SntachEvent:
+    m_OnSnatchArm:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: f26f711cc2aaa474f9a90819fea065cb, type: 2}
+          m_TargetAssemblyTypeName: SoundScriptable, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_OnSnatchArmFx:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 6473cb3dc2729b346b681ef890839771, type: 2}
+          m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
+          m_MethodName: InstantiatePrefab
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8062053647203371995}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  m_SearchInArmPacket:
+    m_OnSearch:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 707a8218370e6e24a9069a9eb618781f, type: 2}
+          m_TargetAssemblyTypeName: SoundScriptable, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1467,6 +1539,12 @@ Transform:
 --- !u!4 &8566681293123377373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7469618404995525408, guid: ff00587d7fe2bcd49939ed206f15e042,
+    type: 3}
+  m_PrefabInstance: {fileID: 1246262767772513277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8062053647203371995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -96345317471733722, guid: ff00587d7fe2bcd49939ed206f15e042,
     type: 3}
   m_PrefabInstance: {fileID: 1246262767772513277}
   m_PrefabAsset: {fileID: 0}
