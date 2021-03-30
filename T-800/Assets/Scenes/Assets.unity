@@ -1108,12 +1108,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   m_Target: {fileID: 1994380882}
+  m_Slot: {fileID: 0}
   m_PlayerController: {fileID: 11400000, guid: ab18b55688f03b249913650171feee6e, type: 2}
   m_XAngleMin: -80
   m_XAngleMax: -15
   m_OffsetCameraAim: {x: 0, y: 5, z: 0}
   m_XAngleMinAim: -80
   m_XAngleMaxAim: -15
+  m_XAngleMinAimCam: -80
+  m_XAngleMaxAimCam: -15
   m_SensitivityYAim: 0.1
   m_Trajectory: {fileID: 1170788549}
 --- !u!4 &610693994
@@ -3277,7 +3280,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 067aa83f1276c1c44a1cd3d0b3d0801e, type: 2}
+  - {fileID: 2100000, guid: a9efefc5a3f9cc14da0bf2e1751c4ee4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3315,8 +3318,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693617262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.6, y: 0.28, z: 38.3}
-  m_LocalScale: {x: 22.106, y: 0.59509, z: 19.511988}
+  m_LocalPosition: {x: -31.6, y: 0.28, z: 53.35}
+  m_LocalScale: {x: 94.63799, y: 0.59509, z: 81.80629}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 46
