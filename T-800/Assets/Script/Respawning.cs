@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class Respawning : MonoBehaviour
@@ -31,13 +32,18 @@ public class Respawning : MonoBehaviour
     [SerializeField]
     private Image m_BlackScreen;
 
+    private Vector3 m_AdjustRespawn = new Vector3(0, 5, 0);
+
 
     private void Update()
     {
         if (Physics.CapsuleCast(PointStartCapsule, PointEndCapsule, m_CapsuleCollider.radius * 0.95f, Vector3.up, out RaycastHit hit, m_CastDistance, m_RespawnDetection))
         {
+            Sequence l_MySequence = DOTween.Sequence();
+            l_MySequence.Insert(0, m_BlackScreen.DOFade(1, 0));
+            l_MySequence.Insert(0.1f, m_BlackScreen.DOFade(0, 4));
 
-            transform.position = m_SpawnPoint.position;
+            transform.position = m_SpawnPoint.position ;
         }
 
         float l_CastDist = m_Controller.MovementDirection.magnitude * m_Controller.Velocity * Time.deltaTime;
@@ -45,7 +51,7 @@ public class Respawning : MonoBehaviour
         if (Physics.CapsuleCast(PointStartCapsule, PointEndCapsule + new Vector3(0, .2f, 0), m_CapsuleCollider.radius, m_Controller.MovementDirection, out RaycastHit hitInfo, l_CastDist, m_RespawnPointDetection))
         {
             Debug.Log("holaholé");
-            m_SpawnPoint.position = transform.position;
+            m_SpawnPoint.position = transform.position + m_AdjustRespawn;
         }
     }
     private float DistanceBetweenTheStartSphereAndTheEndSphere
