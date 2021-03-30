@@ -115,7 +115,7 @@ Material:
     - _taille_trait: 0.1
     - _zone_ombre: 0.2
     m_Colors:
-    - Color_00c3b2c8bd7b41b6b4def64b5c448e43: {r: 7.4642644, g: 0, b: 2.6093633, a: 1}
+    - Color_00c3b2c8bd7b41b6b4def64b5c448e43: {r: 2.447059, g: 0, b: 0, a: 1}
     - Color_C1EAEF8D: {r: 0, g: 2.7764707, b: 2.9960785, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
