@@ -42,13 +42,13 @@ public class Interaction_Button : InteractionMother
         m_ButtonIsPressed = true;
         m_Anim.SetBool("Push", true);
         m_Collider.enabled = false;
-        m_ButtonEvent.m_OnPressButton.Invoke();
     }
 
     public void OpenDoor()
     {
         m_DoorOpen.OpenDoor();
         GlobalInteractionRef.UseObject = false;
+        m_ButtonEvent.m_OnPressButton.Invoke();
     }
 
     public bool IsButtoned { get { return m_ButtonIsPressed; } }

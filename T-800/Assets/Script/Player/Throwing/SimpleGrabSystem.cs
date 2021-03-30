@@ -60,6 +60,16 @@ public class SimpleGrabSystem : MonoBehaviour
     // Event for location change. Used to update ballistic trajectory.
     public LocationChanged OnLocationChanged;
 
+    private void OnEnable()
+    {
+        m_Controller.onThrow.AddListener(Throwing);
+    }
+
+
+    private void OnDisable()
+    {
+        m_Controller.onThrow.RemoveListener(Throwing);
+    }
 
     private void Start()
     {
@@ -81,41 +91,12 @@ public class SimpleGrabSystem : MonoBehaviour
                 m_Anim.SetTrigger("ArmRemove");
                 m_Etat.Etat = EtatDuPlayer.UnBras;
 
-
-
-
-
             }
-            //else
-            //{
 
-            //    SetArmPos();
-
-            //}
         }
-
-
-
-
         OnLocationChanged?.Invoke(m_Slot.position, m_Slot.rotation * m_ThrowVelocity);
     }
-
-
-
-
-
-    private void OnEnable()
-    {
-        
-            m_Controller.onThrow.AddListener(Throwing);
-    }
-
-
-    private void OnDisable()
-    {
-        m_Controller.onThrow.RemoveListener(Throwing);
-    }
-
+    
 
     void CheckPoint()
     {
@@ -141,45 +122,25 @@ public class SimpleGrabSystem : MonoBehaviour
             m_ClearTrajectory = true;
 
             CheckPoint();
-
+            m_Anim.SetTrigger("ThrowArm");
+            
             StartCoroutine(FollowCurve());
         }
     }
-    //public void SetArmThrow()
-    //{
-
-    //    m_SkeletArm.SetActive(false);
-
-
-
-    //}
-
-    //public void SetArmPos()
-    //{
-
-    //    m_SkeletArm.SetActive(true);
-
-    //}
-
+  
     IEnumerator FollowCurve()
     {
-       
-            m_CurrentPoint = 0;
-        
+         m_CurrentPoint = 0;
+        yield return new WaitForSeconds(.5f);
         while (m_CurrentPoint <= m_ThrowPoints.Count - 1)
-        {
-          
-
+        {         
             m_Timer += Time.deltaTime * m_ThrowSpeed;
             if (m_Arm.transform.position != m_CurrentPositionHolder)
             {
                 m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
-                Debug.Log("ok");
             }
             else
             {
-
-                Debug.Log("vui");
                 m_CurrentPoint++;
                 CheckPoint();
 
@@ -188,7 +149,7 @@ public class SimpleGrabSystem : MonoBehaviour
         }
 
         Destroy(m_Arm);
-        //m_Arm = null;
+
     }
 
 
