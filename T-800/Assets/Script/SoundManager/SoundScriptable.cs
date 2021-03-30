@@ -24,6 +24,7 @@ public class SoundScriptable : ScriptableObject
         AudioSource l_Source = SoundManager.GetSource(this);
         //Applique les reglages
         l_Source.clip = clip[Random.Range(0, clip.Length)];
+        l_Source.pitch = Random.Range(.8f, 1.2f);
         l_Source.Play();
     }
 }
