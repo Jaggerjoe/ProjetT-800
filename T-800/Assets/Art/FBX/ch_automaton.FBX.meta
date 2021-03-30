@@ -433,7 +433,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.82725
+      - time: 0.8246115
         functionName: SnatchArmFX
         data: 
         objectReferenceParameter: {instanceID: 0}
