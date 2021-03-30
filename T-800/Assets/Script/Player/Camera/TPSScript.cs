@@ -170,7 +170,6 @@ public class TPSScript : MonoBehaviour
             Quaternion l_Rotation = Quaternion.Euler(0, m_RotationYAim,0);
             Quaternion l_SlotRotation = Quaternion.Euler(m_RotationXAim, m_RotationYAim, 0);
             Quaternion l_CamRotation = Quaternion.Euler(m_RotationXAimCam, m_RotationYAim, 0);
-        Debug.Log("fbx" + m_Target.rotation);
 
         m_Target.rotation = l_Rotation;
              m_Slot.rotation = l_SlotRotation;
