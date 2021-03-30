@@ -14,6 +14,39 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7076447017896254961, guid: 5fbe4912bc1f4f5429b88b62f5b79344, type: 3}
+--- !u!114 &446546174283212016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789003705595789595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988adb939841ce0479c5a14a28090a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LayerDetection:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ButtonIsPressed: 0
+  m_DoorOpen: {fileID: 0}
+  m_ButtonEvent:
+    m_OnPressButton:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: f4d86a1aa9c926e43a9d7609c4c8afb9, type: 2}
+          m_TargetAssemblyTypeName: SoundScriptable, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &446546174283212020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,26 +70,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   m_Color: {r: 0.030306825, g: 0.9433962, b: 0, a: 1}
   m_Intensity: 245
---- !u!114 &446546174283212016
-MonoBehaviour:
+--- !u!95 &1619121371
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789003705595789595}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988adb939841ce0479c5a14a28090a10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LayerDetection:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Levier: {fileID: 0}
-  m_DoorOpen: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38ff353df8e20684aab362f459c673c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3137153498222543305
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,12 +217,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5fbe4912bc1f4f5429b88b62f5b79344,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2454668015125531802, guid: 5fbe4912bc1f4f5429b88b62f5b79344,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fbe4912bc1f4f5429b88b62f5b79344, type: 3}

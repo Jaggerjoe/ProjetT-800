@@ -40,7 +40,7 @@ public abstract class InteractionMother : MonoBehaviour
     }
 
     public virtual void StopUse() {
-        m_SOCharacterController.InputAsset.FindAction("Player/Jump").Enable();
+        //m_SOCharacterController.InputAsset.FindAction("Player/Jump").Enable();
     }
 
     public Global_Interaction GlobalInteractionRef

@@ -246,14 +246,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.030680977
-        functionName: OnJump
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -262,7 +255,7 @@ ModelImporter:
       name: Atterissage
       takeName: Take 001
       internalID: 0
-      firstFrame: 150
+      firstFrame: 158
       lastFrame: 179
       wrapMode: 0
       orientationOffsetY: 0
@@ -283,36 +276,36 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.035083424
-        functionName: StopJump
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.0369393
+      - time: 0.036939315
         functionName: RemoveJump
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.050131917
+      - time: 0.04221635
         functionName: FreezeMovement
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.96042216
-        functionName: AddJump
+      - time: 0.068677835
+        functionName: StopJump
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9804553
+      - time: 0.97889185
         functionName: StartMovement
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: AddJump
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -426,8 +419,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.12681933
+        functionName: SnatchArm
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.8177084
         functionName: SetArmThrow
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.82725
+        functionName: SnatchArmFX
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -791,6 +798,13 @@ ModelImporter:
       events:
       - time: 0.015430075
         functionName: FreezeMovement
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.02110818
+        functionName: SearchInArmPacket
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

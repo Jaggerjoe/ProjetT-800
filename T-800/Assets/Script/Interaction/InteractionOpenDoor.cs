@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class InteractionOpenDoor : InteractionMother
 {
@@ -12,19 +12,22 @@ public class InteractionOpenDoor : InteractionMother
     [SerializeField]
     private Interaction_Button m_ButtonInteract;
 
-
     [SerializeField]
     HowManyInteract m_HowManyInteract;
 
+    [System.Serializable]
+    private class DoorEvent
+    {
+        public DoorInfosEvent m_OpenDoorEvent = new DoorInfosEvent();
+    }
+
+    [SerializeField]
+    private DoorEvent m_DoorEvent = new DoorEvent();
 
     public override void Start()
     {
         base.Start();
         m_Anim = GetComponent<Animator>();
-    }
-    private void Update()
-    {
-        //OpenDoor();
     }
 
     public override void Use()
@@ -47,22 +50,6 @@ public class InteractionOpenDoor : InteractionMother
                 break;
 
         }
-        //if (m_HowManyInteract == HowManyInteract.One)
-        //{
-        //    if (m_LeverInteract.IsLevered)
-        //    {
-        //        m_Anim.SetBool("Open", true);
-        //    }
-        //}
-
-        //if (m_HowManyInteract == HowManyInteract.Two)
-        //{
-        //    Debug.Log("coucou");
-        //    if (m_LeverInteract.IsLevered && m_ButtonInteract.IsButtoned)
-        //    {
-        //        m_Anim.SetBool("Open", true);
-        //    }
-        //}
     }
 
     void OneInteraction()
@@ -70,6 +57,7 @@ public class InteractionOpenDoor : InteractionMother
         if (m_LeverInteract.IsLevered)
         {
             m_Anim.SetBool("Open", true);
+            m_DoorEvent.m_OpenDoorEvent.Invoke(new DoorInfos { Origin = transform.position, Rotation = transform.parent.rotation});
         }
     }
     void TwoInteraction()
@@ -78,6 +66,7 @@ public class InteractionOpenDoor : InteractionMother
         if (m_LeverInteract.IsLevered && m_ButtonInteract.IsButtoned || m_ButtonInteract.IsButtoned && m_LeverInteract.IsLevered)
         {
             m_Anim.SetBool("Open", true);
+            m_DoorEvent.m_OpenDoorEvent.Invoke(new DoorInfos { Origin = transform.position, Rotation = transform.parent.rotation });
         }
     }
 
