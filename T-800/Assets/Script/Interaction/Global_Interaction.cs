@@ -34,6 +34,8 @@ public class Global_Interaction : MonoBehaviour
 
     private float m_Time = 0.001f;
 
+    private Interaction_ArmPacket m_ArmPacket = null;
+
     private void OnEnable()
     {
         m_PlayerController.InteractionObj.AddListener(DetectionInteraction);
@@ -98,16 +100,75 @@ public class Global_Interaction : MonoBehaviour
                 {
                     m_CurrentMat = item.GetComponentInChildren<Renderer>().materials[1];
                 }
-                if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                if(m_ArmPacket == null)
                 {
-                    m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
-                    m_Time += Time.deltaTime;
+                    m_ArmPacket = item.gameObject.GetComponentInChildren<Interaction_ArmPacket>();
                 }
-                else 
+
+                if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
                 {
-                    m_CurrentMat.SetColor("_Color_Outline", Color.black);
-                    m_Time = 0;
-                    m_CurrentMat = null;
+                    if (m_ArmPacket != null)
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.red, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                            m_ArmPacket = null;
+                        }
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                        }
+                    }
+                        
+                }
+                else
+                {
+                    if(m_ArmPacket != null)
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                            m_ArmPacket = null;
+                        }
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3f)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.red, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                        }
+                    }
                 }
             }
         }
