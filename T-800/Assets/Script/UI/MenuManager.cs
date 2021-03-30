@@ -43,8 +43,10 @@ public class MenuManager : MonoBehaviour
         l_MySequence.Insert(0, m_FondNoir.DOFade(0, 6));
         foreach (Image image in m_MainMenuImageArray)
         {
-            l_MySequence.Insert(0.75f, image.DOFade(1, 3f));
+            l_MySequence.Insert(0.75f, image.DOFade(1, 2f));
         }
+        m_controller.InputAsset.FindAction("Player/Movements").Disable();
+        m_controller.InputAsset.FindAction("Player/Look").Disable();
 
     }
 
@@ -55,17 +57,15 @@ public class MenuManager : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
-
+            m_controller.InputAsset.FindAction("Player/Movements").Disable();
+            m_controller.InputAsset.FindAction("Player/Look").Disable();
             foreach (Image image in m_PauseImageArray)
             {
                 image.DOFade(1, 1f);
 
             }
             //Time.timeScale = 0f;
-         
-
         }
-        
     }
 
     public void PlayGame()
@@ -81,8 +81,9 @@ public class MenuManager : MonoBehaviour
           l_MySequence.Insert(1.5f, m_MainMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector3(0, 1167, 0), 1f));
         }
 
-        
-       
+        m_controller.InputAsset.FindAction("Player/Movements").Enable();
+        m_controller.InputAsset.FindAction("Player/Look").Enable();
+
     }
 
     public void Quit()
@@ -103,7 +104,8 @@ public class MenuManager : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        m_controller.InputAsset.FindAction("Player/Movements").Enable();
+        m_controller.InputAsset.FindAction("Player/Look").Enable();
         foreach (Image image in m_PauseImageArray)
         {
             image.DOFade(0, 1.5f);
