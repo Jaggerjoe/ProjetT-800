@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SFX_DoorOpen
   m_EditorClassIdentifier: 
   naming: NamingSound
-  clip: []
+  clip:
+  - {fileID: 8300000, guid: 37958685182b99e459cbe1c7fff23626, type: 3}
   volume: 0.5
   pitch: 1
   loop: 0
