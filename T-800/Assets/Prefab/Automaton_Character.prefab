@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 5267053654282643334}
   - component: {fileID: 1250821209}
   - component: {fileID: 31618308}
+  - component: {fileID: 2878540544486389485}
   m_Layer: 11
   m_Name: Automaton_Character
   m_TagString: Untagged
@@ -369,6 +370,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   m_SpawnPoint: {fileID: 0}
+  m_BlackScreen: {fileID: 0}
 --- !u!81 &1250821209
 AudioListener:
   m_ObjectHideFlags: 0
@@ -401,6 +403,24 @@ AudioReverbZone:
   m_Density: 100
   m_LFReference: 250
   m_RoomLF: 0
+--- !u!114 &2878540544486389485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246262766981116671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37dc884bfde138040a9dab4b2491a35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Controller: {fileID: 0}
+  m_CapsuleCollider: {fileID: 0}
+  m_CastDistance: 0
+  m_RespawnDetection:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &190124590
 Animator:
   serializedVersion: 3
