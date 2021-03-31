@@ -28,6 +28,8 @@ public class Respawning : MonoBehaviour
     [SerializeField]
     private LayerMask m_RespawnPointDetection;
     [SerializeField]
+    private LayerMask m_FadeDetection;
+    [SerializeField]
     private Transform m_SpawnPoint;
     [SerializeField]
     private Image m_BlackScreen;
@@ -39,12 +41,19 @@ public class Respawning : MonoBehaviour
     {
         if (Physics.CapsuleCast(PointStartCapsule, PointEndCapsule, m_CapsuleCollider.radius * 0.95f, Vector3.up, out RaycastHit hit, m_CastDistance, m_RespawnDetection))
         {
-            Sequence l_MySequence = DOTween.Sequence();
-            l_MySequence.Insert(0, m_BlackScreen.DOFade(1, 0));
-            l_MySequence.Insert(0.1f, m_BlackScreen.DOFade(0, 4));
-
+          
             transform.position = m_SpawnPoint.position ;
         }
+
+        if (Physics.CapsuleCast(PointStartCapsule, PointEndCapsule, m_CapsuleCollider.radius * 0.95f, Vector3.up, out RaycastHit hitFade, m_CastDistance, m_FadeDetection))
+        {
+            Sequence l_MySequence = DOTween.Sequence();
+            l_MySequence.Insert(0, m_BlackScreen.DOFade(1, 1f));
+            l_MySequence.Insert(1f, m_BlackScreen.DOFade(0, 1.5f));
+
+            
+        }
+
 
         float l_CastDist = m_Controller.MovementDirection.magnitude * m_Controller.Velocity * Time.deltaTime;
 
