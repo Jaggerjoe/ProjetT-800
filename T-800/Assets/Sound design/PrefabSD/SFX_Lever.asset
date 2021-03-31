@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: SFX_Lever
   m_EditorClassIdentifier: 
   naming: NamingSound
-  clip: []
-  volume: 0.5
+  clip:
+  - {fileID: 8300000, guid: 85f239dd1f4888544a133b5b4d9f9abd, type: 3}
+  volume: 0.2
   pitch: 1
   loop: 0
   mixer: {fileID: 0}
