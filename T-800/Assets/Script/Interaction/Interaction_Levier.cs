@@ -23,6 +23,7 @@ public class Interaction_Levier : InteractionMother
     private class LeverEvent
     {
         public LeverInfoEvent m_ActivateLever = new LeverInfoEvent();
+        public UnityEvent m_SFXSound = new UnityEvent();
     }
 
     [SerializeField]
@@ -42,6 +43,7 @@ public class Interaction_Levier : InteractionMother
     {
         if(TryGetComponent(out m_AnimLevier))
         {
+            m_LeverEvent.m_SFXSound.Invoke();
             Levier();
         }
         else
