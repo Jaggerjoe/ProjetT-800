@@ -6028,7 +6028,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1673180067 stripped
 MonoBehaviour:
@@ -6931,6 +6931,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 805424410}
     m_Modifications:
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076643644036542064, guid: 65dff8268a43fe44db85d2f3f8974243,
+        type: 3}
+      propertyPath: VelocityModule.speedModifier.maxCurve.m_Curve.Array.data[0].value
+      value: 0.6216221
+      objectReference: {fileID: 0}
     - target: {fileID: 7076643644036542066, guid: 65dff8268a43fe44db85d2f3f8974243,
         type: 3}
       propertyPath: m_RootOrder
@@ -7122,7 +7182,7 @@ Transform:
   m_Children:
   - {fileID: 7677850403519827840}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7677850403885152964
 GameObject:
