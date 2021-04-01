@@ -8,31 +8,36 @@ public class Interaction_ArmPacket : InteractionMother
     private GameObject m_PrefabArm;
 
     [SerializeField]
-    private LayerMask m_LayerDetection;
-    private GameObject m_Socket;
-    private Animator m_Anim = null;
+    private GameObject m_SkeletArm;
+
+    //[SerializeField]
+    //private GameObject m_Socket;
+
+    public override void RecuperationAniamtorOnPlayer()
+    {
+        base.RecuperationAniamtorOnPlayer();
+    }
+
     public override void Use()
     {
-        if(TryGetComponent(out m_Anim))
+        GlobalInteractionRef.UseObject = false;
+    }
+
+    public override void UseWithOneArm()
+    {
+        if(m_AnimPlayer == null)
         {
-            //Add animation
+            RecuperationAniamtorOnPlayer();
+            m_AnimPlayer.SetTrigger("StartUsePackArm");
         }
         else
         {
-            Debug.Log("Je suis un tas de bras sans animation");
-            EquipeArm();
+            m_AnimPlayer.SetTrigger("StartUsePackArm");
         }
     }
 
-    private void EquipeArm()
+    public void EquipeArm()
     {
-        Collider[] l_HitColliders = Physics.OverlapSphere(transform.position, 10, m_LayerDetection);
-        foreach (var hitCollider in l_HitColliders)
-        {
-            if(TryGetComponent(out m_Socket))
-            {
-                Instantiate(m_PrefabArm, hitCollider.transform.position, Quaternion.identity, m_Socket.transform.parent);
-            }
-        }
+        m_SkeletArm.SetActive(true);
     }
 }

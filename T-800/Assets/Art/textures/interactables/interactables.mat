@@ -32,6 +32,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 237eacdc593f55745b1e48468316935f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_cb52149993e0404893b07f393f2b8148:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: fffd4b429ad65f545881127aeffc7ea4, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -64,7 +68,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: fffd4b429ad65f545881127aeffc7ea4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_708ba4f8fa144a3ebe836847f7cee023: 0
     - Vector1_8220681A: 0.5
     - _AlphaClip: 0
     - _Blend: 0
@@ -94,11 +111,13 @@ Material:
     - _taille_trait: 0.18
     - _zone_ombre: 0.02
     m_Colors:
+    - Color_00c3b2c8bd7b41b6b4def64b5c448e43: {r: 0, g: 0, b: 0, a: 0}
     - Color_C1EAEF8D: {r: 0, g: 0.9256198, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _color_rim: {r: 1.096624, g: 1.096624, b: 1.096624, a: 0}
+    - _color_rim: {r: 0, g: 0, b: 0, a: 0}
     - _color_shadow: {r: 0, g: 0, b: 0, a: 0}
-    - _couleur_asset: {r: 1, g: 1, b: 1, a: 0}
+    - _couleur_asset: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0}
+  m_BuildTextureStacks: []

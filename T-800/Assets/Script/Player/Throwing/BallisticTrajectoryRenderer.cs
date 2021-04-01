@@ -14,7 +14,7 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
     private SO_PlayerController m_Controller;
 
     [SerializeField]
-    private SimpleGrabSystem ThrowScript;
+    private SimpleGrabSystem m_ThrowScript;
     #endregion
 
     #region Trajectory
@@ -69,11 +69,11 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
             //Je dessine la trajectoire lorsque j'appuie sur le click gauche
             if (m_Controller.Aiming )
             {
-                if (m_Etat.Etat == EtatDuPlayer.DeuxBras)
+                if (m_Etat.Etat != EtatDuPlayer.SansBras)
                 {
-                    
+                    m_ThrowScript.Clear = false;
                     DrawTrajectory();
-                    ThrowScript.IsArming = true;
+                    m_ThrowScript.IsArming = true;
             }    
                     
             }
@@ -82,8 +82,13 @@ public class BallisticTrajectoryRenderer : MonoBehaviour
             {
 
                 ClearTrajectory();
-                ThrowScript.IsArming = false;
+                m_ThrowScript.IsArming = false;
             }
+
+            if(m_ThrowScript.Clear)
+        {
+            ClearTrajectory();
+        }
 
         
       

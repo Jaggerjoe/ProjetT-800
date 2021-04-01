@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Global_Interaction : InteractionMother
+using UnityEngine.UI;
+using DG.Tweening;
+public class Global_Interaction : MonoBehaviour
 {
     [SerializeField]
     private LayerMask m_Layer;
@@ -17,20 +18,41 @@ public class Global_Interaction : InteractionMother
     private IntercationBodyPlayer m_RefInteraction;
 
     [SerializeField]
-    private SO_PlayerController m_PLayerController;
+    private SO_PlayerController m_PlayerController;
+
+    [SerializeField]
+    private GameObject m_Camera = null;
+
+    [SerializeField]
+    private float m_DistInteract = 1f;
+
+    private Material m_CurrentMat = null;
+
+    
+    private Image m_CurrentUI = null;
 
     private bool m_UseObject = false;
 
     private InteractionMother m_InteractObj;
 
+    private float m_Time = 0.001f;
+
+    private Interaction_ArmPacket m_ArmPacket = null;
+
     private void OnEnable()
     {
-        m_PLayerController.InteractionObj.AddListener(DetectionInteraction);
+        m_PlayerController.InteractionObj.AddListener(DetectionInteraction);
     }
 
     private void OnDisable()
     {
-        m_PLayerController.InteractionObj.RemoveListener(DetectionInteraction);
+        m_PlayerController.InteractionObj.RemoveListener(DetectionInteraction);
+    }
+
+    private void Update()
+    {
+        DetectionObjectUI();
+        DetectionObjectInteractable();
     }
     public void DetectionInteraction()
     {
@@ -43,13 +65,13 @@ public class Global_Interaction : InteractionMother
             {
                 if (Vector3.Angle(transform.forward, toOther) <= m_Angle / 2)
                 {
-                    if(m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
+                    if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
                     {
                         if (hit.gameObject.TryGetComponent(out m_InteractObj))
                         {
                             if(!m_UseObject)
                             {
-                                m_InteractObj.PlayerControllerSO = m_PLayerController;
+                                m_InteractObj.PlayerControllerSO = m_PlayerController;
                                 m_UseObject = true;
                                 m_InteractObj.Use();
                             }
@@ -59,11 +81,131 @@ public class Global_Interaction : InteractionMother
                             }
                         }
                     }
+                    else if(m_RefInteraction.Etat == EtatDuPlayer.SansBras)
+                    {
+                        if (hit.gameObject.TryGetComponent(out m_InteractObj))
+                        {
+                            m_InteractObj.UseWithOneArm();
+                        }
+                    }
                 }
             }
         }
     }
 
+    public void DetectionObjectInteractable()
+    {
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position, m_DistInteract + 1, m_Layer);
+        {
+            foreach (var item in l_Collides)
+            {
+                if(m_CurrentMat == null)
+                {
+                    m_CurrentMat = item.GetComponentInChildren<Renderer>().materials[1];
+                }
+                if(m_ArmPacket == null)
+                {
+                    m_ArmPacket = item.gameObject.GetComponentInChildren<Interaction_ArmPacket>();
+                }
+
+                if (m_RefInteraction.Etat == EtatDuPlayer.DeuxBras)
+                {
+                    if (m_ArmPacket != null)
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.red, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                            m_ArmPacket = null;
+                        }
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                        }
+                    }
+                        
+                }
+                else
+                {
+                    if(m_ArmPacket != null)
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                            m_ArmPacket = null;
+                        }
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.red, m_Time));
+                            m_Time += Time.deltaTime;
+                        }
+                        else
+                        {
+                            m_CurrentMat.SetColor("_Color_Outline", Color.black);
+                            m_Time = 0;
+                            m_CurrentMat = null;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void DetectionObjectUI()
+    {
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position, m_DistInteract+1, m_Layer);
+        {
+            foreach (var item in l_Collides)
+            {
+                if (m_CurrentUI == null)
+                {
+                    m_CurrentUI = item.GetComponentInChildren<Image>();
+                }
+                if (Vector3.Distance(transform.position, item.gameObject.transform.position) < m_DistInteract)
+                {
+                    Sequence l_ESequence = DOTween.Sequence();
+                    l_ESequence.Insert(0, m_CurrentUI.DOFade(1, 1));
+                    l_ESequence.Insert(0, m_CurrentUI.transform.DOScale(1, 1));
+                    m_CurrentUI.transform.LookAt(m_Camera.transform);
+                }
+                else
+                {
+
+                    Sequence l_ESequence = DOTween.Sequence();
+                    l_ESequence.Insert(0, m_CurrentUI.DOFade(0, 1));
+                    l_ESequence.Insert(0, m_CurrentUI.transform.DOScale(0, 1));
+                    m_CurrentUI = null;
+                    //m_Time = 0;
+                }
+            }
+        }
+    }
     // public void Interaction()
     // {
     //     if(Physics.BoxCast(transform.position, m_Collider.bounds.extents, Vector3.down, out RaycastHit m_hit,Quaternion.identity, .5f, m_Layer))
@@ -79,6 +221,11 @@ public class Global_Interaction : InteractionMother
     {
         get { return m_UseObject; }
         set { m_UseObject = value; }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, m_DistInteract);
     }
 }
 

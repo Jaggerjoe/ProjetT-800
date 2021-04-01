@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class SimpleGrabSystem : MonoBehaviour
 {
     [SerializeField]
+    private CallAnimEvent ThrowEvents;
+    [SerializeField]
     private IntercationBodyPlayer m_Etat;
     [SerializeField]
     private SO_PlayerController m_Controller;
@@ -14,17 +16,18 @@ public class SimpleGrabSystem : MonoBehaviour
     // Référence au point sur lequel se rend l'objet 
     [SerializeField]
     private Transform m_Slot;
-    
+    private Animator m_Anim;
+    private bool m_ClearTrajectory = false;
+
 
 
     private bool m_IsArming = false;
- 
+
 
     // Ref de l'objet
     [SerializeField]
-    private GameObject m_Arm; 
-    [SerializeField]
-    private GameObject m_SkeletArm;
+    private GameObject m_Arm;
+
 
     [SerializeField]
     private GameObject m_Automaton;
@@ -57,49 +60,8 @@ public class SimpleGrabSystem : MonoBehaviour
     // Event for location change. Used to update ballistic trajectory.
     public LocationChanged OnLocationChanged;
 
-
-    private void Start()
-    {
-       
-        m_Arm.transform.position = m_Slot.position;
-        CheckPoint();
-    }
-
-    private void Update()
-    {
-
-       
-        if ( m_Etat.Etat == EtatDuPlayer.DeuxBras)
-        {
-
-            if (m_IsArming )
-            {
-
-                SetArmThrow();
-
-
-            }
-            else
-            {
-               
-                SetArmPos();
-                
-            }
-        }
-
-     
-
-
-        OnLocationChanged?.Invoke(m_Slot.position, m_Slot.rotation * m_ThrowVelocity);
-    }
-
-
-
-
-
     private void OnEnable()
     {
-        
         m_Controller.onThrow.AddListener(Throwing);
     }
 
@@ -109,10 +71,38 @@ public class SimpleGrabSystem : MonoBehaviour
         m_Controller.onThrow.RemoveListener(Throwing);
     }
 
+    private void Start()
+    {
+        m_Anim = GetComponentInChildren<Animator>();
+        //m_Arm.transform.position = m_Slot.position;
+        CheckPoint();
+    }
+
+    private void Update()
+    {
+        m_Arm = ThrowEvents.Arm;
+
+        if (m_Etat.Etat == EtatDuPlayer.DeuxBras)
+        {
+
+            if (m_IsArming && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("ArracherBras"))
+            {
+
+                m_Anim.SetTrigger("ArmRemove");
+                m_Etat.Etat = EtatDuPlayer.UnBras;
+
+            }
+
+        }
+        OnLocationChanged?.Invoke(m_Slot.position, m_Slot.rotation * m_ThrowVelocity);
+    }
+    
 
     void CheckPoint()
     {
         m_StartPositon = m_Arm.transform.position;
+
+       
        
         if (m_CurrentPoint < m_ThrowPoints.Count - 1)
         {
@@ -124,49 +114,33 @@ public class SimpleGrabSystem : MonoBehaviour
     }
     void Throwing()
     {
-        
-        m_ThrowPoints = m_Trajectory.m_CurvePoints;
-        m_Arm.transform.SetParent(null);
-        m_Etat.Etat = EtatDuPlayer.UnBras;
+        if (m_Etat.Etat == EtatDuPlayer.UnBras)
+        {
+            m_ThrowPoints = m_Trajectory.m_CurvePoints;
+            m_Arm.transform.SetParent(null);
+            m_Etat.Etat = EtatDuPlayer.SansBras;
+            m_ClearTrajectory = true;
 
-
-        CheckPoint();
-        
-        StartCoroutine(FollowCurve());
+            CheckPoint();
+            m_Anim.SetTrigger("ThrowArm");
+            
+            StartCoroutine(FollowCurve());
+        }
     }
-    public void SetArmThrow()
-    {
-
-        m_SkeletArm.SetActive(false);
-      
-        
-        
-    }
-
-    public void SetArmPos()
-    {
-
-        m_SkeletArm.SetActive(true);
-
-    }
-
+  
     IEnumerator FollowCurve()
     {
-
-       
-        while (m_CurrentPoint < m_ThrowPoints.Count - 1)
-        {
-
+         m_CurrentPoint = 0;
+        yield return new WaitForSeconds(.5f);
+        while (m_CurrentPoint <= m_ThrowPoints.Count - 1)
+        {         
             m_Timer += Time.deltaTime * m_ThrowSpeed;
             if (m_Arm.transform.position != m_CurrentPositionHolder)
             {
                 m_Arm.transform.position = Vector3.Lerp(m_StartPositon, m_CurrentPositionHolder, m_Timer);
-                Debug.Log("ok");
             }
             else
             {
-                
-                Debug.Log("vui");
                 m_CurrentPoint++;
                 CheckPoint();
 
@@ -174,21 +148,18 @@ public class SimpleGrabSystem : MonoBehaviour
             yield return null;
         }
 
-
-        m_Arm = null;
-        
-
-       
+        Destroy(m_Arm);
 
     }
-    
 
-    private void OnDrawGizmos()
+
+private void OnDrawGizmos()
     {
         Vector3 position = transform.position + transform.forward * 3;
         Gizmos.DrawLine(transform.position,position);
     }
 
     public bool IsArming { get { return m_IsArming; } set { m_IsArming = value; } }
+    public bool Clear { get { return m_ClearTrajectory; } set { m_ClearTrajectory = value; } }
 }
 

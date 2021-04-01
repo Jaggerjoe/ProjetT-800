@@ -81,7 +81,18 @@ public class CharacterController : MonoBehaviour
     private bool m_IsJumping = false;
 
     private Vector3 m_InitialPosPlayer = Vector3.zero;
-#endregion
+    #endregion
+    #region JumpEvent
+    [System.Serializable]
+    private class JumpEvents
+    {
+        public JumpInfoEvent m_OnJump = new JumpInfoEvent();
+    }
+
+    [SerializeField]
+    JumpEvents m_JumpEvent = new JumpEvents();
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +115,7 @@ public class CharacterController : MonoBehaviour
     void Move(Vector3 p_Direction, float p_DeltaTime)
     {
         p_Direction = Vector3.ClampMagnitude(p_Direction, 1f);
+   
         //je recupère le m_MovementDirection de la camera
         //je recupère le vecteur droit de la camera.
         Vector3 l_CameraForward = Camera.main.transform.forward;
@@ -148,6 +160,8 @@ public class CharacterController : MonoBehaviour
                 m_VectorMovement = m_MovementDirection;
                 m_Anim.SetFloat("Speed", m_Velocity);
                 m_Anim.SetFloat("MoveDir", p_Direction.y);
+                m_Anim.SetFloat("MoveDirX", p_Direction.x);
+                
                 
                 Collider[] hitCollider2 = Physics.OverlapCapsule(PointStartCapsule,PointEndCapsule + new Vector3(0,.2f,0) ,m_CapsuleCollider.radius,m_LayerDeplacement);
                 if (hitCollider2.Length >= 1)
@@ -272,10 +286,9 @@ public class CharacterController : MonoBehaviour
                 if (m_IsOnTheFloor)
                 {
                     m_IsOnTheFloor = false;
-
                 }
                 m_YVelocity += Physics.gravity.y * m_GravityScale * p_DeltaTime;
-            }    
+            }
         }
         if (m_PlayerInput.Jumping && m_IsOnTheFloor)
         {
@@ -284,6 +297,7 @@ public class CharacterController : MonoBehaviour
             m_InitialPosPlayer = transform.position;
             m_JumpTimer = 0f;
             m_YVelocity = 1f;
+            m_JumpEvent.m_OnJump.Invoke(new JumpInfo { JumpOrigin = m_InitialPosPlayer });
         }
     }
 
