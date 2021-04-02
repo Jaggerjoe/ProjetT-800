@@ -22,10 +22,20 @@ public class SoundScriptable : ScriptableObject
     public void Play()
     {
         AudioSource l_Source = SoundManager.GetSource(this);
-        //Applique les reglages
         l_Source.clip = clip[Random.Range(0, clip.Length)];
         l_Source.pitch = Random.Range(.8f, 1.2f);
         l_Source.Play();
+    }
+
+    public void PlayOnce()
+    {
+        AudioSource l_Source = SoundManager.GetSource(this);
+        l_Source.clip = clip[Random.Range(0, clip.Length)];
+        l_Source.pitch = Random.Range(.8f, 1.2f);
+        if(!l_Source.isPlaying)
+        {
+            l_Source.Play();
+        }
     }
 }
 

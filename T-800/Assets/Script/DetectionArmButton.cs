@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEditor;
 
 
@@ -17,6 +16,13 @@ public class DetectionArmButton : MonoBehaviour
 
     private Interaction_Button m_ButtonInteraction;
 
+    [System.Serializable]
+    private class ArmEvent
+    {
+        public UnityEvent m_ArmCollision = new UnityEvent();
+    }
+    [SerializeField]
+    private ArmEvent m_ArmEvents = new ArmEvent();
 
     void Update()
     {
@@ -24,14 +30,13 @@ public class DetectionArmButton : MonoBehaviour
         {
             m_ButtonInteraction = hit.collider.gameObject.GetComponent<Interaction_Button>();
             m_ButtonInteraction.Use();
+            m_ArmEvents.m_ArmCollision.Invoke();
             m_CapsuleCollider.gameObject.SetActive(false);
         }
     }
 
     private void OnDrawGizmos()
     {
-        
-
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * m_CastDistance);
     }
 
