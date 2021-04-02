@@ -66,6 +66,14 @@ public class CallAnimEvent : MonoBehaviour
     }
     [SerializeField]
     private SeachInArmPack m_SearchInArmPacket = new SeachInArmPack();
+
+    [System.Serializable]
+    private class ThrowArmEvent
+    {
+        public UnityEvent m_ThrowArm = new UnityEvent();
+    }
+    [SerializeField]
+    private ThrowArmEvent m_ThrowEvent = new ThrowArmEvent();
     #endregion
     private void Start()
     {
@@ -127,6 +135,12 @@ public class CallAnimEvent : MonoBehaviour
     {
         m_SearchInArmPacket.m_OnSearch.Invoke();
     }
+
+    public void ThrowArm()
+    {
+        m_ThrowEvent.m_ThrowArm.Invoke();
+    }
+
     public void EquipArm()
     {
         Collider[] l_Collide = Physics.OverlapSphere(transform.position, 5f, m_LayerDetection);
