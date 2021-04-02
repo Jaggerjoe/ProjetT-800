@@ -15,7 +15,7 @@ MonoBehaviour:
   naming: NamingSound
   clip:
   - {fileID: 0}
-  volume: 0.5
+  volume: 0.3
   pitch: 1
   loop: 0
   mixer: {fileID: 0}
