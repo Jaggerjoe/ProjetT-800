@@ -23,9 +23,6 @@ public class Global_Interaction : MonoBehaviour
     [SerializeField]
     private GameObject m_Camera = null;
 
-    [SerializeField]
-    private float m_DistInteract = 1f;
-
     private Material m_CurrentMat = null;
 
     
@@ -95,7 +92,7 @@ public class Global_Interaction : MonoBehaviour
 
     public void DetectionObjectInteractable()
     {
-        Collider[] l_Collides = Physics.OverlapSphere(transform.position, m_DistInteract + 1, m_Layer);
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position, 5, m_Layer);
         {
             foreach (var item in l_Collides)
             {
@@ -112,7 +109,7 @@ public class Global_Interaction : MonoBehaviour
                 {
                     if (m_ArmPacket != null)
                     {
-                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= 3)
                         {
                             m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.red, m_Time));
                             m_Time += Time.deltaTime;
@@ -127,7 +124,7 @@ public class Global_Interaction : MonoBehaviour
                     }
                     else
                     {
-                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= 3)
                         {
                             m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
                             m_Time += Time.deltaTime;
@@ -145,7 +142,7 @@ public class Global_Interaction : MonoBehaviour
                 {
                     if(m_ArmPacket != null)
                     {
-                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= 3)
                         {
                             m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.yellow, m_Time));
                             m_Time += Time.deltaTime;
@@ -160,7 +157,7 @@ public class Global_Interaction : MonoBehaviour
                     }
                     else
                     {
-                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= m_DistInteract)
+                        if (Vector3.Distance(transform.position, item.gameObject.transform.position) <= 3)
                         {
                             m_CurrentMat.SetColor("_Color_Outline", Color.Lerp(Color.black, Color.red, m_Time));
                             m_Time += Time.deltaTime;
@@ -179,7 +176,7 @@ public class Global_Interaction : MonoBehaviour
 
     public void DetectionObjectUI()
     {
-        Collider[] l_Collides = Physics.OverlapSphere(transform.position, m_DistInteract+1, m_Layer);
+        Collider[] l_Collides = Physics.OverlapSphere(transform.position, 5, m_Layer);
         {
             foreach (var item in l_Collides)
             {
@@ -187,7 +184,7 @@ public class Global_Interaction : MonoBehaviour
                 {
                     m_CurrentUI = item.GetComponentInChildren<Image>();
                 }
-                if (Vector3.Distance(transform.position, item.gameObject.transform.position) < m_DistInteract)
+                if (Vector3.Distance(transform.position, item.gameObject.transform.position) < 3)
                 {
                     Sequence l_ESequence = DOTween.Sequence();
                     l_ESequence.Insert(0, m_CurrentUI.DOFade(1, 1));
@@ -221,11 +218,6 @@ public class Global_Interaction : MonoBehaviour
     {
         get { return m_UseObject; }
         set { m_UseObject = value; }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, m_DistInteract);
     }
 }
 

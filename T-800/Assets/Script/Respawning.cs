@@ -49,7 +49,7 @@ public class Respawning : MonoBehaviour
         {
             Sequence l_MySequence = DOTween.Sequence();
             l_MySequence.Insert(0, m_BlackScreen.DOFade(1, 1f));
-            l_MySequence.Insert(1f, m_BlackScreen.DOFade(0, 1.5f));
+            l_MySequence.Insert(1f, m_BlackScreen.DOFade(0, 1f));
 
             
         }

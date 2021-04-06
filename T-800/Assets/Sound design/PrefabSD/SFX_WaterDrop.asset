@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb52814ccc5fd43449720379dbef51f9, type: 3}
+  m_Name: SFX_WaterDrop
+  m_EditorClassIdentifier: 
+  naming: NamingSound
+  clip:
+  - {fileID: 8300000, guid: 2f56bf4de9b0370429bce20530f7c7dd, type: 3}
+  - {fileID: 8300000, guid: ed3a0711bb531fd4799db6b6a53a82db, type: 3}
+  - {fileID: 8300000, guid: 9d8aad29fd71a984cb88a3054eb64417, type: 3}
+  - {fileID: 8300000, guid: 57213daad6a164e45a19a9fcad315e83, type: 3}
+  - {fileID: 8300000, guid: a2b9f12cf55ed1e45a141d84866522fd, type: 3}
+  - {fileID: 8300000, guid: 8db7723b2960ea249bf560f542d2ce67, type: 3}
+  - {fileID: 8300000, guid: 94d01913607f39149b1099e80499eda8, type: 3}
+  - {fileID: 8300000, guid: 9f38040bcbffe3a41b3d6d3a58605966, type: 3}
+  - {fileID: 8300000, guid: 073d292c4bca2ea478a20da8c3efc449, type: 3}
+  volume: 0.3
+  pitch: 1
+  loop: 0
+  mixer: {fileID: 0}
