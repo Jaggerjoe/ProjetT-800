@@ -35,5 +35,5 @@ Material:
     m_Floats:
     - _Taille_Outline: 0.01
     m_Colors:
-    - _Color_Outline: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_Outline: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
